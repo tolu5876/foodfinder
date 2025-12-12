@@ -1,0 +1,223 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FoodieFindr - Login</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>FoodieFindr</h2>
+      <p>Welcome back! Please login to your account.</p>
+      <form class="login-form" id="loginForm">
+        <div
+          id="loginAlert"
+          class="alert alert-danger d-flex align-items-center"
+          role="alert"
+          style="display: none; margin-top: 15px"
+        >
+          <span class="error-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="12" fill="#e74c3c" />
+              <path
+                d="M7 13.5L10.5 17L17 10.5"
+                stroke="#fff"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <div style="margin-left: 10px">Please fill in all fields!</div>
+        </div>
+
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          class="input-field"
+        />
+        <h6 class="error-message" id="error-email">Email is required</h6>
+
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          class="input-field"
+        />
+        <h6 class="error-message" id="error-password">Password is required</h6>
+
+        <a href="#" class="forgot-password" id="forgotPasswordLink"
+          >Forgot Password?</a
+        >
+
+        <button type="submit" class="login-btn">Login</button>
+        <p class="signup-link">
+          <a href="registration.html">Don't have an account? Register here</a>
+        </p>
+      </form>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Reset Password</h3>
+        <p>
+          Enter your email address and we'll send you a link to reset your
+          password.
+        </p>
+        <form id="resetForm">
+          <label for="resetEmail">Email</label>
+          <input
+            type="email"
+            id="resetEmail"
+            placeholder="Enter your email"
+            required
+          />
+          <button type="submit" class="reset-btn">Send Reset Link</button>
+        </form>
+        <div
+          id="resetAlert"
+          class="alert alert-danger d-flex align-items-center"
+          role="alert"
+          style="display: none; margin-top: 15px"
+        >
+          <div></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="login.js"></script>
+    <script>
+      // Forgot Password Modal Logic
+      const modal = document.getElementById("forgotPasswordModal");
+      const forgotPasswordLink = document.getElementById("forgotPasswordLink");
+      const closeBtn = document.querySelector(".close");
+
+      forgotPasswordLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        modal.style.display = "block";
+      });
+
+      closeBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+      });
+
+      window.addEventListener("click", function (e) {
+        if (e.target == modal) {
+          modal.style.display = "none";
+        }
+      });
+
+      document
+        .getElementById("resetForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const email = document.getElementById("resetEmail").value.trim();
+          const resetAlert = document.getElementById("resetAlert");
+          fetch("../../send_reset.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: `email=${encodeURIComponent(email)}`,
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              resetAlert.querySelector("div").textContent =
+                data.message || "Failed to send reset code.";
+              resetAlert.className = data.success
+                ? "alert alert-success d-flex align-items-center"
+                : "alert alert-danger d-flex align-items-center";
+              resetAlert.style.display = "flex";
+              setTimeout(function () {
+                resetAlert.style.display = "none";
+                if (data.success) {
+                  modal.style.display = "none";
+                  document.getElementById("resetForm").reset();
+                }
+              }, 3000);
+            })
+            .catch(() => {
+              resetAlert.querySelector("div").textContent =
+                "please our website server network is currently not good please try agian later.";
+              resetAlert.className =
+                "alert alert-danger d-flex align-items-center";
+              resetAlert.style.display = "flex";
+              setTimeout(function () {
+                resetAlert.style.display = "none";
+              }, 3000);
+            });
+        });
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value.trim();
+          const loginAlert = document.getElementById("loginAlert");
+          const errorEmail = document.getElementById("error-email");
+          const errorPassword = document.getElementById("error-password");
+
+          let hasError = false;
+
+          // Basic empty field validation
+          if (!email) {
+            errorEmail.style.display = "block";
+            hasError = true;
+          } else {
+            errorEmail.style.display = "none";
+          }
+
+          if (!password) {
+            errorPassword.style.display = "block";
+            hasError = true;
+          } else {
+            errorPassword.style.display = "none";
+          }
+
+          // Demo: hardcoded valid credentials
+          // const validEmail = "user@example.com";
+          // const validPassword = "password123";
+          // const savedEmail = localStorage.getItem("registeredEmail");
+          // const savedPassword = localStorage.getItem("registeredPassword");
+          // const validEmail = savedEmail ? savedEmail : "";
+          // const validPassword = savedPassword ? savedPassword : "";
+          //   if (!hasError) {
+          //     let alertMsg = "";
+          //     if (
+          //       email !== savedEmail &&
+          //       email &&
+          //       password !== savedPassword &&
+          //       password
+          //     ) {
+          //       alertMsg = "Incorrect email or password!";
+          //     } else if (email !== registered && email) {
+          //       alertMsg = "Incorrect email!";
+          //     } else if (password !== validPassword && password) {
+          //       alertMsg = "Incorrect password!";
+          //     }
+          //     if (alertMsg) {
+          //       loginAlert.querySelector("div").textContent = alertMsg;
+          //       loginAlert.style.display = "flex";
+          //       errorEmail.style.display = "none";
+          //       errorPassword.style.display = "none";
+          //       return;
+          //     } else {
+          //       loginAlert.style.display = "none";
+          //       errorEmail.style.display = "none";
+          //       errorPassword.style.display = "none";
+          //       window.location.href = "dashboard.html";
+          //     }
+          //   } else {
+          //     loginAlert.style.display = "none";
+          //   }
+        });
+    </script>
+  </body>
+</html>

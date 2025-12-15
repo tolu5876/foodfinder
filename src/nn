@@ -1,0 +1,49 @@
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('loginForm');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const emailError = document.getElementById('error-email');
+  const passwordError = document.getElementById('error-password');
+  const alertBox = document.getElementById('loginAlert');
+
+  emailInput.addEventListener('blur', function() {
+    if (!emailInput.value.trim()) {
+      emailError.style.display = 'block';
+    } else {
+      emailError.style.display = 'none';
+    }
+  });
+  passwordInput.addEventListener('blur', function() {
+    if (!passwordInput.value.trim()) {
+      passwordError.style.display = 'block';
+    } else {
+      passwordError.style.display = 'none';
+    }
+  });
+
+  form.addEventListener('submit', function(e) {
+    let valid = true;
+    // Email validation
+    if (!emailInput.value.trim()) {
+      emailError.style.display = 'block';
+      valid = false;
+    } else {
+      emailError.style.display = 'none';
+    }
+    // Password validation
+    if (!passwordInput.value.trim()) {
+      passwordError.style.display = 'block';
+      valid = false;
+    } else {
+      passwordError.style.display = 'none';
+    }
+    if (!valid) {
+      e.preventDefault();
+      alertBox.style.display = 'flex';
+      setTimeout(function() {
+        alertBox.style.display = 'none';
+        window.location.href = 'dashboard.html';
+      }, 3000);
+    }
+  });
+});

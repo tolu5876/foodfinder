@@ -1,0 +1,111 @@
+:root {
+    --bg: #f5f7f9;
+    --card: #ffffff;
+    --text: #17202a;
+    --muted: #6b7785;
+    --primary: #264653; /* deep teal */
+    --accent: #e76f51; /* warm coral */
+    --shadow: rgba(16, 24, 32, 0.06);
+    --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 48px auto;
+    padding: 28px;
+    text-align: center;
+}
+
+h1 {
+    color: var(--primary);
+    font-size: 34px;
+    margin-bottom: 18px;
+    letter-spacing: 0.2px;
+}
+
+
+/* Form */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 420px;
+    margin: 0 auto;
+    background: var(--card);
+    padding: 22px;
+    border-radius: calc(var(--radius) - 2px);
+    box-shadow: 0 6px 18px var(--shadow);
+}
+
+.input-field {
+    padding: 12px 14px;
+    border: 1px solid #e6e9ed;
+    border-radius: 8px;
+    font-size: 15px;
+    color: var(--text);
+    background: transparent;
+    width: 90px;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.input-field:focus {
+    border-color: var(--primary);
+    box-shadow: 0 4px 10px rgba(38,70,83,0.06);
+    outline: none;
+}
+
+.submit-btn {
+    padding: 12px 16px;
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background-color 0.18s ease, transform 0.06s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.submit-btn:hover,
+.submit-btn:focus {
+    background-color: #1f3840;
+    transform: translateY(-1px);
+}
+
+.submit-btn:active { transform: translateY(0); }
+
+.container p a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.container p a:hover { text-decoration: underline; }
+
+
+
+/* Responsive Styles (Media Queries) */
+@media (max-width: 900px) {
+    .recipe-grid { grid-template-columns: repeat(2, 1fr); }
+    .search-bar input { width: 100%; max-width: 420px; }
+}
+
+@media (max-width: 480px) {
+    .recipe-grid { grid-template-columns: 1fr; }
+    .submit-btn { width: 100%; }
+    .form { padding: 18px; }
+}

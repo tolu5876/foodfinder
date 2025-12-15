@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>registration page </title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body >
+   
+    <div class="form-container">
+      <h2>FoodieFindr</h2>
+      <p>Welcome to FoodieFindr! Please fill out the form below.</p>
+      <form id="myForm">
+        <label for="Firstname">Firstname</label>
+        <input type="text" id="Firstname" placeholder="Enter your first name" />
+        <h6 class="error-message" id="error-firstname">
+          This Firstname should be filled*
+        </h6>
+
+        <label for="Lastname">Lastname</label>
+        <input type="text" id="Lastname" placeholder="Enter your last name" />
+        <h6 class="error-message" id="error-lastname">
+          This Lastname should be filled*
+        </h6>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" />
+        <h6 class="error-message" id="error-email">Enter your Email address</h6>
+
+        <label for="DOB">Phone number</label>
+        <input type="phone no" id="DOB" />
+        <h6 class="error-message" id="error-dob">
+          This date should be filled*
+        </h6>
+
+        <label for="countrySelect">Country</label>
+        <select name="country" id="countrySelect">
+          <option value="">Select a country</option>
+        </select>
+        <h6 class="error-message" id="error-country">
+          This Country should be filled*
+        </h6>
+
+        <label for="password">Enter a New Password</label>
+        <input type="password" id="password" placeholder="Enter password" />
+        <h6 class="error-message" id="error-password">
+          This password should be filled*
+        </h6>
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Confirm password"
+        />
+        <h6 class="error-message" id="error-confirm">
+          Plase confirm your password*
+        </h6>
+
+        <input type="submit" value="Register" class="subt" />
+        <p><a href="login.html">Already have an account? Login</a></p>
+      </form>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

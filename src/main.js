@@ -144,7 +144,7 @@ const countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Ar
         document.getElementById('successAlert').style.display = 'flex';
         setTimeout(function() {
           document.getElementById('successAlert').style.display = 'none';
-          window.location.href = 'logino.html';
+          window.location.href = 'login.html';
         }, 3000);
         form.reset();
         let radios = document.querySelectorAll('input[name="gender"]');

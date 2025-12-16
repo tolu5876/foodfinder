@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (email === savedEmail && password === savedPassword) {
       // SUCCESS → redirect to dashboard
-      window.location.href = "dashboard.html";
+      window.location.href = "index.html";
     } else {
       // WRONG CREDENTIALS → show alert only
       alertBox.querySelector("div").textContent = "Incorrect email or password!";

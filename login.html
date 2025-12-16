@@ -1,0 +1,94 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FoodieFindr - Login</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>FoodieFindr</h2>
+      <p>Welcome back! Please login to your account.</p>
+      <form class="login-form" id="loginForm">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          class="input-field"
+          required
+        />
+
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          class="input-field"
+          required
+        />
+
+        <a href="#" class="forgot-password" id="forgotPasswordLink">Forgot Password?</a>
+
+        <button type="submit" class="login-btn">Login</button>
+        <p class="signup-link"><a href="registration.html">Don't have an account? Register here</a></p>
+      </form>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Reset Password</h3>
+        <p>Enter your email address and we'll send you a link to reset your password.</p>
+        <form id="resetForm">
+          <label for="resetEmail">Email</label>
+          <input
+            type="email"
+            id="resetEmail"
+            placeholder="Enter your email"
+            required
+          />
+          <button type="submit" class="reset-btn">Send Reset Link</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+      // Forgot Password Modal Logic
+      const modal = document.getElementById("forgotPasswordModal");
+      const forgotPasswordLink = document.getElementById("forgotPasswordLink");
+      const closeBtn = document.querySelector(".close");
+
+      forgotPasswordLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        modal.style.display = "block";
+      });
+
+      closeBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+      });
+
+      window.addEventListener("click", function (e) {
+        if (e.target == modal) {
+          modal.style.display = "none";
+        }
+      });
+
+      document.getElementById("resetForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Password reset link sent to your email!");
+        modal.style.display = "none";
+        document.getElementById("resetForm").reset();
+      });
+
+      document.getElementById("loginForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        window.location.href = "dashboard.html";
+      });
+    </script>
+  </body>
+</html>

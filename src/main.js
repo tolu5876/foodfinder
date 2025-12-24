@@ -74,9 +74,36 @@ const countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Ar
         emailError.style.display = 'none';
       }
 
-      // save in localStorage
-      localStorage.setItem("registeredEmail", email);
-      localStorage.setItem("registeredPassword", document.getElementById('password').value);
+      // POST registration to server
+      const formData = new FormData();
+      formData.append('firstname', firstname);
+      formData.append('lastname', lastname);
+      formData.append('email', email);
+      formData.append('phone', dob);
+      const genderEl = document.querySelector('input[name="gender"]:checked');
+      formData.append('gender', genderEl ? genderEl.value : '');
+      formData.append('country', country);
+      formData.append('password', password);
+
+      fetch('register.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          document.getElementById('successAlert').style.display = 'flex';
+          setTimeout(function() {
+            document.getElementById('successAlert').style.display = 'none';
+            window.location.href = 'login.html';
+          }, 1500);
+        } else {
+          alert(data.message || 'Registration failed.');
+        }
+      })
+      .catch(err => {
+        alert('Server error. Please try again later.');
+      });
 
 
       // DOB validation
@@ -141,11 +168,7 @@ const countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Ar
       if (!isValid) {
         document.getElementById('successAlert').style.display = 'none';
       } else {
-        document.getElementById('successAlert').style.display = 'flex';
-        setTimeout(function() {
-          document.getElementById('successAlert').style.display = 'none';
-          window.location.href = 'login.html';
-        }, 3000);
+        // form reset is done after server confirms - keep UI responsive
         form.reset();
         let radios = document.querySelectorAll('input[name="gender"]');
         radios.forEach(r => r.checked = false);

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FoodFindr</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f9f9f9;
+        color: #333;
+        text-align: center;
+      }
+      h1 {
+        color: #ff6b35;
+      }
+      input[type="text"] {
+        padding: 10px;
+        width: 300px;
+        margin-right: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        padding: 10px 15px;
+        background-color: #ff6b35;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #e65c2f;
+      }
+      h2 {
+        margin-top: 30px;
+        color: #333;
+      }
+      ul {
+        list-style-type: disc;
+        padding-left: 20px;
+      }
+      li {
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>FoodFindr</h1>
+
+    <input type="text" id="foodInput" placeholder="Search food..." />
+    <button onclick="searchFood()">Search</button>
+
+    <h2>Ingredients</h2>
+    <ul id="ingredientsList"></ul>
+
+    <script src="script.js"></script>
+  </body>
+</html>

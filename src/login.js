@@ -50,22 +50,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // -------------------------
-    //  LOGIN CHECK (LOCAL DATA)
+    //  LOGIN CHECK (SERVER)
     // -------------------------
-    const savedEmail = localStorage.getItem("registeredEmail");
-    const savedPassword = localStorage.getItem("registeredPassword");
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('password', password);
 
-    if (email === savedEmail && password === savedPassword) {
-      // SUCCESS → redirect to dashboard
-      window.location.href = "index.html";
-    } else {
-      // WRONG CREDENTIALS → show alert only
-      alertBox.querySelector("div").textContent = "Incorrect email or password!";
-      alertBox.style.display = "flex";
-
-      setTimeout(() => {
-        alertBox.style.display = "none";
-      }, 3000);
-    }
+    fetch('login.php', { method: 'POST', body: formData })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          window.location.href = 'index.html';
+        } else {
+          alertBox.querySelector('div').textContent = data.message || 'Incorrect email or password!';
+          alertBox.style.display = 'flex';
+          setTimeout(() => { alertBox.style.display = 'none'; }, 3000);
+        }
+      })
+      .catch(() => {
+        alertBox.querySelector('div').textContent = 'Server error. Please try again later.';
+        alertBox.style.display = 'flex';
+        setTimeout(() => { alertBox.style.display = 'none'; }, 3000);
+      });
   });
 });

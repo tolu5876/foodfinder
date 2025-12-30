@@ -1,0 +1,70 @@
+/* contact.css - minimal styles for Contact Us page (based on registration styling) */
+.form-alert-wrapper {
+  margin-bottom: 1rem;
+}
+
+#contactAlert {
+  margin-top: 1rem;
+}
+
+/* Professional alert styling */
+#contactAlert {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  display: none; /* controlled by JS */
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.08);
+  font-size: 0.95rem;
+}
+
+#contactAlert .alert-icon {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+#contactAlert .alert-body {
+  flex: 1 1 auto;
+}
+
+#contactAlert .alert-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #0f172a;
+}
+
+#contactAlert .alert-message {
+  color: #334155;
+  line-height: 1.3;
+}
+
+/* Success / danger specific tweaks */
+#contactAlert.alert-success { background: linear-gradient(180deg, #f0fbf5, #ecfdf3); border: 1px solid #d1fae5; }
+#contactAlert.alert-success .alert-icon { background: #ecfdf5; color: #047857; }
+#contactAlert.alert-danger { background: linear-gradient(180deg, #fff6f6, #fff1f0); border: 1px solid #fecaca; }
+#contactAlert.alert-danger .alert-icon { background: #fff1f2; color: #b91c1c; }
+
+
+/* Small responsive tweaks for the contact inputs area */
+.lg\:w-1\/2 {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .lg\:w-1\/2 { width: 50%; }
+}
+
+.error-text {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  display: none;
+  margin-top: 6px;
+}

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* =======================
+   GLOBAL STYLES
+======================= */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f9f9f9;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      /* =======================
+   NAVBAR
+======================= */
+      .container-fluid {
+        background: #ff6b35;
+      }
+
+      /* =======================
+   HERO SECTION
+======================= */
+      .hero {
+        height: 80vh;
+        background: url("about/photo-1600891964599-f61ba0e24092 (1).jpeg")
+          no-repeat center center/cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+      }
+
+      .hero h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero .btn {
+        padding: 15px 30px;
+        background: #ffe66d;
+        color: #ff6b6b;
+        border: none;
+        border-radius: 50px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .hero .btn:hover {
+        background: #ff6b35;
+        color: white;
+        transform: scale(1.05);
+      }
+
+      /* =======================
+   TEAM SECTION
+======================= */
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 50px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+      }
+
+      .team-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+      }
+
+      .team-member {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 20px;
+        width: 250px;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.6s ease;
+      }
+
+      .member-img img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 15px;
+        transition: transform 0.3s;
+      }
+
+      .team-member:hover img {
+        transform: scale(1.1);
+      }
+
+      .team-member h3 {
+        margin-bottom: 5px;
+      }
+
+      .team-member p {
+        color: #777;
+      }
+
+      .team-member.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* =======================
+   FOOTER
+======================= */
+      footer {
+        background: #ff6b35;
+        color: white;
+        padding: 30px 50px;
+        text-align: center;
+      }
+
+      footer p {
+        margin: 5px 0;
+      }
+
+      footer a {
+        color: #ffe66d;
+        font-weight: bold;
+      }
+
+      /* =======================
+   RESPONSIVE
+======================= */
+      @media (max-width: 768px) {
+        .team-grid {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .navbar {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .navbar ul {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .hero h2 {
+          font-size: 2.2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+      }
+    </style>
+
+    <!-- =======================
+     NAVBAR
+======================= -->
+  </head>
+  <body>
+    <!-- =======================
+     NAVBAR (Bootstrap)
+======================= -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">FoodFinder</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto text-white">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#home"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about/about.html">About</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#team">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- =======================
+     HERO SECTION
+======================= -->
+    <section class="hero" id="home">
+      <h2>Find Your Favorite Food Near You</h2>
+      <p>Discover the best restaurants and dishes in your city!</p>
+      <button class="btn">Explore Now</button>
+    </section>
+
+    <!-- =======================
+     TEAM SECTION
+======================= -->
+    <section id="team">
+      <div class="container">
+        <h2 class="section-title">Meet Our Team</h2>
+        <div class="team-grid">
+          <!-- Team Member 1 -->
+          <div class="team-member">
+            <div class="member-img">
+              <img
+                src="WhatsApp Image 2025-12-29 at 11.15.28 AM.jpeg"
+                alt="Jane Doe"
+              />
+            </div>
+            <h3>Salami AbdulQayyum Aderinola</h3>
+            <p>Front-End Developer</p>
+          </div>
+          <!-- Team Member 2 -->
+          <div class="team-member">
+            <div class="member-img">
+              <img
+                src="a3350875-3c14-4f60-8916-06701caeaa83.png"
+                alt="John Smith"
+              />
+            </div>
+            <h3>Akanbi-Giwa Toluwalase Yunus</h3>
+            <p>Back-End Developer</p>
+          </div>
+          <!-- Team Member 3 -->
+          <div class="team-member">
+            <div class="member-img">
+              <img
+                src="photo-1600891964599-f61ba0e24092 (1).jpeg"
+                alt="Emily Johnson"
+              />
+            </div>
+            <h3>ire</h3>
+            <p>Front-End Developer</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================
+     FOOTER
+======================= -->
+    <footer id="contact">
+      <p>&copy; 2025 FoodFinder. All Rights Reserved.</p>
+      <p>
+        Contact us: <a href="mailto:info@foodfinder.com">info@foodfinder.com</a>
+      </p>
+    </footer>
+
+    <!-- =======================
+     SCRIPT FOR ANIMATION
+======================= -->
+    <script>
+      // Scroll animation for team members
+      const members = document.querySelectorAll(".team-member");
+
+      function showMember() {
+        const triggerBottom = window.innerHeight * 0.85;
+        members.forEach((member) => {
+          const memberTop = member.getBoundingClientRect().top;
+          if (memberTop < triggerBottom) {
+            member.classList.add("visible");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", showMember);
+      window.addEventListener("load", showMember);
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

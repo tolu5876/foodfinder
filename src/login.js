@@ -1,25 +1,51 @@
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('loginForm');
-  const emailInput = document.getElementById('email');
-  const passwordInput = document.getElementById('password');
+  const loginemail = document.getElementById('email');
+  const loginpassword = document.getElementById('password');
   const emailError = document.getElementById('error-email');
   const passwordError = document.getElementById('error-password');
   const alertBox = document.getElementById('loginAlert');
 
+  // Helper to show alerts (type = "success" or "error")
+  function showAlert(message, duration = 3000, type = "error") {
+    const alertDiv = alertBox.querySelector("div");
+    if (!alertDiv) return;
+
+    alertDiv.textContent = message;
+
+    // Remove previous alert classes
+    alertBox.classList.remove("alert-danger", "alert-success");
+
+    // Add class based on type
+    if (type === "success") {
+      alertBox.classList.add("alert-success"); // green alert
+    } else {
+      alertBox.classList.add("alert-danger"); // red alert
+    }
+
+    alertBox.style.display = "flex";
+
+    if (duration > 0) {
+      setTimeout(() => {
+        alertBox.style.display = "none";
+      }, duration);
+    }
+  }
+
   // Show error on blur
-  emailInput.addEventListener('blur', () => {
-    emailError.style.display = emailInput.value.trim() ? 'none' : 'block';
+  loginemail.addEventListener('blur', () => {
+    emailError.style.display = loginemail.value.trim() ? 'none' : 'block';
   });
 
-  passwordInput.addEventListener('blur', () => {
-    passwordError.style.display = passwordInput.value.trim() ? 'none' : 'block';
+  loginpassword.addEventListener('blur', () => {
+    passwordError.style.display = loginpassword.value.trim() ? 'none' : 'block';
   });
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
+    const email = loginemail.value.trim();
+    const password = loginpassword.value.trim();
     let valid = true;
 
     // Required field validation
@@ -37,40 +63,30 @@ document.addEventListener('DOMContentLoaded', function () {
       passwordError.style.display = 'none';
     }
 
-    // If fields are empty → show alert, DO NOT redirect
     if (!valid) {
-      alertBox.querySelector("div").textContent = "Please fill in all fields!";
-      alertBox.style.display = "flex";
-
-      setTimeout(() => {
-        alertBox.style.display = "none";
-      }, 3000);
-
+      showAlert("Please fill in all fields!", 3000, "error");
       return;
     }
 
     // -------------------------
-    //  LOGIN CHECK (SERVER)
+    // LOGIN CHECK (localStorage)
     // -------------------------
-    const formData = new FormData();
-    formData.append('email', email);
-    formData.append('password', password);
+    const savedEmail = localStorage.getItem("email");
+    const savedPassword = localStorage.getItem("password");
 
-    fetch('login.php', { method: 'POST', body: formData })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          window.location.href = 'index.html';
-        } else {
-          alertBox.querySelector('div').textContent = data.message || 'Incorrect email or password!';
-          alertBox.style.display = 'flex';
-          setTimeout(() => { alertBox.style.display = 'none'; }, 3000);
-        }
-      })
-      .catch(() => {
-        alertBox.querySelector('div').textContent = 'Server error. Please try again later.';
-        alertBox.style.display = 'flex';
-        setTimeout(() => { alertBox.style.display = 'none'; }, 3000);
-      });
+    if (!savedEmail || !savedPassword) {
+      showAlert("No account found. Please register.", 3000, "error");
+      return;
+    }
+
+    if (email === savedEmail && password === savedPassword) {
+      showAlert("Login successful!", 1000, "success"); // green alert
+
+      setTimeout(() => {
+        window.location.href = "Dashboard.html";
+      }, 1000);
+    } else {
+      showAlert("Incorrect email or password!", 3000, "error"); // red alert
+    }
   });
 });

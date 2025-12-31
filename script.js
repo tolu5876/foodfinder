@@ -6,7 +6,7 @@ async function searchFood() {
   list.innerHTML = "";
 
   if (!foodName) {
-    list.innerHTML = "Please enter a food name";
+    list.innerHTML = "<li>Please enter a food name</li>";
     return;
   }
 
@@ -17,7 +17,7 @@ async function searchFood() {
     const searchData = await searchResponse.json();
 
     if (!searchData.results || searchData.results.length === 0) {
-      list.innerHTML = "No recipe found";
+      list.innerHTML = "<li>No recipe found</li>";
       return;
     }
 
@@ -29,7 +29,7 @@ async function searchFood() {
     const ingredientsData = await ingredientsResponse.json();
 
     if (!ingredientsData.ingredients || ingredientsData.ingredients.length === 0) {
-      list.innerHTML = "No ingredients found";
+      list.innerHTML = "<li>No ingredients found</li>";
       return;
     }
 
@@ -41,7 +41,6 @@ async function searchFood() {
 
   } catch (error) {
     console.error(error);
-    list.innerHTML = "Error fetching data";
+    list.innerHTML = "<li>Error fetching data</li>";
   }
 }
-

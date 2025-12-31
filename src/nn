@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
       alertBox.style.display = 'flex';
       setTimeout(function() {
         alertBox.style.display = 'none';
-        window.location.href = 'dashboard.html';
+        window.location.href = 'index.html';
       }, 3000);
     }
   });

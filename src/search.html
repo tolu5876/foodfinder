@@ -1,60 +1,310 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>FoodFindr</title>
     <meta charset="UTF-8" />
+    <title>FoodFindr</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <style>
+      :root {
+        --primary: #ff6b35;
+        --primary-dark: #e65c2f;
+        --bg: linear-gradient(135deg, #ff6b35, #ff9f68);
+        --card: #ffffff;
+        --text: #333;
+        --muted: #777;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
       body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-        background-color: #f9f9f9;
-        color: #333;
-        text-align: center;
+        font-family: "Segoe UI", sans-serif;
+        min-height: 100vh;
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        color: var(--text);
       }
+
+      .app {
+        background: var(--card);
+        width: 100%;
+        max-width: 500px;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
       h1 {
-        color: #ff6b35;
+        text-align: center;
+        color: var(--primary);
+        font-size: 2.4rem;
+        margin-bottom: 8px;
       }
-      input[type="text"] {
-        padding: 10px;
-        width: 300px;
-        margin-right: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+
+      .subtitle {
+        text-align: center;
+        color: var(--muted);
+        margin-bottom: 25px;
+        font-size: 0.95rem;
       }
-      button {
-        padding: 10px 15px;
-        background-color: #ff6b35;
+
+      /* ===== INGREDIENT SEARCH UI ===== */
+      .ingredient-ui h2 {
+        text-align: center;
+        margin-bottom: 12px;
+        font-size: 1.4rem;
+        color: white;
+      }
+
+      .ingredient-controls {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .ingredient-input {
+        flex: 1;
+        padding: 14px;
+        border-radius: 12px;
+        border: 2px solid #ddd;
+        font-size: 1rem;
+      }
+
+      .ingredient-input:focus {
+        border-color: var(--primary);
+        outline: none;
+      }
+
+      .ingredient-btn {
+        padding: 14px 18px;
+        border-radius: 12px;
+        background: var(--primary);
         color: white;
         border: none;
-        border-radius: 4px;
+        font-size: 1rem;
         cursor: pointer;
+        transition: background 0.2s ease, transform 0.2s ease;
       }
-      button:hover {
-        background-color: #e65c2f;
+
+      .ingredient-btn:hover,
+      .ingredient-btn:focus {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        outline: none;
       }
-      h2 {
-        margin-top: 30px;
-        color: #333;
+
+      .ingredient-loader {
+        width: 35px;
+        height: 35px;
+        border: 4px solid #ddd;
+        border-top: 4px solid var(--primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 15px auto;
+        display: none;
       }
-      ul {
-        list-style-type: disc;
-        padding-left: 20px;
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
       }
-      li {
+
+      .ingredient-list {
+        list-style: none;
+        margin-top: 10px;
+      }
+
+      .ingredient-list li {
+        background: #f5f5f5;
+        padding: 12px 14px;
         margin-bottom: 8px;
+        border-radius: 10px;
+        font-size: 0.95rem;
+        animation: slideUp 0.3s ease;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .ingredient-message {
+        text-align: center;
+        color: var(--muted);
+        margin-top: 12px;
+        font-size: 0.9rem;
+      }
+
+      /* ===== MEDIA QUERIES ===== */
+      @media (max-width: 900px) {
+        .app {
+          max-width: 90%;
+        }
+      }
+
+      @media (max-width: 600px) {
+        body {
+          padding: 10px;
+        }
+
+        .app {
+          padding: 22px;
+          border-radius: 16px;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+        .subtitle {
+          font-size: 0.9rem;
+          margin-bottom: 20px;
+        }
+
+        .ingredient-controls {
+          flex-direction: column;
+        }
+        .ingredient-input,
+        .ingredient-btn {
+          width: 100%;
+          font-size: 1rem;
+        }
+        .ingredient-list li {
+          font-size: 0.9rem;
+          padding: 12px;
+        }
+        .ingredient-message {
+          font-size: 0.85rem;
+        }
+      }
+
+      /* iPhone specific */
+      @supports (-webkit-touch-callout: none) {
+        body {
+          padding-bottom: 20px;
+        }
+        .ingredient-controls {
+          gap: 8px;
+        }
+        .ingredient-input,
+        .ingredient-btn {
+          padding: 12px;
+          font-size: 1rem;
+        }
+        .ingredient-list li {
+          font-size: 0.9rem;
+          padding: 10px;
+        }
+      }
+
+      /* Dark mode */
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: #1e1e1e;
+          color: #f1f1f1;
+        }
+        .app {
+          background: #2a2a2a;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+        h1,
+        .subtitle,
+        .ingredient-message {
+          color: #f1f1f1;
+        }
+        .ingredient-input {
+          background: #3a3a3a;
+          border: 1px solid #555;
+          color: #f1f1f1;
+        }
+        .ingredient-btn {
+          background: #ff6b35;
+          color: white;
+        }
+        .ingredient-list li {
+          background: #3a3a3a;
+          color: #f1f1f1;
+        }
+        .ingredient-loader {
+          border: 4px solid #555;
+          border-top: 4px solid #ff6b35;
+        }
+      }
+
+      /* Accessibility focus outline */
+      .ingredient-input:focus,
+      .ingredient-btn:focus {
+        outline: 3px solid var(--primary);
+        outline-offset: 2px;
       }
     </style>
   </head>
+
   <body>
-    <h1>FoodFindr</h1>
+    <div class="app">
+      <h1>FoodFindr</h1>
+      <p class="subtitle">Search foods and see their ingredients</p>
 
-    <input type="text" id="foodInput" placeholder="Search food..." />
-    <button onclick="searchFood()">Search</button>
+      <div class="ingredient-ui">
+        <h2>Ingredient Search</h2>
 
-    <h2>Ingredients</h2>
-    <ul id="ingredientsList"></ul>
+        <div class="ingredient-controls">
+          <input
+            type="text"
+            id="foodInput"
+            class="ingredient-input"
+            placeholder="Search a food (e.g. pizza)"
+            aria-label="Food search input"
+          />
+          <button
+            class="ingredient-btn"
+            onclick="searchFood()"
+            aria-label="Search for ingredients"
+          >
+            Search
+          </button>
+        </div>
 
-    <script src="script.js"></script>
+        <div class="ingredient-loader" id="loader"></div>
+
+        <ul
+          id="ingredientsList"
+          class="ingredient-list"
+          aria-live="polite"
+        ></ul>
+
+        <p id="message" class="ingredient-message">
+          Ingredients will appear here 🍽️
+        </p>
+      </div>
+    </div>
+
+    <!-- Your JS -->
+    <script src="scripts.js"></script>
   </body>
 </html>

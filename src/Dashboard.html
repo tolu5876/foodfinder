@@ -1,276 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FoodieFindr</title>
-<link rel="stylesheet" href=" output.css" />
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FoodieFindr</title>
+    <link rel="stylesheet" href=" output.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  </head>
 
-  
-</head>
+  <body
+    class="min-h-screen bg-linear-to-br from-white via-orange-100 to-orange-400"
+  >
+    <div class="px-4 sm:px-6 lg:px-8">
+      <!-- ================= NAVBAR ================= -->
+      <header
+        class="fixed top-0 left-0 w-full bg-white border-b border-black/20 z-50"
+      >
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center">
+          <div class="flex items-center gap-3">
+            <img
+              src="IMAGES/foodfinr_logo.png"
+              class="w-12 h-12 rounded-full"
+            />
+            <span class="text-xl font-bold text-gray-900">FoodieFindr</span>
+          </div>
 
-<body class="min-h-screen bg-linear-to-br from-white via-orange-100 to-orange-400">
- <div class="px-4 sm:px-6 lg:px-8">
+          <div class="hidden md:flex items-center ml-auto gap-28">
+            <nav class="flex items-center gap-8 text-gray-800">
+              <a href="#" class="hover:text-orange-600">Home</a>
+              <a href="#" class="hover:text-orange-600">Categories</a>
+              <a href="team.html" class="hover:text-orange-600">Team</a>
+            </nav>
 
-  <!-- ================= NAVBAR ================= -->
-  <header class="fixed top-0 left-0 w-full bg-white border-b border-black/20 z-50">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center">
+            <div class="flex items-center gap-3">
+              <div
+                class="flex items-center gap-2 px-4 py-1.5 border rounded shadow"
+              >
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  class="w-5 h-5"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <path d="m21 21-4.35-4.35"></path>
+                </svg>
 
-    
-    <div class="flex items-center gap-3">
-      <img src="IMAGES/foodfinr_logo.png" class="w-12 h-12 rounded-full" />
-      <span class="text-xl font-bold text-gray-900">FoodieFindr</span>
-    </div>
+                <input
+                  type="search"
+                  placeholder="Search ingredients"
+                  class="w-20 focus:outline-none placeholder:text-xs"
+                />
+                <button><a href="search.html"> Search</a></button>
+              </div>
 
-   
-    <div class="hidden md:flex items-center ml-auto gap-28">
+              <a
+                href="registration.html"
+                class="flex items-center gap-2 px-4 py-1.5 bg-orange-500 hover:bg-orange-600 text-white rounded shadow"
+              >
+                <svg fill="currentColor" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path
+                    d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+                  />
+                </svg>
+                Sign Up
+              </a>
+            </div>
+          </div>
 
-   
-      <nav class="flex items-center gap-8 text-gray-800">
-        <a href="#" class="hover:text-orange-600">Home</a>
-        <a href="#" class="hover:text-orange-600">Categories</a>
-        <a href="team.html" class="hover:text-orange-600">Team</a>
-      </nav>
-
-      
-      <div class="flex items-center gap-3">
-
-        
-        <div class="flex items-center gap-2 px-4 py-1.5 border rounded shadow">
-          <svg
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            class="w-5 h-5"
-            viewBox="0 0 24 24"
-          >
-            <circle cx="11" cy="11" r="8"></circle>
-            <path d="m21 21-4.35-4.35"></path>
-          </svg>
-
-          <input
-            type="search"
-            placeholder="Search ingredients"
-            class="w-20 focus:outline-none placeholder:text-xs ">
-          <button><a href="search.html"> Search</a> </button>
+          <button id="menuBtn" class="md:hidden text-3xl ml-auto">☰</button>
         </div>
 
-        
-        <a
-          href="registration.html"
-          class="flex items-center gap-2 px-4 py-1.5 bg-orange-500 hover:bg-orange-600 text-white rounded shadow"
+        <div
+          id="mobileMenu"
+          class="hidden md:hidden px-6 pb-4 space-y-3 bg-white"
         >
-          <svg
-            fill="currentColor"
-            class="w-5 h-5"
-            viewBox="0 0 24 24"
-          >
-            <path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-          </svg>
-          Sign Up
-        </a>
+          <a href="#" class="block">Home</a>
+          <a href="#" class="block">Categories</a>
+          <a href="#" class="block">Team</a>
 
-      </div>
-    </div>
-
-    
-    <button id="menuBtn" class="md:hidden text-3xl ml-auto">☰</button>
-  </div>
-
-  
-  <div id="mobileMenu" class="hidden md:hidden px-6 pb-4 space-y-3 bg-white">
-    <a href="#" class="block">Home</a>
-    <a href="#" class="block">Categories</a>
-    <a href="#" class="block">Team</a>
-
-    
-    <div class="flex items-center gap-2 px-4 py-2 border rounded shadow">
-      <svg
-        fill="none"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        class="w-5 h-5"
-        viewBox="0 0 24 24"
-      >
-        <circle cx="11" cy="11" r="8"></circle>
-        <path d="m21 21-4.35-4.35"></path>
-      </svg>
-      <input
-        type="search"
-        placeholder="Search ingredients"
-        class="w-full focus:outline-none placeholder:text-sm"
-      >
-      <button class="text-white bg-orange-500 px-3 py-1 rounded hover:bg-orange-600">
-        Search
-      </button>
-    </div>
-
-    <a href="registration.html" class="block bg-orange-500 text-white px-4 py-2 rounded text-center hover:bg-orange-600">
-      Sign Up
-    </a>
-  </div>
-</header>
-
-
-
-  
-  <section class="max-w-7xl mx-auto px-6 pt-32 pb-20 grid md:grid-cols-2 gap-12 items-center">
-
-  
-  <div >
-    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-      Explore <br>Ingredients.<br />
-      Master Every Dish.
-    </h1>
-
-    <p class="mt-6 text-gray-700 max-w-lg">
-      Stop guessing. Search thousands of recipes from around the world and get
-      exact ingredients and measurements for your next meal.
-    </p>
-
-    <div class="mt-8 flex gap-4">
-      <a
-        href="about.html"
-        class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg shadow"
-      >
-        About Us
-      </a>
-      <a
-        href="Contact Us.html"
-        class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg shadow"
-      >
-        Contact Us
-      </a>
-    </div>
-  </div>
-
-  <div>
-    <img
-      src="IMAGES/foodfindr_bg_img.jpg"
-      class="rounded-2xl shadow-lg w-full"
-      alt="Food ingredients"
-    />
-  </div>
-</section>
-
-
-  <section class="py-20 bg-white/70">
-    <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8">
-
-      <div class="bg-white p-6 rounded-xl shadow text-center"  >
-        <h3 class="font-semibold text-lg text-gray-900">Smart Search</h3>
-        <p class="text-gray-600 mt-2">
-          Find recipes using ingredients you already have.
-        </p>
-      </div>
-
-      <div class="bg-white p-6 rounded-xl shadow text-center">
-        <h3 class="font-semibold text-lg text-gray-900">Accurate Recipes</h3>
-        <p class="text-gray-600 mt-2">
-          Exact measurements and step-by-step cooking instructions.
-        </p>
-      </div>
-
-      <div class="bg-white p-6 rounded-xl shadow text-center">
-        <h3 class="font-semibold text-lg text-gray-900">Global Dishes</h3>
-        <p class="text-gray-600 mt-2">
-          Discover meals from different cultures worldwide.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="py-20">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold text-gray-900 mb-10">How It Works</h2>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <div>
-          <span class="text-orange-500 text-4xl font-bold">1</span>
-          <p class="mt-2 text-gray-700">Search ingredients</p>
-        </div>
-        <div>
-          <span class="text-orange-500 text-4xl font-bold">2</span>
-          <p class="mt-2 text-gray-700">Choose a recipe</p>
-        </div>
-        <div>
-          <span class="text-orange-500 text-4xl font-bold">3</span>
-          <p class="mt-2 text-gray-700">Cook with confidence</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-16 text-center">
-    <h2 class="text-3xl font-bold text-gray-900">
-      Ready to start cooking smarter?
-    </h2>
-
-    <a
-      href="search.html"
-      class="inline-block mt-6 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg shadow-lg"
-    >
-      Get Started
-    </a>
-  </section>
-
-  <footer class="text-gray-600 body-font">
-      <div
-        class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
-      >
-        <a
-          class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
-        >
-          <img
-            src="IMAGES/foodfinr_logo.png"
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            class="w-20 h-20 text-white p-2 rounded-full"
-            viewBox="0 0 24 24"
-          />
-
-          <span class="ml-3 text-xl">FoodieFindr</span>
-        </a>
-        <p
-          class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"
-        >
-          © 2026 FoodieFindr —
-          <a
-            href="https://twitter.com/knyttneve"
-            class="text-gray-600 ml-1"
-            rel="noopener noreferrer"
-            target="_blank"
-            >@All rights reserved</a
-          >
-        </p>
-        <span
-          class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start"
-        >
-          
-          <a href="#" class="ml-3 text-gray-500">
-            <svg
-              fill="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              class="w-5 h-5"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
-              ></path>
-            </svg>
-          </a>
-          <a href="#" class="ml-3 text-gray-500">
+          <div class="flex items-center gap-2 px-4 py-2 border rounded shadow">
             <svg
               fill="none"
               stroke="currentColor"
@@ -280,40 +92,225 @@
               class="w-5 h-5"
               viewBox="0 0 24 24"
             >
-              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-              <path
-                d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"
-              ></path>
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
             </svg>
-          </a> 
-          <a href="#" class="ml-3 text-gray-500">
-            <svg
-              fill="currentColor"
+            <input
+              type="search"
+              placeholder="Search ingredients"
+              class="w-full focus:outline-none placeholder:text-sm"
+            />
+            <button
+              class="text-white bg-orange-500 px-3 py-1 rounded hover:bg-orange-600"
+            >
+              <a href="search.html"></a>
+            </button>
+          </div>
+
+          <a
+            href="registration.html"
+            class="block bg-orange-500 text-white px-4 py-2 rounded text-center hover:bg-orange-600"
+          >
+            Sign Up
+          </a>
+        </div>
+      </header>
+
+      <section
+        class="max-w-7xl mx-auto px-6 pt-32 pb-20 grid md:grid-cols-2 gap-12 items-center"
+      >
+        <div>
+          <h1
+            class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight"
+          >
+            Explore <br />Ingredients.<br />
+            Master Every Dish.
+          </h1>
+
+          <p class="mt-6 text-gray-700 max-w-lg">
+            Stop guessing. Search thousands of recipes from around the world and
+            get exact ingredients and measurements for your next meal.
+          </p>
+
+          <div class="mt-8 flex gap-4">
+            <a
+              href="about.html"
+              class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg shadow"
+            >
+              About Us
+            </a>
+            <a
+              href="Contact Us.html"
+              class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg shadow"
+            >
+              Contact Us
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <img
+            src="IMAGES/foodfindr_bg_img.jpg"
+            class="rounded-2xl shadow-lg w-full"
+            alt="Food ingredients"
+          />
+        </div>
+      </section>
+
+      <section class="py-20 bg-white/70">
+        <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded-xl shadow text-center">
+            <h3 class="font-semibold text-lg text-gray-900">Smart Search</h3>
+            <p class="text-gray-600 mt-2">
+              Find recipes using ingredients you already have.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow text-center">
+            <h3 class="font-semibold text-lg text-gray-900">
+              Accurate Recipes
+            </h3>
+            <p class="text-gray-600 mt-2">
+              Exact measurements and step-by-step cooking instructions.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow text-center">
+            <h3 class="font-semibold text-lg text-gray-900">Global Dishes</h3>
+            <p class="text-gray-600 mt-2">
+              Discover meals from different cultures worldwide.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-20">
+        <div class="container mx-auto px-6 text-center">
+          <h2 class="text-3xl font-bold text-gray-900 mb-10">How It Works</h2>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <div>
+              <span class="text-orange-500 text-4xl font-bold">1</span>
+              <p class="mt-2 text-gray-700">Search ingredients</p>
+            </div>
+            <div>
+              <span class="text-orange-500 text-4xl font-bold">2</span>
+              <p class="mt-2 text-gray-700">Choose a recipe</p>
+            </div>
+            <div>
+              <span class="text-orange-500 text-4xl font-bold">3</span>
+              <p class="mt-2 text-gray-700">Cook with confidence</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 text-center">
+        <h2 class="text-3xl font-bold text-gray-900">
+          Ready to start cooking smarter?
+        </h2>
+
+        <a
+          href="search.html"
+          class="inline-block mt-6 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg shadow-lg"
+        >
+          Get Started
+        </a>
+      </section>
+
+      <footer class="text-gray-600 body-font">
+        <div
+          class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
+        >
+          <a
+            class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
+          >
+            <img
+              src="IMAGES/foodfinr_logo.png"
+              fill="none"
               stroke="currentColor"
               stroke-linecap="round"
               stroke-linejoin="round"
-              stroke-width="0"
-              class="w-5 h-5"
+              stroke-width="2"
+              class="w-20 h-20 text-white p-2 rounded-full"
               viewBox="0 0 24 24"
-            >
-              <path
-                stroke="none"
-                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
-              ></path>
-              <circle cx="4" cy="4" r="2" stroke="none"></circle>
-            </svg>
-          </a>
-        </span>
-      </div>
-    </footer>
-  <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
+            />
 
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-  </script>
- </div>
-</body>
+            <span class="ml-3 text-xl">FoodieFindr</span>
+          </a>
+          <p
+            class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"
+          >
+            © 2026 FoodieFindr —
+            <a
+              href="https://twitter.com/knyttneve"
+              class="text-gray-600 ml-1"
+              rel="noopener noreferrer"
+              target="_blank"
+              >@All rights reserved</a
+            >
+          </p>
+          <span
+            class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start"
+          >
+            <a href="#" class="ml-3 text-gray-500">
+              <svg
+                fill="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
+                ></path>
+              </svg>
+            </a>
+            <a href="#" class="ml-3 text-gray-500">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+              >
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path
+                  d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"
+                ></path>
+              </svg>
+            </a>
+            <a href="#" class="ml-3 text-gray-500">
+              <svg
+                fill="currentColor"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="0"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="none"
+                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+                ></path>
+                <circle cx="4" cy="4" r="2" stroke="none"></circle>
+              </svg>
+            </a>
+          </span>
+        </div>
+      </footer>
+      <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        menuBtn.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+      </script>
+    </div>
+  </body>
 </html>

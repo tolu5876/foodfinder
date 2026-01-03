@@ -7,26 +7,32 @@
     <link rel="stylesheet" href="output.css" />
     <link rel="stylesheet" href="contact.css" />
   </head>
-  <body class="bg-linear-to-br from-white via-orange-100 to-orange-400">
-    <header class="text-gray-600 body-font">
-      <div
-        class="container border-b-2 border-black mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
-      >
-        <a
-          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
-        >
-          <span class="ml-3 text-2x]l font-bold">FoodieFindr</span>
-        </a>
-        <nav
-          class="md:ml-auto flex flex-wrap items-center text-base justify-center"
-        >
-          <a href="Dashboard.html" class="mr-5 hover:text-orange-600">Home</a>
-          <a href="src/about.html" class="mr-5 hover:text-orange-600">About</a>
-          <a href="team.html" class="mr-5 hover:text-orange-600">Team</a>
+
+  <body
+    class="min-h-screen bg-gradient-to-br from-orange-50 via-orange-100 to-orange-300"
+  >
+    <!-- HEADER -->
+    <header
+      class="bg-white/90 backdrop-blur border-b border-orange-200 sticky top-0 z-50"
+    >
+      <div class="container mx-auto flex items-center p-5">
+        <span class="text-2xl font-extrabold text-orange-600">
+          FoodieFindr
+        </span>
+
+        <nav class="ml-auto flex gap-6 font-medium text-gray-700">
+          <a href="Dashboard.html" class="hover:text-orange-600 transition"
+            >Home</a
+          >
+          <a href="about.html" class="hover:text-orange-600 transition"
+            >About</a
+          >
+          <a href="team.html" class="hover:text-orange-600 transition">Team</a>
         </nav>
       </div>
     </header>
 
+    <!-- 🚫 ALERT — UNTOUCHED -->
     <div
       id="contactAlert"
       class="alert alert-success alert-dismissible fade show"
@@ -42,223 +48,116 @@
         aria-label="Close"
       ></button>
     </div>
+    <!-- 🚫 ALERT END -->
 
-    <section class="text-gray-600 body-font relative">
-      <div class="container px-5 py-24 mx-auto">
-        <div
-          class="bg-white bg-opacity-20 rounded-2xl p-12 shadow-2xl"
-          style="
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-          "
-        >
-          <div class="flex flex-col text-center w-full mb-12">
-            <h1
-              class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
-            >
+    <!-- MAIN -->
+    <section class="py-24">
+      <!-- ⬆️ White card container width increased -->
+      <div class="container mx-auto px-5 max-w-3xl">
+        <!-- WHITE CARD -->
+        <div class="bg-white rounded-3xl shadow-2xl p-10">
+          <!-- TITLE -->
+          <div class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-gray-900 mb-3">
               Contact Us
             </h1>
-            <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-800">
-              We'd love to hear from you. Send us a message and we'll get back
-              to you as soon as possible.
+            <p class="text-gray-600">
+              We'd love to hear from you. Send us a message and we’ll get back
+              shortly.
             </p>
           </div>
-          <div class="lg:w-1/2 md:w-2/3 mx-auto">
-            <div
-              class="bg-white bg-opacity-20 rounded-xl p-6 shadow-2xl flex flex-wrap -m-2"
-              style="
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-              "
-            >
-              <div class="p-2 w-1/2">
-                <div class="relative">
-                  <label for="name" class="leading-7 text-sm text-gray-600"
-                    >Full Name</label
-                  >
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="John Doe"
-                    class="w-full bg-white bg-opacity-30 border border-white border-opacity-40 rounded-lg focus:border-orange-400 focus:bg-white focus:ring-2 focus:ring-orange-200 text-base text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                    style="
-                      backdrop-filter: blur(5px);
-                      -webkit-backdrop-filter: blur(5px);
-                    "
-                    requrie
-                  />
-                </div>
+
+          <!-- FORM -->
+          <div class="bg-orange-50 rounded-2xl p-8 max-w-md mx-auto">
+            <div class="flex flex-wrap -m-3">
+              <div class="p-3 w-full">
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="John Doe"
+                  class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition"
+                />
               </div>
-              <div class="p-2 w-1/2">
-                <div class="relative">
-                  <label for="email" class="leading-7 text-sm text-gray-600"
-                    >Email Address</label
-                  >
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="you@example.com"
-                    class="w-full bg-white bg-opacity-30 border border-white border-opacity-40 rounded-lg focus:border-orange-400 focus:bg-white focus:ring-2 focus:ring-orange-200 text-base text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                    style="
-                      backdrop-filter: blur(5px);
-                      -webkit-backdrop-filter: blur(5px);
-                    "
-                  />
-                </div>
+
+              <div class="p-3 w-full">
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="you@example.com"
+                  class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition"
+                />
               </div>
-              <div class="p-2 w-full">
-                <div class="relative">
-                  <label for="subject" class="leading-7 text-sm text-gray-600"
-                    >Subject</label
-                  >
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    placeholder="How can we help?"
-                    class="w-full bg-white bg-opacity-30 border border-white border-opacity-40 rounded-lg focus:border-orange-400 focus:bg-white focus:ring-2 focus:ring-orange-200 text-base text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                    style="
-                      backdrop-filter: blur(5px);
-                      -webkit-backdrop-filter: blur(5px);
-                    "
-                  />
-                </div>
+
+              <div class="p-3 w-full">
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  placeholder="How can we help?"
+                  class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition"
+                />
               </div>
-              <div class="p-2 w-full">
-                <div class="relative">
-                  <label for="message" class="leading-7 text-sm text-gray-600"
-                    >Message</label
-                  >
-                  <textarea
-                    id="message"
-                    name="message"
-                    placeholder="Tell us more about your inquiry..."
-                    class="w-full bg-white bg-opacity-30 border border-white border-opacity-40 rounded-lg focus:border-orange-400 focus:bg-white focus:ring-2 focus:ring-orange-200 h-32 text-base text-gray-700 py-2 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-                    style="
-                      backdrop-filter: blur(5px);
-                      -webkit-backdrop-filter: blur(5px);
-                    "
-                  ></textarea>
-                </div>
+
+              <div class="p-3 w-full">
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  placeholder="Tell us more about your inquiry..."
+                  class="w-full h-32 resize-none rounded-lg border border-gray-300 px-4 py-3 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition"
+                ></textarea>
               </div>
-              <div class="p-2 w-full flex justify-center">
+
+              <div class="p-3 w-full flex justify-center">
                 <button
                   id="contactSend"
-                  class="inline-flex text-white bg-orange-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                  class="bg-orange-500 hover:bg-orange-600 active:scale-95 text-white font-semibold px-10 py-3 rounded-full shadow-lg transition"
                 >
                   Send Message
                 </button>
               </div>
-              <div
-                class="p-2 w-full pt-8 mt-8 border-t border-white border-opacity-30 text-center"
-              >
-                <div
-                  class="bg-white bg-opacity-20 rounded-xl p-6 shadow-lg"
-                  style="
-                    backdrop-filter: blur(10px);
-                    -webkit-backdrop-filter: blur(10px);
-                  "
+            </div>
+          </div>
+
+          <!-- CONTACT INFO -->
+          <div class="mt-14 border-t pt-10 text-center">
+            <h3 class="text-2xl font-bold text-gray-900 mb-8">
+              Our Contact Information
+            </h3>
+
+            <div class="grid grid-cols-1 gap-6 text-gray-700">
+              <div>
+                <h4 class="font-semibold mb-1">Email</h4>
+                <a
+                  href="mailto:foodfindr27@gmail.com"
+                  class="text-orange-600 hover:underline"
                 >
-                  <h3 class="text-2xl font-bold text-gray-900 mb-8">
-                    Our Contact Information
-                  </h3>
-                  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                    <!-- Email -->
-                    <div>
-                      <h4 class="font-semibold text-gray-900 mb-2">Email</h4>
-                      <a
-                        class="text-orange-600 hover:text-orange-700"
-                        href="mailto:foodfindr27@gmail.com"
-                        >foodfindr27@gmail.com</a
-                      >
-                    </div>
-                    <!-- Location -->
-                    <div>
-                      <h4 class="font-semibold text-gray-900 mb-2">Location</h4>
-                      <p class="text-gray-700">
-                        123 Food Street <br />Culinary City, CC 12345
-                      </p>
-                    </div>
-                    <!-- Phone -->
-                    <div>
-                      <h4 class="font-semibold text-gray-900 mb-2">Phone</h4>
-                      <a
-                        class="text-orange-600 hover:text-orange-700"
-                        href="tel:07072161185"
-                        >07072161185
-                      </a>
-                    </div>
-                  </div>
-                  <span class="inline-flex">
-                    <a class="text-gray-500 hover:text-orange-600">
-                      <svg
-                        fill="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        class="w-5 h-5"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
-                        ></path>
-                      </svg>
-                    </a>
-                    <a class="ml-4 text-gray-500 hover:text-orange-600">
-                      <svg
-                        fill="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        class="w-5 h-5"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
-                        ></path>
-                      </svg>
-                    </a>
-                    <a class="ml-4 text-gray-500 hover:text-orange-600">
-                      <svg
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        class="w-5 h-5"
-                        viewBox="0 0 24 24"
-                      >
-                        <rect
-                          width="20"
-                          height="20"
-                          x="2"
-                          y="2"
-                          rx="5"
-                          ry="5"
-                        ></rect>
-                        <path
-                          d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"
-                        ></path>
-                      </svg>
-                    </a>
-                    <a class="ml-4 text-gray-500 hover:text-orange-600">
-                      <svg
-                        fill="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        class="w-5 h-5"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"
-                        ></path>
-                      </svg>
-                    </a>
-                  </span>
-                </div>
+                  foodfindr27@gmail.com
+                </a>
+              </div>
+
+              <div>
+                <h4 class="font-semibold mb-1">Location</h4>
+                <p>123 Food Street<br />Culinary City, CC 12345</p>
+              </div>
+
+              <div>
+                <h4 class="font-semibold mb-1">Phone</h4>
+                <a
+                  href="tel:07072161185"
+                  class="text-orange-600 hover:underline"
+                >
+                  07072161185
+                </a>
               </div>
             </div>
           </div>
@@ -266,22 +165,16 @@
       </div>
     </section>
 
-    <footer class="text-gray-600 body-font border-t-2 border-black">
-      <div
-        class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
-      >
-        <a
-          class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
-        >
-          <span class="ml-3 text-xl font-bold">FoodieFindr</span>
-        </a>
-        <p
-          class="text-sm text-gray-600 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-300 sm:py-2 sm:mt-0 mt-4"
-        >
+    <!-- FOOTER -->
+    <footer class="bg-white border-t mt-20">
+      <div class="container mx-auto px-5 py-8 flex flex-col items-center">
+        <span class="text-xl font-bold text-orange-600">FoodieFindr</span>
+        <p class="text-sm text-gray-500 mt-2">
           © 2025 FoodieFindr — All rights reserved
         </p>
       </div>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="contact.js"></script>
   </body>

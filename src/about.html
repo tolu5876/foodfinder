@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>FoodFinder</title>
 
-    <!-- AOS Animation Library -->
+    <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <style>
@@ -14,17 +14,19 @@
         box-sizing: border-box;
         font-family: "Segoe UI", sans-serif;
       }
+
       body {
         background: #fff7f0;
         color: #444;
         scroll-behavior: smooth;
       }
+
       a {
         text-decoration: none;
         color: inherit;
       }
 
-      /* HEADER & NAV */
+      /* HEADER */
       header {
         padding: 20px 10%;
         display: flex;
@@ -35,168 +37,161 @@
         background: #fff7f0;
         z-index: 100;
       }
+
       header h1 {
         font-size: 36px;
         color: #ff6b35;
       }
+
       nav a {
         margin-left: 25px;
         font-size: 16px;
         font-weight: 500;
-        color: #444;
         transition: 0.3s;
       }
+
       nav a:hover {
         color: #ff6b35;
       }
 
-      /* SEARCH BAR */
-      .search-bar {
-        margin-top: 15px;
-        text-align: center;
-      }
-      .search-bar input {
-        padding: 12px 20px;
-        width: 300px;
-        border-radius: 25px;
-        border: 2px solid #ff6b35;
-        outline: none;
-        font-size: 16px;
-        transition: all 0.3s ease;
-      }
-      .search-bar input:focus {
-        width: 400px;
-        box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
-      }
-
-      /* HERO SECTION */
+      /* HERO */
       .hero {
         padding: 100px 10%;
         text-align: center;
         background: linear-gradient(90deg, #ffefd5, #fff7f0);
-        position: relative;
-        overflow: hidden;
       }
+
       .hero h2 {
         font-size: 48px;
         color: #ff6b35;
         margin-bottom: 20px;
       }
+
       .hero p {
         font-size: 20px;
         margin-bottom: 25px;
       }
+
       .hero button {
         padding: 15px 30px;
         font-size: 18px;
-        border: none;
         border-radius: 25px;
-        background-color: #ff6b35;
-        color: #fff;
+        border: none;
+        background: #ff6b35;
+        color: white;
         cursor: pointer;
-        transition: 0.3s;
-      }
-      .hero button:hover {
-        background-color: #ff8b5c;
       }
 
-      /* ABOUT SECTION */
+      .hero button:hover {
+        background: #ff8b5c;
+      }
+
+      .search-bar {
+        margin-top: 20px;
+      }
+
+      .search-bar input {
+        padding: 12px 20px;
+        width: 300px;
+        border-radius: 25px;
+        border: 2px solid #ff6b35;
+        font-size: 16px;
+      }
+
+      /* SLIDER */
+      .slider {
+        padding: 60px 10%;
+        background: #fffaf0;
+      }
+
+      .slider-container {
+        max-width: 1000px;
+        margin: auto;
+        overflow: hidden;
+        border-radius: 25px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .slide {
+        display: none;
+      }
+
+      .slide.active {
+        display: block;
+      }
+
+      .slide img {
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+        transition: opacity 0.8s ease-in-out;
+      }
+
+      /* ABOUT */
       .about {
         padding: 90px 10%;
-        position: relative;
-        overflow: hidden;
       }
+
       .about-container {
         display: flex;
-        align-items: center;
         gap: 50px;
         flex-wrap: wrap;
-        position: relative;
+        align-items: center;
       }
+
       .about-text {
         flex: 1;
         min-width: 300px;
       }
+
       .about-text h2 {
         font-size: 42px;
         color: #ff6b35;
         margin-bottom: 20px;
       }
+
       .about-text p {
         font-size: 18px;
         line-height: 1.7;
         margin-bottom: 15px;
       }
+
       .about-image {
         flex: 1;
         min-width: 300px;
       }
+
       .about-image img {
         width: 100%;
         border-radius: 25px;
         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
       }
 
-      /* FLOATING FOOD ICONS */
-      .food-icon {
-        position: absolute;
-        font-size: 40px;
-        animation: float 6s infinite ease-in-out;
-        opacity: 0.3;
-      }
-      .icon1 {
-        top: 10%;
-        left: 5%;
-        animation-delay: 0s;
-      }
-      .icon2 {
-        top: 70%;
-        left: 10%;
-        animation-delay: 2s;
-      }
-      .icon3 {
-        top: 20%;
-        right: 10%;
-        animation-delay: 1s;
-      }
-      .icon4 {
-        bottom: 10%;
-        right: 5%;
-        animation-delay: 3s;
-      }
-      @keyframes float {
-        0% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-20px);
-        }
-        100% {
-          transform: translateY(0);
-        }
-      }
-
-      /* TERMS SECTION */
+      /* TERMS */
       .terms {
         padding: 80px 10%;
         background: #fffaf0;
       }
+
       .terms-container {
         max-width: 900px;
-        margin: 0 auto;
+        margin: auto;
       }
+
       .terms h2 {
         font-size: 36px;
         color: #ff6b35;
         margin-bottom: 25px;
         text-align: center;
       }
+
       .terms h3 {
         font-size: 22px;
         color: #ff6b35;
         margin-top: 20px;
         margin-bottom: 10px;
       }
+
       .terms p {
         font-size: 16px;
         line-height: 1.7;
@@ -208,35 +203,64 @@
         padding: 40px 10%;
         text-align: center;
         background: #ff6b35;
-        color: #fff;
+        color: white;
       }
 
       /* RESPONSIVE */
-      @media (max-width: 900px) {
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .hero h2 {
+          font-size: 36px;
+        }
+
+        .slide img {
+          height: 300px;
+        }
+
         .about-container {
           flex-direction: column;
           text-align: center;
         }
+
         .search-bar input {
-          width: 80%;
+          width: 90%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero h2 {
+          font-size: 28px;
+        }
+
+        .slide img {
+          height: 220px;
+        }
+
+        nav a {
+          margin: 5px;
         }
       }
     </style>
   </head>
+
   <body>
-    <!-- HEADER & NAV -->
+    <!-- HEADER -->
     <header>
       <h1>FoodFinder</h1>
       <nav>
-        <a href="dashboard.html">Home</a>
+        <a href="Dashboard.html">Home</a>
         <a href="#about">About</a>
-        <a href="team.html">Terms</a>
+        <a href="#terms">Terms</a>
         <a href="Contact Us.html">Contact</a>
       </nav>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero" id="hero">
+    <!-- HERO -->
+    <section class="hero">
       <h2>Find Your Favorite Food</h2>
       <p>Discover the best restaurants, cafes, and hidden gems near you.</p>
       <button
@@ -244,6 +268,7 @@
       >
         Learn More
       </button>
+
       <div class="search-bar">
         <input
           type="text"
@@ -252,13 +277,23 @@
       </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section class="about" id="about">
-      <div class="food-icon icon1">🍕</div>
-      <div class="food-icon icon2">🍔</div>
-      <div class="food-icon icon3">🍩</div>
-      <div class="food-icon icon4">🍜</div>
+    <!-- SLIDER (INTERNET IMAGES) -->
+    <section class="slider">
+      <div class="slider-container">
+        <div class="slide active">
+          <img src="photo-1540189549336-e6e99c3679fe.jpeg" alt="Food" />
+        </div>
+        <div class="slide">
+          <img src="photo-1504674900247-0877df9cc836.jpeg" alt="Restaurant" />
+        </div>
+        <div class="slide">
+          <img src="photo-1499028344343-cd173ffc68a9.jpeg" alt="Fast Food" />
+        </div>
+      </div>
+    </section>
 
+    <!-- ABOUT -->
+    <section class="about" id="about">
       <div class="about-container">
         <div class="about-text" data-aos="fade-right">
           <h2>About FoodFinder</h2>
@@ -268,20 +303,24 @@
             easy.
           </p>
           <p>
-            Our mission is to connect food lovers with amazing local restaurants
-            using smart search and location-based recommendations.
+            Our mission is to connect food lovers with amazing local
+            restaurants.
           </p>
         </div>
         <div class="about-image" data-aos="fade-left">
-          <img src="IMAGES/foodie1.jpeg" alt="Food" />
+          <img
+            src="https://images.unsplash.com/photo-1504674900247-0877df9cc836"
+            alt="Food"
+          />
         </div>
       </div>
     </section>
 
-    <!-- TERMS SECTION -->
+    <!-- TERMS -->
     <section class="terms" id="terms">
       <div class="terms-container" data-aos="fade-up">
         <h2>Terms & Conditions</h2>
+
         <p>
           Welcome to FoodFinder. By using our website, you agree to comply with
           the following terms:
@@ -289,47 +328,44 @@
 
         <h3>1. Use of Site</h3>
         <p>
-          You may use FoodFinder for personal, non-commercial purposes only. You
-          agree not to misuse the website or attempt to access restricted areas.
+          You may use FoodFinder for personal, non-commercial purposes only.
         </p>
 
         <h3>2. User Content</h3>
         <p>
-          Any content you submit, including reviews, ratings, or comments, must
-          be respectful and lawful. FoodFinder reserves the right to remove
+          Content must be respectful and lawful. FoodFinder may remove
           inappropriate content.
         </p>
 
         <h3>3. Privacy</h3>
-        <p>
-          Your use of FoodFinder is subject to our Privacy Policy. We collect
-          and use personal information as described in the policy.
-        </p>
+        <p>Your use of FoodFinder is subject to our Privacy Policy.</p>
 
         <h3>4. Liability</h3>
-        <p>
-          FoodFinder provides information about restaurants but does not
-          guarantee the accuracy of all listings. Users are responsible for
-          their own decisions when visiting establishments.
-        </p>
+        <p>FoodFinder does not guarantee the accuracy of listings.</p>
 
         <h3>5. Modifications</h3>
-        <p>
-          FoodFinder may update these terms at any time. Continued use of the
-          website constitutes acceptance of any changes.
-        </p>
+        <p>Terms may change at any time.</p>
       </div>
     </section>
 
     <!-- FOOTER -->
-    <footer id="footer">
+    <footer>
       <p>© 2025 FoodFinder. All rights reserved.</p>
     </footer>
 
-    <!-- AOS SCRIPT -->
+    <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({ duration: 1200, once: true });
+
+      let slides = document.querySelectorAll(".slide");
+      let index = 0;
+
+      setInterval(() => {
+        slides.forEach((slide) => slide.classList.remove("active"));
+        slides[index].classList.add("active");
+        index = (index + 1) % slides.length;
+      }, 3000);
     </script>
   </body>
 </html>

@@ -243,7 +243,7 @@
           >
             © 2026 FoodieFindr —
             <a
-              href="https://twitter.com/knyttneve"
+              href="#"
               class="text-gray-600 ml-1"
               rel="noopener noreferrer"
               target="_blank"
@@ -303,14 +303,21 @@
           </span>
         </div>
       </footer>
-      <script>
-        const menuBtn = document.getElementById("menuBtn");
-        const mobileMenu = document.getElementById("mobileMenu");
+   <script>
+  const btn = document.getElementById("menuBtn");
+  const menu = document.getElementById("mobileMenu");
 
-        menuBtn.addEventListener("click", () => {
-          mobileMenu.classList.toggle("hidden");
-        });
-      </script>
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+
+    // Toggle icon
+    if (menu.classList.contains("hidden")) {
+      btn.textContent = "☰";
+    } else {
+      btn.textContent = "✕";
+    }
+  });
+</script>
     </div>
   </body>
 </html>

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us | FoodieFindr</title>
   <link rel="stylesheet" href="output.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
 </head>
 
 <body class="min-h-screen bg-linear-to-br from-orange-50 via-orange-100 to-orange-300">
@@ -12,42 +14,49 @@
   
 
   <!-- FIXED NAVBAR -->
-   <header
-        class="fixed top-0 left-0 w-full bg-white border-b border-black/20 z-50"
-      >
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center">
-          <div class="flex items-center gap-3">
-            <img
-              src="IMAGES/foodfinr_logo.png"
-              class="w-12 h-12 rounded-full"
-            />
-            <span class="text-xl font-bold text-gray-900">FoodieFindr</span>
-          </div>
+   <header class="fixed top-0 left-0 w-full bg-white border-b border-black/20 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-          <div class="hidden md:flex items-center ml-auto gap-28">
-            <nav class="flex items-center gap-8 font-bold uppercase tracking-widest text-gray-700">
-              <a href="Dashboard.html" class="hover:text-orange-600">Home</a>
-              <a href="search.html" class="hover:text-orange-600">Categories</a>
-              <a href="team.html" class="hover:text-orange-600">Team</a>
-            </nav>
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+      <img src="IMAGES/foodfinr_logo.png" class="w-12 h-12 rounded-full" />
+      <span class="text-xl font-bold text-gray-900">FoodieFindr</span>
+    </div>
 
-    <!-- Mobile Button -->
-    <button id="menuBtn" class="md:hidden text-3xl text-blue-700 transition-transform duration-200">
-  ☰
-</button>
+    <!-- Desktop Nav -->
+    <nav
+      class="hidden md:flex items-center gap-10 text-sm font-bold uppercase tracking-widest text-gray-600"
+    >
+      <a href="Dashboard.html" class="hover:text-orange-600">Home</a>
+      <a href="search.html" class="hover:text-orange-600">Categories</a>
+      <a href="about.html" class="hover:text-orange-600">About</a>
+      <a href="team.html" class="hover:text-orange-600">Team</a>
+      <a href="Contact Us.html" class="text-orange-600 border-b-2 border-orange-500 pb-0.5">Contact</a>
 
+    </nav>
+
+    <!-- Mobile Hamburger -->
+    <button
+      id="menuBtn"
+      class="md:hidden text-3xl font-bold text-gray-900 focus:outline-none"
+    >
+      ☰
+    </button>
   </div>
 
   <!-- Mobile Menu -->
   <div
     id="mobileMenu"
-    class="hidden md:hidden bg-white/90 backdrop-blur-xl border-t border-white/40 px-6 py-6 space-y-4"
+    class="hidden md:hidden bg-white/95 backdrop-blur-xl border-t px-6 py-6 space-y-5"
   >
     <a href="Dashboard.html" class="block font-medium text-gray-700 hover:text-orange-600">Home</a>
+    <a href="search.html" class="block font-medium text-gray-700 hover:text-orange-600">Categories</a>
     <a href="about.html" class="block font-medium text-gray-700 hover:text-orange-600">About</a>
     <a href="team.html" class="block font-medium text-gray-700 hover:text-orange-600">Team</a>
+    <a href="Contact Us.html" class="text-orange-600 border-b-2 border-orange-500 pb-1">Contact</a>
   </div>
 </header>
+
 
 
   <!-- MAIN CONTENT -->
@@ -73,7 +82,7 @@
 
       <div>
           <p class="text-sm text-gray-500">Email</p>
-          <p class="text-orange-600 font-medium">foodfindr27@gmail.com</p>
+          <a href="https://foodfindr27@gmail.com" class="text-orange-600 font-medium">foodfindr27@gmail.com</a>
         </div>
 
         <div>
@@ -166,7 +175,7 @@
           >
             © 2026 FoodieFindr —
             <a
-              href="https://twitter.com/knyttneve"
+              href="#"
               class="text-gray-600 ml-1"
               rel="noopener noreferrer"
               target="_blank"
@@ -227,21 +236,18 @@
         </div>
       </footer>
 
+  </section>
 <script>
   const btn = document.getElementById("menuBtn");
   const menu = document.getElementById("mobileMenu");
 
   btn.addEventListener("click", () => {
     menu.classList.toggle("hidden");
-
-    // Toggle icon
-    if (menu.classList.contains("hidden")) {
-      btn.textContent = "☰";
-    } else {
-      btn.textContent = "✕";
-    }
+    btn.textContent = menu.classList.contains("hidden") ? "☰" : "✕";
   });
 </script>
+
+
 
 
 </body>

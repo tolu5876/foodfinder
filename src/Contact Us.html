@@ -103,7 +103,10 @@
               >
               <input
                 type="text"
+                id="user_name"
+                name="user_name"
                 placeholder="Your full name"
+                required
                 class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition"
               />
             </div>
@@ -113,7 +116,10 @@
               >
               <input
                 type="email"
+                id="user_email"
+                name="user_email"
                 placeholder="you@example.com"
+                required
                 class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition"
               />
             </div>
@@ -122,8 +128,11 @@
                 >Message</label
               >
               <textarea
+                id="message"
+                name="message"
                 rows="5"
                 placeholder="Tell us how we can help you..."
+                required
                 class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition resize-none"
               ></textarea>
             </div>
@@ -163,6 +172,24 @@
 
     <!-- SCRIPT -->
     <script>
+      /* ============================================
+         📧 EMAIL SETUP - SUPER SIMPLE!
+         ============================================
+         
+         ⚠️ TO MAKE THIS WORK, YOU NEED TO GET ONE ACCESS KEY:
+         
+         STEP 1: Go to https://web3forms.com/
+         STEP 2: Enter your email: foodfindr27@gmail.com
+         STEP 3: Click "Get Your Access Key"
+         STEP 4: Check your email and copy the access key
+         STEP 5: Replace "YOUR_ACCESS_KEY_HERE" below with your key
+         
+         THAT'S IT! The form will send emails to foodfindr27@gmail.com
+      */
+
+      // ✅ Access Key Configured!
+      const ACCESS_KEY = "d40bc135-a056-466a-8087-4bd49394a36f";
+
       // MOBILE MENU
       const btn = document.getElementById("menuBtn");
       const menu = document.getElementById("mobileMenu");
@@ -185,16 +212,16 @@
       errorAlert.innerHTML =
         "<strong>Error!</strong> Please fill in all fields.";
       errorAlert.className =
-        "fixed top-24 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-6 py-4 rounded-xl shadow-lg";
+        "fixed top-24 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-6 py-4 rounded-xl shadow-lg z-50";
       errorAlert.style.display = "none";
       document.body.appendChild(errorAlert);
 
       form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        const name = form.querySelector('input[type="text"]');
-        const email = form.querySelector('input[type="email"]');
-        const message = form.querySelector("textarea");
+        const name = document.getElementById("user_name");
+        const email = document.getElementById("user_email");
+        const message = document.getElementById("message");
 
         // hide alerts
         successAlert.style.display = "none";
@@ -213,24 +240,143 @@
           return;
         }
 
+        // Check if access key is set - if not, use mailto as fallback
+        if (
+          ACCESS_KEY === "YOUR_ACCESS_KEY_HERE" ||
+          !ACCESS_KEY ||
+          ACCESS_KEY.trim() === ""
+        ) {
+          // FALLBACK: Use mailto link if access key not set
+          const subject = encodeURIComponent(
+            "New Contact Form Message from " + name.value.trim()
+          );
+          const body = encodeURIComponent(
+            "Name: " +
+              name.value.trim() +
+              "\n\n" +
+              "Email: " +
+              email.value.trim() +
+              "\n\n" +
+              "Message:\n" +
+              message.value.trim()
+          );
+          const mailtoLink =
+            "mailto:foodfindr27@gmail.com?subject=" + subject + "&body=" + body;
+
+          // Open email client
+          window.location.href = mailtoLink;
+
+          // Show success message
+          submitBtn.disabled = false;
+          btnText.textContent = "Send Message";
+          loader.classList.add("hidden");
+
+          successAlert.innerHTML =
+            "<strong>📧 Opening Email Client...</strong><br><br>" +
+            "Your default email app should open. If it doesn't, you can manually email:<br>" +
+            "<strong>foodfindr27@gmail.com</strong><br><br>" +
+            "<small>To enable automatic sending, get an access key from web3forms.com</small>";
+          successAlert.style.maxWidth = "600px";
+          successAlert.style.textAlign = "left";
+          successAlert.style.padding = "20px";
+          successAlert.style.display = "block";
+
+          // Also show info about getting access key
+          setTimeout(() => {
+            errorAlert.innerHTML =
+              "<strong>💡 Tip:</strong> To send emails automatically (without opening email app),<br>" +
+              "get a free access key from <a href='https://web3forms.com/' target='_blank' style='color: #ffeb3b; text-decoration: underline;'>web3forms.com</a><br>" +
+              "Then replace YOUR_ACCESS_KEY_HERE in the code.";
+            errorAlert.style.maxWidth = "600px";
+            errorAlert.style.textAlign = "left";
+            errorAlert.style.padding = "15px";
+            errorAlert.style.display = "block";
+            setTimeout(() => {
+              errorAlert.style.display = "none";
+            }, 10000);
+          }, 2000);
+
+          form.reset();
+          return;
+        }
+
         // LOADING
         submitBtn.disabled = true;
         btnText.textContent = "Sending...";
         loader.classList.remove("hidden");
 
-        // SIMULATE SENDING
-        setTimeout(() => {
-          submitBtn.disabled = false;
-          btnText.textContent = "Send Message";
-          loader.classList.add("hidden");
+        // Send email using Web3Forms (much simpler!)
+        const formData = new FormData();
+        formData.append("access_key", ACCESS_KEY);
+        formData.append("name", name.value.trim());
+        formData.append("email", email.value.trim());
+        formData.append("message", message.value.trim());
+        formData.append(
+          "subject",
+          "New Contact Form Message from " + name.value.trim()
+        );
+        formData.append("from_name", "FoodieFindr Contact Form");
 
-          successAlert.style.display = "block";
-          form.reset();
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData,
+        })
+          .then(async (response) => {
+            let json = await response.json();
+            console.log("Response:", json);
 
-          setTimeout(() => {
-            successAlert.style.display = "none";
-          }, 3000);
-        }, 1500);
+            if (response.status === 200 && json.success) {
+              // SUCCESS
+              console.log("✅ SUCCESS! Message sent!", json);
+              submitBtn.disabled = false;
+              btnText.textContent = "Send Message";
+              loader.classList.add("hidden");
+
+              successAlert.innerHTML =
+                "<strong>✅ Success!</strong> Your message has been sent to foodfindr27@gmail.com";
+              successAlert.style.display = "block";
+              form.reset();
+
+              setTimeout(() => {
+                successAlert.style.display = "none";
+              }, 6000);
+            } else {
+              // ERROR from API
+              let errorMsg = json.message || "Failed to send message";
+              if (json.errors) {
+                errorMsg += " - " + JSON.stringify(json.errors);
+              }
+              throw new Error(errorMsg);
+            }
+          })
+          .catch((error) => {
+            // ERROR - Show actual error message
+            console.error("❌ FAILED...", error);
+            submitBtn.disabled = false;
+            btnText.textContent = "Send Message";
+            loader.classList.add("hidden");
+
+            let errorMessage = "Failed to send message. ";
+
+            if (error.message) {
+              errorMessage += error.message;
+            } else if (error.toString().includes("access_key")) {
+              errorMessage +=
+                "Invalid access key. Please check your Web3Forms access key.";
+            } else {
+              errorMessage +=
+                "Please check your internet connection and try again.";
+            }
+
+            errorAlert.innerHTML =
+              "<strong>❌ Error!</strong> " +
+              errorMessage +
+              "<br><small>Check browser console (F12) for details.</small>";
+            errorAlert.style.display = "block";
+            setTimeout(() => {
+              errorAlert.style.display = "none";
+            }, 10000);
+          });
       });
     </script>
   </body>

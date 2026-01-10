@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Access Key - FoodieFindr</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #ff6b35;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .step {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b35;
+        }
+        .step-number {
+            background: #ff6b35;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .button {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #e55a2b;
+        }
+        .button-container {
+            text-align: center;
+        }
+        .note {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔑 Get Your Access Key</h1>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Click the button below</strong> to open Web3Forms in a new tab
+        </div>
+
+        <div class="button-container">
+            <a href="https://web3forms.com/" target="_blank" class="button">
+                🌐 Open Web3Forms.com
+            </a>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            On the Web3Forms website, enter your email: <code>foodfindr27@gmail.com</code>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            Click "Get Your Access Key" or "Submit" button
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            Check your email inbox: <code>foodfindr27@gmail.com</code><br>
+            Look for an email from "Web3Forms"
+        </div>
+
+        <div class="step">
+            <span class="step-number">5</span>
+            Open the email and <strong>copy the access key</strong><br>
+            (It looks like: <code>abc123-xyz789-123456-789012</code>)
+        </div>
+
+        <div class="step">
+            <span class="step-number">6</span>
+            Open <code>Contact Us.html</code> file<br>
+            Find line 191: <code>const ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";</code><br>
+            Replace <code>"YOUR_ACCESS_KEY_HERE"</code> with your copied key
+        </div>
+
+        <div class="note">
+            <strong>💡 Tip:</strong> If Web3Forms website doesn't load on your laptop, try:
+            <ul style="margin-top: 10px; margin-left: 20px;">
+                <li>Use a different browser (Chrome, Firefox, Edge)</li>
+                <li>Check your internet connection</li>
+                <li>Try using your phone to get the key, then paste it in the code</li>
+                <li>Or use the mailto fallback (form will open your email app)</li>
+            </ul>
+        </div>
+
+        <div class="button-container" style="margin-top: 30px;">
+            <a href="Contact Us.html" class="button" style="background: #28a745;">
+                ← Back to Contact Form
+            </a>
+        </div>
+    </div>
+</body>
+</html>

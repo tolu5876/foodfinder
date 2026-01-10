@@ -1,0 +1,52 @@
+═══════════════════════════════════════════════════════════════
+  🚀 SUPER EASY SETUP - GET YOUR FORM WORKING IN 2 MINUTES!
+═══════════════════════════════════════════════════════════════
+
+I've made it MUCH simpler! You only need to do ONE thing:
+
+═══════════════════════════════════════════════════════════════
+STEP 1: GET YOUR ACCESS KEY (Takes 1 minute)
+═══════════════════════════════════════════════════════════════
+
+1. Open your web browser
+2. Go to: https://web3forms.com/
+3. You'll see a form on the page
+4. Enter your email: foodfindr27@gmail.com
+5. Click the button "Get Your Access Key"
+6. Check your email inbox (foodfindr27@gmail.com)
+7. Open the email from Web3Forms
+8. ⭐ COPY THE ACCESS KEY (it's a long string of letters/numbers)
+
+═══════════════════════════════════════════════════════════════
+STEP 2: PASTE IT IN YOUR CODE (Takes 30 seconds)
+═══════════════════════════════════════════════════════════════
+
+1. Open: src/Contact Us.html
+2. Find line 198 (look for: const ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";)
+3. Replace "YOUR_ACCESS_KEY_HERE" with your actual access key
+4. Save the file
+
+Example:
+   BEFORE: const ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
+   AFTER:  const ACCESS_KEY = "abc123-xyz789-123456-789012";
+
+═══════════════════════════════════════════════════════════════
+STEP 3: TEST IT! ✅
+═══════════════════════════════════════════════════════════════
+
+1. Open your Contact Us page in a browser
+2. Fill out the form
+3. Click "Send Message"
+4. Check your Gmail: foodfindr27@gmail.com
+5. You should receive the message! 🎉
+
+═══════════════════════════════════════════════════════════════
+THAT'S IT! Much simpler than before!
+═══════════════════════════════════════════════════════════════
+
+The form will automatically send all messages to:
+📧 foodfindr27@gmail.com
+
+No complicated setup needed - just one access key!
+
+═══════════════════════════════════════════════════════════════

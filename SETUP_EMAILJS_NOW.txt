@@ -1,0 +1,116 @@
+═══════════════════════════════════════════════════════════════
+  HOW TO MAKE YOUR CONTACT FORM SEND EMAILS TO YOUR GMAIL
+═══════════════════════════════════════════════════════════════
+
+⚠️ YOUR FORM IS NOT SENDING EMAILS YET BECAUSE YOU NEED TO:
+
+1. SET UP EMAILJS (FREE - Takes 5 minutes)
+2. REPLACE 3 VALUES IN YOUR CODE
+
+═══════════════════════════════════════════════════════════════
+STEP 1: CREATE EMAILJS ACCOUNT
+═══════════════════════════════════════════════════════════════
+
+1. Go to: https://www.emailjs.com/
+2. Click "Sign Up" (it's FREE - 200 emails/month)
+3. Sign up with your Gmail: foodfindr27@gmail.com
+
+═══════════════════════════════════════════════════════════════
+STEP 2: CONNECT YOUR GMAIL
+═══════════════════════════════════════════════════════════════
+
+1. After logging in, click "Email Services" (left menu)
+2. Click "Add New Service"
+3. Choose "Gmail"
+4. Click "Connect Account"
+5. Sign in with: foodfindr27@gmail.com
+6. Click "Allow" to authorize EmailJS
+7. Give it a name like "FoodieFindr Gmail"
+8. Click "Create Service"
+9. ⭐ COPY THE SERVICE ID (looks like: service_abc123xyz)
+
+═══════════════════════════════════════════════════════════════
+STEP 3: CREATE EMAIL TEMPLATE
+═══════════════════════════════════════════════════════════════
+
+1. Click "Email Templates" (left menu)
+2. Click "Create New Template"
+3. Fill in:
+
+   Template Name: Contact Form
+   
+   To Email: foodfindr27@gmail.com
+   
+   From Name: FoodieFindr Contact Form
+   
+   Subject: New Contact Form Message from {{from_name}}
+   
+   Content (copy this exactly):
+   ─────────────────────────────────────────────
+   New message from FoodieFindr contact form:
+   
+   Name: {{from_name}}
+   Email: {{from_email}}
+   
+   Message:
+   {{message}}
+   
+   ─────────────────────────────────────────────
+   This message was sent from your website.
+   ─────────────────────────────────────────────
+
+4. Click "Save"
+5. ⭐ COPY THE TEMPLATE ID (looks like: template_xyz789abc)
+
+═══════════════════════════════════════════════════════════════
+STEP 4: GET YOUR PUBLIC KEY
+═══════════════════════════════════════════════════════════════
+
+1. Click "Account" (top right) → "General"
+2. Scroll down to "API Keys"
+3. ⭐ COPY YOUR PUBLIC KEY (looks like: abc123xyz789)
+
+═══════════════════════════════════════════════════════════════
+STEP 5: UPDATE YOUR CODE
+═══════════════════════════════════════════════════════════════
+
+Open: src/Contact Us.html
+
+Find line 198 and replace:
+   emailjs.init("YOUR_PUBLIC_KEY_HERE");
+   
+   WITH:
+   emailjs.init("PASTE_YOUR_PUBLIC_KEY_HERE");
+
+Find line 268-270 and replace:
+   const serviceId = "YOUR_SERVICE_ID_HERE";
+   const templateId = "YOUR_TEMPLATE_ID_HERE";
+   const publicKey = "YOUR_PUBLIC_KEY_HERE";
+   
+   WITH:
+   const serviceId = "PASTE_YOUR_SERVICE_ID_HERE";
+   const templateId = "PASTE_YOUR_TEMPLATE_ID_HERE";
+   const publicKey = "PASTE_YOUR_PUBLIC_KEY_HERE";
+
+═══════════════════════════════════════════════════════════════
+STEP 6: TEST IT!
+═══════════════════════════════════════════════════════════════
+
+1. Open your Contact Us page
+2. Fill out the form
+3. Click "Send Message"
+4. Check your Gmail inbox: foodfindr27@gmail.com
+5. You should receive the message! ✅
+
+═══════════════════════════════════════════════════════════════
+NEED HELP?
+═══════════════════════════════════════════════════════════════
+
+If it still doesn't work:
+1. Press F12 in your browser
+2. Go to "Console" tab
+3. Try sending the form again
+4. Check what error message appears
+5. Make sure all 3 values are replaced (no "YOUR_..._HERE" left)
+
+═══════════════════════════════════════════════════════════════

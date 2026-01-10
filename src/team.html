@@ -3,317 +3,209 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FoodFinder | Team</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-    <style>
-      /* =======================
-   GLOBAL STYLES
-======================= */
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #f9f9f9;
-      }
-
-      a {
-        text-decoration: none;
-      }
-
-      /* =======================
-   NAVBAR
-======================= */
-      .container-fluid {
-        background: #ff6b35;
-      }
-
-      /* =======================
-   HERO SECTION
-======================= */
-      .hero {
-        height: 80vh;
-        background: url("IMAGES/foodie1.jpeg") no-repeat center center/cover;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        text-align: center;
-      }
-
-      .hero h2 {
-        font-size: 3rem;
-        margin-bottom: 20px;
-        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-      }
-
-      .hero p {
-        font-size: 1.2rem;
-        margin-bottom: 30px;
-        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-      }
-
-      .hero .btn {
-        padding: 15px 30px;
-        background: #ffe66d;
-        color: #ff6b6b;
-        border: none;
-        border-radius: 50px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .hero .btn:hover {
-        background: #ff6b35;
-        color: white;
-        transform: scale(1.05);
-      }
-
-      /* =======================
-   TEAM SECTION
-======================= */
-      .container {
-        width: 90%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 50px 0;
-      }
-
-      .section-title {
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 50px;
-      }
-
-      .team-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
-      }
-
-      .team-member {
-        background: #fff;
-        border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        padding: 20px;
-        width: 250px;
-        opacity: 0;
-        transform: translateY(50px);
-        transition: all 0.6s ease;
-      }
-
-      .member-img img {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-bottom: 15px;
-        transition: transform 0.3s;
-      }
-
-      .team-member:hover img {
-        transform: scale(1.1);
-      }
-
-      .team-member h3 {
-        margin-bottom: 5px;
-      }
-
-      .team-member p {
-        color: #777;
-      }
-
-      .team-member.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* =======================
-   FOOTER
-======================= */
-      footer {
-        background: #ff6b35;
-        color: white;
-        padding: 30px 50px;
-        text-align: center;
-      }
-
-      footer p {
-        margin: 5px 0;
-      }
-
-      footer a {
-        color: #ffe66d;
-        font-weight: bold;
-      }
-
-      /* =======================
-   RESPONSIVE
-======================= */
-      @media (max-width: 768px) {
-        .team-grid {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .navbar {
-          flex-direction: column;
-          gap: 10px;
-        }
-
-        .navbar ul {
-          flex-direction: column;
-          gap: 10px;
-        }
-
-        .hero h2 {
-          font-size: 2.2rem;
-        }
-
-        .hero p {
-          font-size: 1rem;
-        }
-      }
-    </style>
-
-    <!-- =======================
-     NAVBAR
-======================= -->
+    <title>Our Team | FoodieFindr</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body>
-    <!-- =======================
-     NAVBAR (Bootstrap)
-======================= -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">FoodFinder</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+  <body class="min-h-screen bg-white font-sans text-gray-900">
+    <header
+      class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 z-50"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <img
+            src="IMAGES/foodfinr_logo.png"
+            class="w-10 h-10 rounded-full shadow-sm"
+            alt="Logo"
+          />
+          <span class="text-xl font-black tracking-tight text-gray-900"
+            >FoodieFindr</span
+          >
+        </div>
+        <nav
+          class="hidden md:flex items-center gap-10 text-sm font-bold uppercase tracking-widest text-gray-600"
         >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto text-white">
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="Dashboard.html"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="team.html">Team</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Contact Us.html">Contact</a>
-            </li>
-          </ul>
-        </div>
+          <a href="Dashboard.html" class="hover:text-orange-600 transition"
+            >Home</a
+          >
+          <a href="search.html" class="hover:text-orange-600 transition"
+            >Categories</a
+          >
+          <a href="about.html" class="hover:text-orange-600 transition"
+            >About Us</a
+          >
+          <a
+            href="team.html"
+            class="text-orange-600 border-b-2 border-orange-500 pb-1"
+            >Team</a
+          >
+        </nav>
+        <button class="md:hidden text-2xl">☰</button>
       </div>
-    </nav>
+    </header>
 
-    <!-- =======================
-     HERO SECTION
-======================= -->
-    <section class="hero" id="home">
-      <h2>Find Your Favorite Food Near You</h2>
-      <p>Discover the best restaurants and dishes in your city!</p>
-      <button class="btn">Explore Now</button>
-    </section>
+    <section
+      class="relative mt-16 h-[70vh] flex items-center justify-center text-center px-6 overflow-hidden"
+    >
+      <img
+        src="IMAGES/foodfindr_bg_img.jpg"
+        class="absolute inset-0 w-full h-full object-cover"
+        alt="Team Background"
+      />
+      <div class="absolute inset-0 bg-black/60"></div>
 
-    <!-- =======================
-     TEAM SECTION
-======================= -->
-    <section id="team">
-      <div class="container">
-        <h2 class="section-title">Meet Our Team</h2>
-        <div class="team-grid">
-          <!-- Team Member 1 -->
-          <div class="team-member">
-            <div class="member-img">
-              <img src="IMAGES/tobi.jpeg" alt="Salami AbdulQayyum Aderinola" />
-            </div>
-            <h3>Salami AbdulQayyum Aderinola</h3>
-            <p>Front-End Developer</p>
-          </div>
-          <!-- Team Member 2 -->
-          <div class="team-member">
-            <div class="member-img">
-              <img src="IMAGES/tolu.jpeg" alt="Akanbi-Giwa Toluwalase Yunus" />
-            </div>
-            <h3>Akanbi-Giwa Toluwalase Yunus</h3>
-            <p>Back-End Developer</p>
-          </div>
-          <!-- Team Member 3 -->
-          <div class="team-member">
-            <div class="member-img">
-              <img src="IMAGES/ire.jpg" alt="Olla Iremide Timothy" />
-            </div>
-            <h3>Olla Iremide Timothy</h3>
-            <p>Front-End Developer</p>
-          </div>
+      <div class="relative z-10 max-w-4xl pt-4">
+        <div
+          class="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-[0.2em] uppercase bg-orange-500 text-white rounded-full"
+        >
+          The Creative Minds
         </div>
+        <h1
+          class="text-4xl md:text-6xl font-black tracking-tighter mb-4 text-white"
+        >
+          The People Behind <span class="text-orange-400">FoodieFindr</span>
+        </h1>
+        <p
+          class="text-gray-200 max-w-2xl mx-auto text-base md:text-lg leading-relaxed"
+        >
+          A world-class team of culinary experts and engineers dedicated to
+          bringing the best global recipes to your kitchen.
+        </p>
       </div>
     </section>
 
-    <!-- =======================
-     FOOTER
-======================= -->
-    <footer id="contact">
-      <p>&copy; 2025 FoodFinder. All Rights Reserved.</p>
-      <p>
-        Contact us:
-        <a
-          class="text-orange-600 hover:text-orange-700"
-          href="mailto:foodfindr27@gmail.com"
-          >foodfindr27@gmail.com</a
-        >
-      </p>
-    </footer>
+    <main class="max-w-7xl mx-auto px-6 py-16">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16"
+      >
+        <div class="group text-center">
+          <div
+            class="relative overflow-hidden rounded-4xl mb-6 shadow-xl aspect-square"
+          >
+            <img
+              src="IMAGES/tobi.jpeg"
+              class="w-full h-full object-cover group-hover:grayscale-0 transition-all duration-700"
+              alt="Member"
+            />
+            <div
+              class="absolute inset-0 bg-linear-to-t from-orange-600/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            ></div>
+          </div>
+          <h3 class="text-2xl font-black text-gray-900 mb-1">
+            Salami AbdulQayyum Aderinola
+          </h3>
+          <p
+            class="text-green-600 font-bold uppercase tracking-widest text-[10px] mb-4"
+          >
+            Frontend Developer
+          </p>
+          <p class="text-gray-500 text-sm leading-relaxed mb-6 px-4">
+            ssssssssssssssssssssssssssssssssss
+          </p>
+          <div class="flex justify-center gap-6 border-t border-gray-100 pt-4">
+            <a
+              href="#"
+              class="text-[10px] font-bold uppercase hover:text-orange-500 transition"
+              >GitHub</a
+            >
+            <a
+              href="#"
+              class="text-[10px] font-bold uppercase hover:text-orange-500 transition"
+              >LinkedIn</a
+            >
+          </div>
+        </div>
 
-    <!-- =======================
-     SCRIPT FOR ANIMATION
-======================= -->
-    <script>
-      // Scroll animation for team members
-      const members = document.querySelectorAll(".team-member");
+        <div class="group text-center">
+          <div
+            class="relative overflow-hidden rounded-4xl mb-6 shadow-xl aspect-square"
+          >
+            <img
+              src="IMAGES/tolu.jpeg"
+              class="w-full h-full object-cover group-hover:grayscale-0 transition-all duration-700"
+              alt="Member"
+            />
+            <div
+              class="absolute inset-0 bg-linear-to-t from-orange-600/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            ></div>
+          </div>
+          <h3 class="text-2xl font-black text-gray-900 mb-1">
+            Akanbi-Giwa Toluwalase Yunus
+          </h3>
+          <p
+            class="text-green-600 font-bold uppercase tracking-widest text-[10px] mb-4"
+          >
+            Backend Developer
+          </p>
+          <p class="text-gray-500 text-sm leading-relaxed mb-6 px-4">
+            ffffffffffffffffffffffffffffffffffff.
+          </p>
+          <div class="flex justify-center gap-6 border-t border-gray-100 pt-4">
+            <a
+              href="#"
+              class="text-[10px] font-bold uppercase hover:text-orange-500 transition"
+              >GitHub</a
+            >
+            <a
+              href="#"
+              class="text-[10px] font-bold uppercase hover:text-orange-500 transition"
+              >LinkedIn</a
+            >
+          </div>
+        </div>
 
-      function showMember() {
-        const triggerBottom = window.innerHeight * 0.85;
-        members.forEach((member) => {
-          const memberTop = member.getBoundingClientRect().top;
-          if (memberTop < triggerBottom) {
-            member.classList.add("visible");
-          }
-        });
-      }
+        <div class="group text-center">
+          <div
+            class="relative overflow-hidden rounded-4xl mb-6 shadow-xl aspect-auto"
+          >
+            <img
+              src="IMAGES/ire.jpg"
+              class="w-full h-full object-cover group-hover:grayscale-0 transition-all duration-700"
+              alt="Member"
+            />
+            <div
+              class="absolute inset-0 bg-linear-to-t from-orange-600/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            ></div>
+          </div>
+          <h3 class="text-2xl font-black text-gray-900 mb-1">
+            Olla Iremide <br />
+            Timothy
+          </h3>
+          <p
+            class="text-green-600 font-bold uppercase tracking-widest text-[10px] mb-4"
+          >
+            Fronted Developer
+          </p>
+          <p class="text-gray-500 text-sm leading-relaxed mb-6 px-4">
+            ffffffffffffffffffffffffffffffffffffffffffff
+          </p>
+          <div class="flex justify-center gap-6 border-t border-gray-100 pt-4">
+            <a
+              href="#"
+              class="text-[10px] font-bold uppercase hover:text-orange-500 transition"
+              >LinkedIn</a
+            >
+            <a
+              href="#"
+              class="text-[10px] font-bold uppercase hover:text-orange-500 transition"
+              >GitHub</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
 
-      window.addEventListener("scroll", showMember);
-      window.addEventListener("load", showMember);
-    </script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
+    <section class="bg-gray-900 py-16 text-center px-6">
+      <h2 class="text-3xl font-black text-white mb-6 tracking-tighter">
+        Ready to join us?
+      </h2>
+      <a
+        href="mailto:careers@foodiefindr.com"
+        class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-full font-black uppercase tracking-widest transition text-xs shadow-xl"
+      >
+        Apply Now
+      </a>
+    </section>
   </body>
 </html>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,13 +35,53 @@
           <a href="about.html" class="hover:text-orange-600 transition"
             >About Us</a
           >
+          <a href="Contact Us.html" class="hover:text-orange-600 transition"
+            >Contact</a
+          >
           <a
             href="team.html"
             class="text-orange-600 border-b-2 border-orange-500 pb-1"
             >Team</a
           >
         </nav>
-        <button class="md:hidden text-2xl">☰</button>
+        <button
+          id="menuBtn"
+          class="md:hidden text-3xl text-black transition-transform duration-200"
+        >
+          ☰
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden bg-white/90 backdrop-blur-xl border-t border-white/40 px-6 py-6 space-y-4"
+      >
+        <a
+          href="Dashboard.html"
+          class="block font-medium text-gray-700 hover:text-orange-600"
+          >Home</a
+        >
+        <a
+          href="search.html"
+          class="block font-medium text-gray-700 hover:text-orange-600"
+          >Categories</a
+        >
+        <a
+          href="about.html"
+          class="block font-medium text-gray-700 hover:text-orange-600"
+          >About</a
+        >
+        <a
+          href="Contact Us.html"
+          class="block font-medium text-gray-700 hover:text-orange-600"
+          >Contact
+        </a>
+        <a
+          href="team.html"
+          class="text-orange-600 border-b-2 border-orange-500 pb-1"
+          >Team</a
+        >
       </div>
     </header>
 
@@ -72,84 +111,6 @@
         >
           A world-class team of culinary experts and engineers dedicated to
           bringing the best global recipes to your kitchen.
-=======
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Team | FoodieFindr</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  
-</head>
-<body class="min-h-screen bg-white font-sans text-gray-900">
-
-  <header class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <img src="IMAGES/foodfinr_logo.png" class="w-10 h-10 rounded-full shadow-sm" alt="Logo" />
-        <span class="text-xl font-black tracking-tight text-gray-900">FoodieFindr</span>
-      </div>
-      <nav class="hidden md:flex items-center gap-10 text-sm font-bold uppercase tracking-widest text-gray-600">
-        <a href="Dashboard.html" class="hover:text-orange-600 transition">Home</a>
-        <a href="search.html" class="hover:text-orange-600 transition">Categories</a>
-         <a href="about.html" class="hover:text-orange-600 transition">About Us</a>
-      <a href="Contact Us.html" class="hover:text-orange-600 transition">Contact</a>
-         <a href="team.html" class="text-orange-600 border-b-2 border-orange-500 pb-1">Team</a>
-      </nav>
-        <button id="menuBtn" class="md:hidden text-3xl text-black transition-transform duration-200">
-  ☰
-</button>
-
-  </div>
-
-  <!-- Mobile Menu -->
-  <div
-    id="mobileMenu"
-    class="hidden md:hidden bg-white/90 backdrop-blur-xl border-t border-white/40 px-6 py-6 space-y-4"
-  >
-   <a href="Dashboard.html" class="block font-medium text-gray-700 hover:text-orange-600">Home</a>
-    <a href="search.html" class="block font-medium text-gray-700 hover:text-orange-600">Categories</a>
-    <a href="about.html" class="block font-medium text-gray-700 hover:text-orange-600">About</a>
-    <a href="Contact Us.html" class="block font-medium text-gray-700 hover:text-orange-600 ">Contact </a>
-    <a href="team.html" class="text-orange-600 border-b-2 border-orange-500 pb-1">Team</a>
-  </div>
-  </header>
-
-  <section class="relative mt-16 h-[70vh] flex items-center justify-center text-center px-6 overflow-hidden">
-    <img 
-      src="IMAGES/foodfindr_bg_img.jpg" 
-      class="absolute inset-0 w-full h-full object-cover" 
-      alt="Team Background"
-    />
-    <div class="absolute inset-0 bg-black/60"></div>
-
-    <div class="relative z-10 max-w-4xl pt-4">
-      <div class="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-[0.2em] uppercase bg-orange-500 text-white rounded-full">
-        The Creative Minds
-      </div>
-      <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-4 text-white">
-        The People Behind <span class="text-orange-400">FoodieFindr</span>
-      </h1>
-      <p class="text-gray-200 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-        A world-class team of culinary experts and engineers dedicated to 
-        bringing the best global recipes to your kitchen.
-      </p>
-    </div>
-  </section>
-
-  <main class="max-w-7xl mx-auto px-6 py-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
-      
-      <div class="group text-center">
-       <div class="relative overflow-hidden rounded-4xl mb-6 shadow-xl h-96">
-          <img src="IMAGES/tobi.jpeg" 
-               class="w-full h-full object-cover  group-hover:grayscale-0 transition-all duration-700" alt="Member">
-          <div class="absolute inset-0 bg-linear-to-t from-orange-600/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        </div>
-        <h3 class="text-2xl font-black text-gray-900 mb-1">Salami AbdulQayyum Aderinola</h3>
-        <p class="text-green-600 font-bold uppercase tracking-widest text-[10px] mb-4">Frontend Developer</p>
-        <p class="text-gray-500 text-sm leading-relaxed mb-6 px-4">
-          Building responsive and user-focused web interfaces.
->>>>>>> cb48698be3c45dbcb5a64b297368bbb570d5dd54
         </p>
       </div>
     </section>
@@ -159,9 +120,7 @@
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16"
       >
         <div class="group text-center">
-          <div
-            class="relative overflow-hidden rounded-4xl mb-6 shadow-xl aspect-square"
-          >
+          <div class="relative overflow-hidden rounded-4xl mb-6 shadow-xl h-96">
             <img
               src="IMAGES/tobi.jpeg"
               class="w-full h-full object-cover group-hover:grayscale-0 transition-all duration-700"
@@ -180,7 +139,7 @@
             Frontend Developer
           </p>
           <p class="text-gray-500 text-sm leading-relaxed mb-6 px-4">
-            ssssssssssssssssssssssssssssssssss
+            Building responsive and user-focused web interfaces.
           </p>
           <div class="flex justify-center gap-6 border-t border-gray-100 pt-4">
             <a
@@ -197,9 +156,7 @@
         </div>
 
         <div class="group text-center">
-          <div
-            class="relative overflow-hidden rounded-4xl mb-6 shadow-xl aspect-square"
-          >
+          <div class="relative overflow-hidden rounded-4xl mb-6 shadow-xl h-96">
             <img
               src="IMAGES/tolu.jpeg"
               class="w-full h-full object-cover group-hover:grayscale-0 transition-all duration-700"
@@ -218,7 +175,7 @@
             Backend Developer
           </p>
           <p class="text-gray-500 text-sm leading-relaxed mb-6 px-4">
-            ffffffffffffffffffffffffffffffffffff.
+            Securing the data and logic that keeps FoodieFindr running smoothly.
           </p>
           <div class="flex justify-center gap-6 border-t border-gray-100 pt-4">
             <a
@@ -235,11 +192,9 @@
         </div>
 
         <div class="group text-center">
-          <div
-            class="relative overflow-hidden rounded-4xl mb-6 shadow-xl aspect-auto"
-          >
+          <div class="relative overflow-hidden rounded-4xl mb-6 shadow-xl h-96">
             <img
-              src="IMAGES/ire.jpg"
+              src="IMAGES/ire portrait22.png"
               class="w-full h-full object-cover group-hover:grayscale-0 transition-all duration-700"
               alt="Member"
             />
@@ -257,7 +212,8 @@
             Fronted Developer
           </p>
           <p class="text-gray-500 text-sm leading-relaxed mb-6 px-4">
-            ffffffffffffffffffffffffffffffffffffffffffff
+            Build High-performance interfaces to create seamless digital
+            culinary experiences."
           </p>
           <div class="flex justify-center gap-6 border-t border-gray-100 pt-4">
             <a
@@ -275,7 +231,6 @@
       </div>
     </main>
 
-<<<<<<< HEAD
     <section class="bg-gray-900 py-16 text-center px-6">
       <h2 class="text-3xl font-black text-white mb-6 tracking-tighter">
         Ready to join us?
@@ -287,65 +242,20 @@
         Apply Now
       </a>
     </section>
+    <script>
+      const btn = document.getElementById("menuBtn");
+      const menu = document.getElementById("mobileMenu");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+
+        // Toggle icon
+        if (menu.classList.contains("hidden")) {
+          btn.textContent = "☰";
+        } else {
+          btn.textContent = "✕";
+        }
+      });
+    </script>
   </body>
 </html>
-=======
-      <div class="group text-center">
-        <div class="relative overflow-hidden rounded-4xl mb-6 shadow-xl h-96">
-          <img src="IMAGES/tolu.jpeg" 
-               class="w-full h-full object-cover  group-hover:grayscale-0 transition-all duration-700" alt="Member">
-          <div class="absolute inset-0 bg-linear-to-t from-orange-600/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        </div>
-        <h3 class="text-2xl font-black text-gray-900 mb-1"> Akanbi-Giwa Toluwalase Yunus</h3>
-        <p class="text-green-600 font-bold uppercase tracking-widest text-[10px] mb-4">Backend Developer</p>
-        <p class="text-gray-500 text-sm leading-relaxed mb-6 px-4">
-          Securing the data and logic that keeps FoodieFindr running smoothly.
-        </p>
-        <div class="flex justify-center gap-6 border-t border-gray-100 pt-4">
-          <a href="#" class="text-[10px] font-bold uppercase hover:text-orange-500 transition">GitHub</a>
-          <a href="#" class="text-[10px] font-bold uppercase hover:text-orange-500 transition">LinkedIn</a>
-        </div>
-      </div>
-
-      <div class="group text-center">
-        <div class="relative overflow-hidden rounded-4xl mb-6 shadow-xl h-96">
-          <img src="IMAGES/ire portrait22.png" 
-               class="w-full h-full object-cover  group-hover:grayscale-0 transition-all duration-700" alt="Member">
-          <div class="absolute inset-0 bg-linear-to-t from-orange-600/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        </div>
-        <h3 class="text-2xl font-black text-gray-900 mb-1">Olla Iremide <br> Timothy</h3>
-        <p class="text-green-600 font-bold uppercase tracking-widest text-[10px] mb-4">Fronted Developer</p>
-        <p class="text-gray-500 text-sm leading-relaxed mb-6 px-4">Build High-performance interfaces to create seamless digital culinary experiences."        </p>
-        <div class="flex justify-center gap-6 border-t border-gray-100 pt-4">
-          <a href="#" class="text-[10px] font-bold uppercase hover:text-orange-500 transition">LinkedIn</a>
-          <a href="#" class="text-[10px] font-bold uppercase hover:text-orange-500 transition">GitHub</a>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <section class="bg-gray-900 py-16 text-center px-6">
-    <h2 class="text-3xl font-black text-white mb-6 tracking-tighter">Ready to join us?</h2>
-    <a href="mailto:careers@foodiefindr.com" class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-full font-black uppercase tracking-widest transition text-xs shadow-xl">
-      Apply Now
-    </a>
-  </section>
-<script>
-  const btn = document.getElementById("menuBtn");
-  const menu = document.getElementById("mobileMenu");
-
-  btn.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-
-    // Toggle icon
-    if (menu.classList.contains("hidden")) {
-      btn.textContent = "☰";
-    } else {
-      btn.textContent = "✕";
-    }
-  });
-</script>
-</body>
-</html>
->>>>>>> cb48698be3c45dbcb5a64b297368bbb570d5dd54

@@ -34,7 +34,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Show error on blur
   loginemail.addEventListener('blur', () => {
-    emailError.style.display = loginemail.value.trim() ? 'none' : 'block';
+    const value = loginemail.value.trim();
+    if (!value) {
+      emailError.textContent = 'Email or phone is required';
+      emailError.style.display = 'block';
+    } else {
+      emailError.style.display = 'none';
+    }
   });
 
   loginpassword.addEventListener('blur', () => {
@@ -50,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Required field validation
     if (!email) {
+      emailError.textContent = 'Email or phone is required';
       emailError.style.display = 'block';
       valid = false;
     } else {
@@ -69,24 +76,57 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // -------------------------
-    // LOGIN CHECK (localStorage)
+    // LOGIN CHECK (using backend auth system)
     // -------------------------
-    const savedEmail = localStorage.getItem("email");
-    const savedPassword = localStorage.getItem("password");
+    // Check if user is already logged in
+    if (typeof isLoggedIn === 'function') {
+      isLoggedIn().then(alreadyLoggedIn => {
+        if (alreadyLoggedIn) {
+          showAlert("You are already logged in!", 2000, "success");
+          setTimeout(() => {
+            window.location.href = "Dashboard.html";
+          }, 1500);
+          return;
+        }
 
-    if (!savedEmail || !savedPassword) {
-      showAlert("No account found. Please register.", 3000, "error");
-      return;
-    }
-
-    if (email === savedEmail && password === savedPassword) {
-      showAlert("Login successful!", 1000, "success"); // green alert
-
-      setTimeout(() => {
-        window.location.href = "Dashboard.html";
-      }, 1000);
+        // Attempt login using backend auth system
+        performLogin(email, password);
+      });
     } else {
-      showAlert("Incorrect email or password!", 3000, "error"); // red alert
+      // Fallback if auth system not loaded
+      showAlert("Authentication system not loaded. Please refresh the page.", 3000, "error");
     }
   });
+
+  // Separate function for login attempt
+  async function performLogin(email, password) {
+    // Show loading state
+    const submitBtn = form.querySelector('.login-btn');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Logging in...';
+    submitBtn.disabled = true;
+
+    try {
+      if (typeof loginUser === 'function') {
+        const loginResult = await loginUser(email, password);
+        
+        if (loginResult.success) {
+          showAlert("Login successful!", 1000, "success");
+          setTimeout(() => {
+            window.location.href = "Dashboard.html";
+          }, 1000);
+        } else {
+          showAlert(loginResult.message || "Incorrect email/phone or password!", 3000, "error");
+        }
+      } else {
+        showAlert("Authentication system not available. Please refresh the page.", 3000, "error");
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      showAlert("Login failed. Please try again.", 3000, "error");
+    } finally {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  }
 });

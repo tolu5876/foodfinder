@@ -1,6 +1,26 @@
 {
+  "name": "foodfinder-auth",
+  "version": "1.0.0",
+  "description": "FoodFinder Authentication System for Vercel",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "vercel build",
+    "start": "vercel start"
+  },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.17",
-    "tailwindcss": "^4.1.17"
-  }
+    "tailwindcss": "^4.1.17",
+    "bcryptjs": "^2.4.3",
+    "mysql2": "^3.6.5",
+    "uuid": "^9.0.1",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0"
+  },
+  "devDependencies": {
+    "vercel": "^32.5.0"
+  },
+  "keywords": ["authentication", "vercel", "nodejs", "mysql"],
+  "author": "FoodFinder",
+  "license": "MIT"
 }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FoodieFindr</title>
     <link rel="stylesheet" href=" output.css" />
-     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
@@ -27,9 +27,15 @@
             <span class="text-xl font-bold text-gray-900">FoodieFindr</span>
           </div>
 
-          <div class="hidden md:flex items-center ml-auto gap-28 ">
-            <nav class="flex items-center gap-8 text-sm font-bold uppercase tracking-widest text-gray-600">
-         <a href="Dashboard.html" class="text-orange-600 border-b-2 border-orange-500 pb-0.5">Home</a>
+          <div class="hidden md:flex items-center ml-auto gap-28">
+            <nav
+              class="flex items-center gap-8 text-sm font-bold uppercase tracking-widest text-gray-600"
+            >
+              <a
+                href="Dashboard.html"
+                class="text-orange-600 border-b-2 border-orange-500 pb-0.5"
+                >Home</a
+              >
               <a href="search.html" class="hover:text-orange-600">Categories</a>
               <a href="team.html" class="hover:text-orange-600">Team</a>
             </nav>
@@ -60,7 +66,8 @@
               </div>
 
               <a
-                href="registration.html"
+                href="#"
+                id="logoutBtn"
                 class="flex items-center gap-2 px-4 py-1.5 bg-orange-500 hover:bg-orange-600 font-bold text-black rounded shadow"
               >
                 <svg fill="currentColor" class="w-5 h-5" viewBox="0 0 24 24">
@@ -80,46 +87,63 @@
           id="mobileMenu"
           class="hidden md:hidden px-6 pb-4 space-y-3 bg-white"
         >
-          <a href="Dashboard.html" class="block font-bold uppercase tracking-widest text-gray-600">Home</a>
-          <a href="search.html" class="block font-bold uppercase tracking-widest text-gray-600">Categories</a>
-          <a href="team.html" class="block font-bold uppercase tracking-widest text-gray-600">Team</a>
+          <a
+            href="Dashboard.html"
+            class="block font-bold uppercase tracking-widest text-gray-600"
+            >Home</a
+          >
+          <a
+            href="search.html"
+            class="block font-bold uppercase tracking-widest text-gray-600"
+            >Categories</a
+          >
+          <a
+            href="team.html"
+            class="block font-bold uppercase tracking-widest text-gray-600"
+            >Team</a
+          >
 
-        <div
-                class="flex items-center gap-2 px-4 py-1.5 border rounded shadow w-57"
-              >
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  class="w-5 h-5"
-                  viewBox="0 0 24 24"
-                >
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <path d="m21 21-4.35-4.35"></path>
-                </svg>
+          <div
+            class="flex items-center gap-2 px-4 py-1.5 border rounded shadow w-57"
+          >
+            <svg
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
 
-                <input
-                  type="search"
-                  placeholder="Search ingredients"
-                  class="w-30 focus:outline-none placeholder:text-xs"
+            <input
+              type="search"
+              placeholder="Search ingredients"
+              class="w-30 focus:outline-none placeholder:text-xs"
+            />
+            <button
+              class="bg-orange-500 rounded font-medium tracking-wide px-2 py-0.5"
+            >
+              <a href="search.html"> Search</a>
+            </button>
+          </div>
+          <div class="w-57">
+            <a
+              href="#"
+              id="logoutBtnMobile"
+              class="flex items-center gap-2 px-4 py-1.5 bg-orange-500 hover:bg-orange-600 font-bold text-black rounded shadow"
+            >
+              <svg fill="currentColor" class="w-5 h-5" viewBox="0 0 24 24">
+                <path
+                  d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
                 />
-                <button class="bg-orange-500 rounded font-medium tracking-wide px-2 py-0.5"><a href="search.html"> Search</a></button>
-              </div>
-              <div class="w-57">
-              <a
-                href="registration.html"
-                class="flex items-center gap-2 px-4 py-1.5 bg-orange-500 hover:bg-orange-600 font-bold text-black rounded shadow"
-              >
-                <svg fill="currentColor" class="w-5 h-5" viewBox="0 0 24 24">
-                  <path
-                    d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-                  />
-                </svg>
-                Logout
-              </a>
-              </div>
+              </svg>
+              Logout
+            </a>
+          </div>
         </div>
       </header>
 
@@ -310,21 +334,65 @@
           </span>
         </div>
       </footer>
-   <script>
-  const btn = document.getElementById("menuBtn");
-  const menu = document.getElementById("mobileMenu");
+      <script>
+        const btn = document.getElementById("menuBtn");
+        const menu = document.getElementById("mobileMenu");
 
-  btn.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
+        btn.addEventListener("click", () => {
+          menu.classList.toggle("hidden");
 
-    // Toggle icon
-    if (menu.classList.contains("hidden")) {
-      btn.textContent = "☰";
-    } else {
-      btn.textContent = "✕";
-    }
-  });
-</script>
+          // Toggle icon
+          if (menu.classList.contains("hidden")) {
+            btn.textContent = "☰";
+          } else {
+            btn.textContent = "✕";
+          }
+        });
+
+        // Session Check and Logout Functionality
+        // Load auth.js first
+        const authScript = document.createElement("script");
+        authScript.src = "auth.js";
+        document.head.appendChild(authScript);
+
+        authScript.onload = function () {
+          // Check if user is logged in
+          if (typeof checkSession === "function" && !checkSession()) {
+            // Not logged in, redirect to login
+            window.location.href = "logino.html";
+            return;
+          }
+
+          // Get current user info
+          if (typeof getCurrentUser === "function") {
+            const user = getCurrentUser();
+            if (user) {
+              console.log("Logged in as:", user.email);
+            }
+          }
+
+          // Logout functionality
+          const logoutBtns = document.querySelectorAll(
+            "#logoutBtn, #logoutBtnMobile"
+          );
+          logoutBtns.forEach((btn) => {
+            btn.addEventListener("click", function (e) {
+              e.preventDefault();
+              if (typeof logout === "function") {
+                const result = logout();
+                if (result.success) {
+                  alert("Logged out successfully!");
+                  window.location.href = "logino.html";
+                }
+              } else {
+                // Fallback
+                localStorage.clear();
+                window.location.href = "logino.html";
+              }
+            });
+          });
+        };
+      </script>
     </div>
   </body>
 </html>

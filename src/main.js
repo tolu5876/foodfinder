@@ -48,7 +48,6 @@ document.getElementById("password").addEventListener("input", function() {
 // ----------------------------
 const form = document.getElementById("myForm");
 const successAlert = document.getElementById("successAlert");
-const usedEmails = ["test@gmail.com","admin@gmail.com"];
 
 form.addEventListener("submit", function(e){
   e.preventDefault();
@@ -71,7 +70,6 @@ form.addEventListener("submit", function(e){
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if(registeremail === "") { showError("error-email","Email required"); isValid=false; }
   else if(!emailPattern.test(registeremail)) { showError("error-email","Enter valid email"); isValid=false; }
-  else if(usedEmails.includes(registeremail.toLowerCase())) { showError("error-email","Email already registered"); isValid=false; }
   else hideError("error-email");
 
   const phonePattern = /^[0-9]{10,15}$/;
@@ -93,20 +91,62 @@ form.addEventListener("submit", function(e){
   // Success handling
   // ----------------------------
   if(isValid){
-    // Save to localStorage (for testing only)
-    localStorage.setItem("email", registeremail);
-    localStorage.setItem("password", registerpassword);
+    // Get gender value
+    const genderRadios = document.querySelectorAll('input[name="gender"]');
+    let selectedGender = '';
+    genderRadios.forEach(radio => {
+      if (radio.checked) {
+        selectedGender = radio.value;
+      }
+    });
 
-    // Show success alert
-    successAlert.style.display = "flex"; 
-    setTimeout(() => { 
-      successAlert.style.display = "none"; 
-      window.location.href = 'logino.html';
-    }, 3000); // 3 seconds
+    // Show loading state
+    const submitBtn = form.querySelector('.subt');
+    const originalText = submitBtn.value;
+    submitBtn.value = 'Registering...';
+    submitBtn.disabled = true;
 
-    // Reset the form
-    form.reset();
-    strengthText.textContent = "";
+    // Register user using backend auth system
+    registerUser({
+      first_name: firstname,
+      last_name: lastname,
+      email: registeremail,
+      phone: phone,
+      password: registerpassword,
+      gender: selectedGender,
+      country: country
+    }).then(registrationResult => {
+      submitBtn.value = originalText;
+      submitBtn.disabled = false;
+
+      if (registrationResult.success) {
+        // Show success alert
+        successAlert.style.display = "flex"; 
+        setTimeout(() => { 
+          successAlert.style.display = "none"; 
+          window.location.href = 'logino.html';
+        }, 2000); // 2 seconds
+
+        // Reset the form
+        form.reset();
+        if (strengthText) strengthText.textContent = "";
+      } else {
+        // Show error if registration failed
+        if (registrationResult.message.includes('email')) {
+          showError("error-email", registrationResult.message);
+        } else if (registrationResult.message.includes('phone')) {
+          showError("error-dob", registrationResult.message);
+        } else {
+          showError("error-email", registrationResult.message);
+        }
+        isValid = false;
+      }
+    }).catch(error => {
+      submitBtn.value = originalText;
+      submitBtn.disabled = false;
+      showError("error-email", "Registration failed. Please try again.");
+      console.error('Registration error:', error);
+    });
   }
 });
 

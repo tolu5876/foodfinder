@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/*.js",
+      "src": "api/*-postgres.js",
       "use": "@vercel/node"
     },
     {
@@ -12,12 +12,28 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1.js"
+      "src": "/api/register",
+      "dest": "/api/register-postgres.js"
+    },
+    {
+      "src": "/api/login",
+      "dest": "/api/login-postgres.js"
+    },
+    {
+      "src": "/api/validate-session",
+      "dest": "/api/validate-session-postgres.js"
+    },
+    {
+      "src": "/api/logout",
+      "dest": "/api/logout-postgres.js"
     },
     {
       "src": "/(.*)",
       "dest": "/src/$1"
     }
-  ]
+  ],
+  "env": {
+    "POSTGRES_URL": "@postgres_url",
+    "POSTGRES_SSL": "true"
+  }
 }

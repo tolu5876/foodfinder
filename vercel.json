@@ -2,38 +2,54 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/*-postgres.js",
+      "src": "api/register-demo.js",
       "use": "@vercel/node"
     },
     {
-      "src": "src/**/*",
+      "src": "api/login-demo.js", 
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/validate-session-demo.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/logout-demo.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.js",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/api/register",
-      "dest": "/api/register-postgres.js"
+      "dest": "/api/register-demo.js"
     },
     {
       "src": "/api/login",
-      "dest": "/api/login-postgres.js"
+      "dest": "/api/login-demo.js"
     },
     {
       "src": "/api/validate-session",
-      "dest": "/api/validate-session-postgres.js"
+      "dest": "/api/validate-session-demo.js"
     },
     {
       "src": "/api/logout",
-      "dest": "/api/logout-postgres.js"
+      "dest": "/api/logout-demo.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/src/$1"
+      "dest": "/$1"
     }
-  ],
-  "env": {
-    "POSTGRES_URL": "@postgres_url",
-    "POSTGRES_SSL": "true"
-  }
+  ]
 }

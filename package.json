@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "vercel dev",
+    "start": "node demo-server.js",
     "build": "vercel build",
-    "start": "vercel start"
+    "deploy": "vercel --prod"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.17",

@@ -5,8 +5,10 @@
 
 // API Base URL - works on both local and Vercel
 const API_BASE_URL = window.location.hostname === 'localhost' 
-  ? 'http://localhost:3000/api' 
-  : '/api';
+  ? 'http://localhost:3001/api' 
+  : window.location.hostname.includes('vercel.app')
+    ? '/api'
+    : '/api';
 
 // Generate unique device ID
 function getDeviceId() {

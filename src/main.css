@@ -1,13 +1,13 @@
 body {
       margin: 0;
       padding: 0;
-      font-family: 'Avenir', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
       justify-content: center;
       align-items: flex-start;
       min-height: 100vh;
       padding-top: 40px;
-      background: url('https://i.pinimg.com/736x/10/86/6d/10866db27973fe42313e7d81fd2f5f06.jpg');
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       position: relative;
       overflow-x: hidden;
     }
@@ -42,24 +42,35 @@ body {
     .form-container {
       max-width: 400px;
       margin: 40px auto;
-      padding: 30px;
-      background:rgb(245, 154, 79);
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
     }
 
     h2 {
       text-align: center;
-      color: #2c3e50;
+      color: #667eea;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     p{
       text-align: center;
-      color: #555;
+      color: rgba(255, 255, 255, 0.9);
       font-size: 16px;
       margin-bottom: 20px;
-      font-weight: bold;
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-weight: 500;
     }
 
     label {
@@ -75,11 +86,23 @@ body {
     input[type="password"], 
     select {
       width: 100%;
-      padding: 8px;
+      padding: 15px;
       margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
       box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      transform: translateY(-2px);
     }
 
     .gender-options{
@@ -99,20 +122,29 @@ body {
     .subt {
       width: 100%;
       margin-top: 20px;
-      padding: 10px;
-      background: #27ae60;
+      padding: 18px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
       color: #fff;
       font-size: 16px;
       cursor: pointer;
       border: none;
-      border-radius: 5px;
-      transition: background 0.2s;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
     }
 
     .subt:hover {
-      background: #219150;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
     }
 
+    .subt:active {
+      transform: translateY(0);
+    }
 
     #form-data {
       margin-top: 30px;

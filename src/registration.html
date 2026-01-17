@@ -60,11 +60,20 @@
         </h6>
 
         <label for="password">Enter a New Password</label>
-        <div style="position: relative;">
+        <div style="position: relative">
           <input type="password" id="password" placeholder="Enter password" />
           <button
             type="button"
-            style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 18px;"
+            style="
+              position: absolute;
+              right: 10px;
+              top: 50%;
+              transform: translateY(-50%);
+              background: none;
+              border: none;
+              cursor: pointer;
+              font-size: 18px;
+            "
             onclick="togglePassword('password')"
           >
             👁
@@ -75,7 +84,7 @@
         </h6>
 
         <label for="confirmPassword">Confirm Password</label>
-        <div style="position: relative;">
+        <div style="position: relative">
           <input
             type="password"
             id="confirmPassword"
@@ -83,7 +92,16 @@
           />
           <button
             type="button"
-            style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 18px;"
+            style="
+              position: absolute;
+              right: 10px;
+              top: 50%;
+              transform: translateY(-50%);
+              background: none;
+              border: none;
+              cursor: pointer;
+              font-size: 18px;
+            "
             onclick="togglePassword('confirmPassword')"
           >
             👁
@@ -94,9 +112,9 @@
         </h6>
 
         <div>
-          <input type="checkbox" id="terms" />
           <label for="terms"
-            >I agree to the <a href="#">Terms and Conditions</a></label
+            ><input type="checkbox" id="terms" />I agree to the
+            <a href="#">Terms and Conditions</a></label
           >
         </div>
         <h6 class="error-message" id="error-terms">

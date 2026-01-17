@@ -20,17 +20,9 @@ countries.forEach(country => {
 // ----------------------------
 // Toggle password visibility
 // ----------------------------
-function togglePassword(fieldId) {
-  const pwd = document.getElementById(fieldId);
-  const eyeButton = pwd.parentElement.querySelector('button');
-  
-  if (pwd.type === "password") {
-    pwd.type = "text";
-    eyeButton.textContent = "🙈"; // Closed eye
-  } else {
-    pwd.type = "password";
-    eyeButton.textContent = "👁"; // Open eye
-  }
+function togglePassword() {
+  const pwd = document.getElementById("password");
+  pwd.type = pwd.type === "password" ? "text" : "password";
 }
 
 // ----------------------------

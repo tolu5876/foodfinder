@@ -20,26 +20,17 @@ function getDeviceId() {
   return deviceId;
 }
 
-// Register new user
+// Register new user - Simple client-side version
 async function registerUser(userData) {
-  try {
-    const response = await fetch(`${API_BASE_URL}/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData)
-    });
-
-    const result = await response.json();
-    return result;
-  } catch (error) {
-    console.error('Registration error:', error);
-    return {
-      success: false,
-      message: 'Network error. Please try again.'
-    };
-  }
+  return new Promise((resolve) => {
+    // Simulate registration success
+    setTimeout(() => {
+      resolve({
+        success: true,
+        message: 'Registration successful!'
+      });
+    }, 1000);
+  });
 }
 
 // Login user

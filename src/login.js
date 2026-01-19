@@ -16,11 +16,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Remove previous alert classes
     alertBox.classList.remove("alert-danger", "alert-success");
 
-    // Add class based on type
+    // Add class based on type and set background color
     if (type === "success") {
       alertBox.classList.add("alert-success"); // green alert
+      alertBox.style.backgroundColor = "#27ae60"; // Green background
+      alertBox.style.color = "#ffffff"; // White text
     } else {
       alertBox.classList.add("alert-danger"); // red alert
+      alertBox.style.backgroundColor = "#e74c3c"; // Red background
+      alertBox.style.color = "#ffffff"; // White text
     }
 
     alertBox.style.display = "flex";

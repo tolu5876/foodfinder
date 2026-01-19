@@ -51,7 +51,7 @@ async function loginUser(emailOrPhone, password) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        emailOrPhone: emailOrPhone,
+        email_or_phone: emailOrPhone,
         password: password,
         device_id: device_id
       })

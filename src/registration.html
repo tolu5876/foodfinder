@@ -41,14 +41,12 @@
         </h6>
 
         <label for="gender">Gender</label>
-        <div id="gender" class="gender-options">
-          <input type="radio" name="gender" value="male" id="male" />
-          <label for="male">Male</label>
-          <input type="radio" name="gender" value="female" id="female" />
-          <label for="female">Female</label>
-          <input type="radio" name="gender" value="other" id="other" />
-          <label for="other">Other</label>
-        </div>
+        <select name="gender" id="gender">
+          <option value="">Select gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
         <h6 class="error-message" id="error-gender">
           Please select your gender*
         </h6>
@@ -62,33 +60,68 @@
         </h6>
 
         <label for="password">Enter a New Password</label>
-        <input type="password" id="password" placeholder="Enter password" />
-        <button
-          type="button"
-          class="btn btn-outline-secondary toggle-password"
-          onclick="togglePassword()"
-        >
-          👁
-        </button>
+        <div style="position: relative; display: flex; align-items: center">
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter password"
+            style="flex: 1"
+          />
+          <button
+            type="button"
+            style="
+              position: absolute;
+              right: 10px;
+              background: none;
+              border: none;
+              cursor: pointer;
+              font-size: 18px;
+              padding: 5px;
+            "
+            onclick="togglePassword('password')"
+          >
+            👁
+          </button>
+        </div>
         <h6 class="error-message" id="error-password">
           This password should be filled*
         </h6>
 
         <label for="confirmPassword">Confirm Password</label>
-        <input
-          type="password"
-          id="confirmPassword"
-          placeholder="Confirm password"
-        />
+        <div style="position: relative; display: flex; align-items: center">
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm password"
+            style="flex: 1"
+          />
+          <button
+            type="button"
+            style="
+              position: absolute;
+              right: 10px;
+              background: none;
+              border: none;
+              cursor: pointer;
+              font-size: 18px;
+              padding: 5px;
+            "
+            onclick="togglePassword('confirmPassword')"
+          >
+            👁
+          </button>
+        </div>
         <h6 class="error-message" id="error-confirm">
           Please confirm your password*
         </h6>
 
-        <div>
-          <input type="checkbox" id="terms" />
-          <label for="terms"
-            >I agree to the <a href="#">Terms and Conditions</a></label
-          >
+        <div style="display: flex; align-items: center; gap: 10px">
+          <div>
+            <label for="terms">
+              <input type="checkbox" id="terms" />I agree to the
+              <a href="#">Terms and Conditions</a></label
+            >
+          </div>
         </div>
         <h6 class="error-message" id="error-terms">
           You must agree to the terms*

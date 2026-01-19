@@ -100,7 +100,7 @@
     <script>
       // Check if already logged in
       if (typeof checkSession === "function") {
-        checkSession().then(isLoggedIn => {
+        checkSession().then((isLoggedIn) => {
           if (isLoggedIn) {
             window.location.href = "Dashboard.html";
           }

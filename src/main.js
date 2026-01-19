@@ -21,13 +21,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ----------------------------
-  // Toggle password visibility
-  // ----------------------------
-  window.togglePassword = function(fieldId) {
-    const pwd = document.getElementById(fieldId);
-    pwd.type = pwd.type === "password" ? "text" : "password";
-  };
+// ----------------------------
+// Toggle password visibility
+// ----------------------------
+function togglePassword(fieldId) {
+  const pwd = document.getElementById(fieldId);
+  const eyeButton = pwd.parentElement.querySelector('button');
+  
+  if (pwd.type === "password") {
+    pwd.type = "text";
+    eyeButton.textContent = "🙈"; // Closed eye
+  } else {
+    pwd.type = "password";
+    eyeButton.textContent = "👁"; // Open eye
+  }
+}
 
   // ----------------------------
   // Password strength indicator

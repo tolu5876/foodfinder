@@ -60,68 +60,33 @@
         </h6>
 
         <label for="password">Enter a New Password</label>
-        <div style="position: relative; display: flex; align-items: center">
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter password"
-            style="flex: 1"
-          />
-          <button
-            type="button"
-            style="
-              position: absolute;
-              right: 10px;
-              background: none;
-              border: none;
-              cursor: pointer;
-              font-size: 18px;
-              padding: 5px;
-            "
-            onclick="togglePassword('password')"
-          >
-            👁
-          </button>
-        </div>
+        <input type="password" id="password" placeholder="Enter password" />
+        <button
+          type="button"
+          class="btn btn-outline-secondary toggle-password"
+          onclick="togglePassword()"
+        >
+          👁
+        </button>
         <h6 class="error-message" id="error-password">
           This password should be filled*
         </h6>
 
         <label for="confirmPassword">Confirm Password</label>
-        <div style="position: relative; display: flex; align-items: center">
-          <input
-            type="password"
-            id="confirmPassword"
-            placeholder="Confirm password"
-            style="flex: 1"
-          />
-          <button
-            type="button"
-            style="
-              position: absolute;
-              right: 10px;
-              background: none;
-              border: none;
-              cursor: pointer;
-              font-size: 18px;
-              padding: 5px;
-            "
-            onclick="togglePassword('confirmPassword')"
-          >
-            👁
-          </button>
-        </div>
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Confirm password"
+        />
         <h6 class="error-message" id="error-confirm">
           Please confirm your password*
         </h6>
 
-        <div style="display: flex; align-items: center; gap: 10px">
-          <div>
-            <label for="terms">
-              <input type="checkbox" id="terms" />I agree to the
-              <a href="#">Terms and Conditions</a></label
-            >
-          </div>
+        <div>
+          <input type="checkbox" id="terms" />
+          <label for="terms"
+            >I agree to the <a href="#">Terms and Conditions</a></label
+          >
         </div>
         <h6 class="error-message" id="error-terms">
           You must agree to the terms*

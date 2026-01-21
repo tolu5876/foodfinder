@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>FoodFindr - Professional Recipe Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --primary-light: #3b82f6;
+        --secondary: #10b981;
+        --secondary-dark: #059669;
+        --accent: #f59e0b;
+        --accent-dark: #d97706;
+        --success: #22c55e;
+        --warning: #f97316;
+        --danger: #ef4444;
+        --dark: #1f2937;
+        --gray: #6b7280;
+        --light: #f3f4f6;
+        --white: #ffffff;
+        --bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --card: rgba(255, 255, 255, 0.98);
+        --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        --shadow-lg: 0 30px 60px -12px rgba(0, 0, 0, 0.35);
+        --border: #e5e7eb;
+        --gradient-text: linear-gradient(135deg, #667eea, #764ba2);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        min-height: 100vh;
+        background: var(--bg);
+        background-attachment: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        color: var(--dark);
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 20% 80%,
+            rgba(120, 119, 198, 0.3) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 119, 198, 0.3) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 40%,
+            rgba(120, 219, 255, 0.2) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+        animation: floatGradient 15s ease-in-out infinite;
+      }
+
+      @keyframes floatGradient {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        33% {
+          transform: translate(-20px, -20px) rotate(120deg);
+        }
+        66% {
+          transform: translate(20px, -10px) rotate(240deg);
+        }
+      }
+
+      .app-container {
+        background: var(--card);
+        backdrop-filter: blur(20px);
+        width: 25%;
+        max-width: 400px;
+        padding: 50px 60px;
+        border-radius: 40px;
+        box-shadow: 0 40px 80px -12px rgba(0, 0, 0, 0.45);
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      .app::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(
+          90deg,
+          var(--primary),
+          var(--secondary),
+          var(--accent),
+          var(--gold)
+        );
+        border-radius: 40px 40px 0 0;
+      }
+
+      .app::after {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(
+          45deg,
+          var(--primary),
+          var(--secondary),
+          var(--accent),
+          var(--gold)
+        );
+        border-radius: 42px;
+        z-index: -1;
+        opacity: 0.3;
+        animation: borderGlow 3s ease-in-out infinite alternate;
+      }
+
+      @keyframes borderGlow {
+        0% {
+          opacity: 0.2;
+        }
+        100% {
+          opacity: 0.4;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+      }
+
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-dark)
+        );
+        border-radius: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 20px 40px rgba(37, 99, 235, 0.5);
+        position: relative;
+        overflow: hidden;
+        animation: logoFloat 4s ease-in-out infinite;
+      }
+
+      @keyframes logoFloat {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .logo::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        animation: logoShine 3s ease-in-out infinite;
+      }
+
+      @keyframes logoShine {
+        0% {
+          transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        }
+        50% {
+          transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+        100% {
+          transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+      }
+
+      .logo i {
+        color: white;
+        font-size: 32px;
+        position: relative;
+        z-index: 1;
+      }
+
+      h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+        background: var(--gradient-text);
+        -webkit-background-clip: text;
+        /* -webkit-text-fill-color: transparent; */
+        background-clip: text;
+        text-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        letter-spacing: -1px;
+        color: white;
+      }
+
+      .subtitle {
+        /* color: var(--gray); */
+        font-size: 1.3rem;
+        font-weight: 500;
+        margin-bottom: 0;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        position: relative;
+      }
+
+      .subtitle::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        border-radius: 1px;
+      }
+
+      /* ===== SEARCH UI ===== */
+      .search-section {
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-dark)
+        );
+        border-radius: 32px;
+        padding: 50px;
+        margin-bottom: 50px;
+        box-shadow: 0 30px 60px rgba(37, 99, 235, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .search-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        animation: float 8s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+          transform: translate(-30px, -30px) rotate(180deg);
+        }
+      }
+
+      .search-title {
+        color: white;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 30px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .search-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: white;
+        border-radius: 2px;
+      }
+
+      .search-controls {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .search-input {
+        flex: 1;
+        padding: 24px 28px;
+        border: none;
+        border-radius: 20px;
+        font-size: 1.2rem;
+        font-weight: 500;
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--dark);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+      }
+
+      .search-input::placeholder {
+        color: var(--gray);
+        font-weight: 400;
+        font-style: italic;
+      }
+
+      .search-input:focus {
+        outline: none;
+        background: white;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        transform: translateY(-6px);
+      }
+
+      .search-btn {
+        padding: 24px 40px;
+        border: none;
+        border-radius: 20px;
+        background: white;
+        color: var(--primary);
+        font-size: 1.2rem;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .search-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(37, 99, 235, 0.1),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .search-btn:hover::before {
+        left: 100%;
+      }
+
+      .search-btn:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      }
+
+      .search-btn:active {
+        transform: translateY(-2px);
+      }
+
+      .search-loader {
+        width: 48px;
+        height: 48px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 24px auto;
+        display: none;
+        position: relative;
+        z-index: 1;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* ===== RESULTS SECTION ===== */
+      .results-section {
+        background: rgb(255, 255, 255);
+        border-radius: 24px;
+        padding: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        border: 1px solid var(--border);
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .results-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid var(--light);
+      }
+
+      .results-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--dark);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .results-count {
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-dark)
+        );
+        color: white;
+        padding: 6px 16px;
+        border-radius: 24px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      }
+
+      .ingredient-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .ingredient-item {
+        background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+        border: 1px solid var(--border);
+        padding: 20px 24px;
+        margin-bottom: 16px;
+        border-radius: 16px;
+        font-size: 1.05rem;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .ingredient-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 20%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(37, 99, 235, 0.1),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .ingredient-item:hover::before {
+        left: 100%;
+      }
+
+      .ingredient-item:hover {
+        background: linear-gradient(135deg, #eff6ff, #dbeafe);
+        border-color: var(--primary);
+        transform: translateX(8px);
+        box-shadow: 0 8px 24px rgba(37, 99, 235, 0.15);
+      }
+
+      .ingredient-icon {
+        width: 44px;
+        height: 44px;
+        background: linear-gradient(
+          135deg,
+          var(--secondary),
+          var(--secondary-dark)
+        );
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+        flex-shrink: 0;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      }
+
+      .ingredient-text {
+        flex: 1;
+        color: var(--dark);
+        font-weight: 600;
+        letter-spacing: 0.3px;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 60px 24px;
+        color: var(--gray);
+      }
+
+      .empty-icon {
+        font-size: 64px;
+        color: #d1d5db;
+        margin-bottom: 20px;
+      }
+
+      .empty-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: var(--dark);
+      }
+
+      .empty-text {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      /* ===== MEDIA QUERIES ===== */
+
+      /* Tablets */
+      @media (max-width: 1024px) {
+        .app-container {
+          width: 40%;
+          max-width: 600px;
+          padding: 40px;
+        }
+      }
+
+      /* Large tablets */
+      @media (max-width: 768px) {
+        body {
+          padding: 16px;
+        }
+
+        .app-container {
+          width: 50%;
+          max-width: 500px;
+          padding: 95px;
+        }
+
+        h1 {
+          font-size: 2.8rem;
+        }
+
+        .subtitle {
+          font-size: 1.2rem;
+        }
+      }
+
+      /* Small tablets */
+      @media (max-width: 600px) {
+        .app-container {
+          width: 60%;
+          max-width: 450px;
+          padding: 30px;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+        }
+      }
+
+      /* Mobile phones */
+      @media (max-width: 480px) {
+        body {
+          padding: 12px;
+        }
+
+        .app-container {
+          width: 85%;
+          max-width: 400px;
+          padding: 25px 20px;
+          border-radius: 20px;
+        }
+
+        h1 {
+          font-size: 2.2rem;
+        }
+
+        .subtitle {
+          font-size: 1.1rem;
+        }
+
+        .search-input {
+          font-size: 16px;
+        }
+
+        .results-section {
+          padding: 20px 16px;
+        }
+      }
+
+      /* Small mobile */
+      @media (max-width: 360px) {
+        .app-container {
+          width: 95%;
+          padding: 20px 16px;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .subtitle {
+          font-size: 1rem;
+        }
+      }
+
+      /* ===== ACCESSIBILITY ===== */
+      .search-input:focus,
+      .search-btn:focus {
+        outline: 3px solid var(--primary);
+        outline-offset: 2px;
+      }
+
+      .search-btn:focus-visible {
+        outline: 3px solid var(--primary);
+        outline-offset: 2px;
+      }
+
+      /* ===== PREMIUM ANIMATIONS ===== */
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .pulse {
+        animation: pulse 2s ease-in-out infinite;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="app">
+      <div class="header">
+        <div class="logo">
+          <i class="fas fa-utensils"></i>
+        </div>
+        <h1>FoodFindr</h1>
+        <p class="subtitle">Premium Recipe Discovery Platform</p>
+      </div>
+
+      <div class="search-section">
+        <h2 class="search-title">
+          <i class="fas fa-search"></i>
+          Recipe Search
+        </h2>
+
+        <div class="search-controls">
+          <input
+            type="text"
+            id="foodInput"
+            class="search-input"
+            placeholder="Search for premium recipes (e.g., truffle pasta, wagyu burger, lobster bisque)"
+            aria-label="Food search input"
+          />
+          <button
+            class="search-btn"
+            onclick="searchFood()"
+            aria-label="Search for ingredients"
+          >
+            <i class="fas fa-search"></i>
+            Search
+          </button>
+        </div>
+
+        <div class="search-loader" id="loader"></div>
+      </div>
+
+      <div class="results-section">
+        <div class="results-header">
+          <h3 class="results-title">
+            <i class="fas fa-list"></i>
+            Premium Ingredients
+          </h3>
+          <span class="results-count" id="resultsCount" style="display: none"
+            >0</span
+          >
+        </div>
+
+        <ul
+          id="ingredientsList"
+          class="ingredient-list"
+          aria-live="polite"
+        ></ul>
+
+        <div id="recipeContainer"></div>
+        <div id="instructionsContainer"></div>
+
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">
+            <i class="fas fa-crown"></i>
+          </div>
+          <div class="empty-title">Discover Premium Recipes</div>
+          <div class="empty-text">
+            Search for gourmet ingredients and professional cooking instructions
+            🍽️
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>

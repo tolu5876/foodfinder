@@ -111,8 +111,9 @@ document.addEventListener('DOMContentLoaded', function () {
     submitBtn.disabled = true;
 
     try {
-      if (typeof loginUser === 'function') {
-        const loginResult = await loginUser(email, password);
+      // Use Firebase login
+      if (typeof window.loginUser === 'function') {
+        const loginResult = await window.loginUser(email, password);
         
         if (loginResult.success) {
           showAlert("Login successful!", 1000, "success");
@@ -120,7 +121,16 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = "Dashboard.html";
           }, 1000);
         } else {
-          showAlert(loginResult.message || "Incorrect email/phone or password!", 3000, "error");
+          // Show specific error messages
+          if (loginResult.message.includes('password')) {
+            showAlert("Incorrect password! Please try again.", 3000, "error");
+          } else if (loginResult.message.includes('user') || loginResult.message.includes('email')) {
+            showAlert("User not found! Please check your email or register.", 3000, "error");
+          } else if (loginResult.message.includes('too many')) {
+            showAlert("Too many login attempts. Please try again later.", 3000, "error");
+          } else {
+            showAlert(loginResult.message || "Login failed! Please try again.", 3000, "error");
+          }
         }
       } else {
         showAlert("Authentication system not available. Please refresh the page.", 3000, "error");

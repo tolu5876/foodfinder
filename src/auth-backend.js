@@ -20,62 +20,133 @@ function getDeviceId() {
   return deviceId;
 }
 
-// Register new user - Simple client-side version
+// Register new user - Firebase version
 async function registerUser(userData) {
-  return new Promise((resolve) => {
-    // Simulate registration success
-    setTimeout(() => {
-      resolve({
+  try {
+    // Use Firebase registration from firebase-auth.js
+    if (typeof window.registerUser === 'function') {
+      // Check if user already exists in localStorage first
+      const existingUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      const emailExists = existingUsers.some(user => 
+        user.email.toLowerCase() === userData.email.toLowerCase()
+      );
+      
+      if (emailExists) {
+        return {
+          success: false,
+          message: 'User with this email already exists! Please use a different email or login.'
+        };
+      }
+      
+      const result = await window.registerUser({
+        email: userData.email,
+        password: userData.password,
+        firstName: userData.first_name,
+        lastName: userData.last_name
+      });
+      
+      if (result.success) {
+        // Save additional user data to localStorage for duplicate checking
+        const extendedUserData = {
+          ...result.user,
+          phone: userData.phone || '',
+          gender: userData.gender || '',
+          country: userData.country || ''
+        };
+        
+        // Add to registered users list
+        existingUsers.push({
+          email: userData.email.toLowerCase(),
+          uid: result.user.uid,
+          registeredAt: new Date().toISOString()
+        });
+        localStorage.setItem('registeredUsers', JSON.stringify(existingUsers));
+        
+        localStorage.setItem('currentUser', JSON.stringify(extendedUserData));
+        
+        return {
+          success: true,
+          message: 'Registration successful!',
+          user: extendedUserData
+        };
+      } else {
+        // Check Firebase error messages
+        if (result.message.includes('email-already-in-use')) {
+          return {
+            success: false,
+            message: 'User with this email already exists! Please login instead.'
+          };
+        } else if (result.message.includes('weak-password')) {
+          return {
+            success: false,
+            message: 'Password is too weak. Please choose a stronger password.'
+          };
+        } else if (result.message.includes('invalid-email')) {
+          return {
+            success: false,
+            message: 'Invalid email address. Please check and try again.'
+          };
+        }
+        return result;
+      }
+    } else {
+      // Fallback simulation
+      return {
         success: true,
         message: 'Registration successful!'
-      });
-    }, 1000);
-  });
+      };
+    }
+  } catch (error) {
+    console.error('Registration error:', error);
+    return {
+      success: false,
+      message: error.message || 'Registration failed'
+    };
+  }
 }
 
-// Login user
+// Login user - Firebase version
 async function loginUser(emailOrPhone, password) {
   try {
-    const device_id = getDeviceId();
-    
-    const response = await fetch(`${API_BASE_URL}/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email_or_phone: emailOrPhone,
-        password: password,
-        device_id: device_id
-      })
-    });
+    // Use Firebase login from firebase-auth.js
+    if (typeof window.loginUser === 'function') {
+      const result = await window.loginUser(emailOrPhone, password);
+      
+      if (result.success) {
+        // Store session data
+        const session = {
+          userId: result.user.uid,
+          deviceId: getDeviceId(),
+          email: result.user.email,
+          displayName: result.user.displayName,
+          sessionToken: 'firebase_token_' + Date.now(),
+          expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(), // 24 hours
+          loginTime: new Date().toISOString()
+        };
 
-    const result = await response.json();
-    
-    if (result.success) {
-      // Store session data
-      const session = {
-        userId: result.user.user_id,
-        deviceId: device_id,
-        email: result.user.email,
-        phone: result.user.phone,
-        firstName: result.user.first_name,
-        lastName: result.user.last_name,
-        sessionToken: result.session_token,
-        expiresAt: result.expires_at,
-        loginTime: new Date().toISOString()
+        localStorage.setItem('activeSession', JSON.stringify(session));
+        localStorage.setItem('isLoggedIn', 'true');
+        
+        return {
+          success: true,
+          message: 'Login successful!',
+          user: result.user
+        };
+      } else {
+        return result;
+      }
+    } else {
+      // Fallback simulation
+      return {
+        success: false,
+        message: 'Login system not available'
       };
-
-      localStorage.setItem('activeSession', JSON.stringify(session));
-      localStorage.setItem('isLoggedIn', 'true');
     }
-    
-    return result;
   } catch (error) {
     console.error('Login error:', error);
     return {
       success: false,
-      message: 'Network error. Please try again.'
+      message: error.message || 'Login failed'
     };
   }
 }

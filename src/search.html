@@ -51,7 +51,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px;
+        padding: 0;
+        margin: 0;
         color: var(--dark);
         position: relative;
         overflow-x: hidden;
@@ -99,9 +100,9 @@
       .app-container {
         background: var(--card);
         backdrop-filter: blur(20px);
-        width: 100%;
-        max-width: 1000px;
-        padding: 50px;
+        width: 25%;
+        max-width: 400px;
+        padding: 50px 60px;
         border-radius: 40px;
         box-shadow: 0 40px 80px -12px rgba(0, 0, 0, 0.45);
         border: 2px solid rgba(255, 255, 255, 0.4);
@@ -245,14 +246,15 @@
         margin-bottom: 16px;
         background: var(--gradient-text);
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        /* -webkit-text-fill-color: transparent; */
         background-clip: text;
         text-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
         letter-spacing: -1px;
+        color: white;
       }
 
       .subtitle {
-        color: var(--gray);
+        /* color: var(--gray); */
         font-size: 1.3rem;
         font-weight: 500;
         margin-bottom: 0;
@@ -445,11 +447,13 @@
 
       /* ===== RESULTS SECTION ===== */
       .results-section {
-        background: white;
+        background: rgb(255, 255, 255);
         border-radius: 24px;
-        padding: 32px;
+        padding: 16px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         border: 1px solid var(--border);
+        width: 100%;
+        box-sizing: border-box;
       }
 
       .results-header {
@@ -511,7 +515,7 @@
         position: absolute;
         top: 0;
         left: -100%;
-        width: 100%;
+        width: 20%;
         height: 100%;
         background: linear-gradient(
           90deg,
@@ -596,50 +600,60 @@
       }
 
       /* ===== MEDIA QUERIES ===== */
+
+      /* Tablets */
+      @media (max-width: 1024px) {
+        .app-container {
+          width: 40%;
+          max-width: 600px;
+          padding: 40px;
+        }
+      }
+
+      /* Large tablets */
       @media (max-width: 768px) {
         body {
           padding: 16px;
         }
 
-        .app {
-          padding: 32px 24px;
-          border-radius: 24px;
+        .app-container {
+          width: 50%;
+          max-width: 500px;
+          padding: 95px;
+        }
+
+        h1 {
+          font-size: 2.8rem;
+        }
+
+        .subtitle {
+          font-size: 1.2rem;
+        }
+      }
+
+      /* Small tablets */
+      @media (max-width: 600px) {
+        .app-container {
+          width: 60%;
+          max-width: 450px;
+          padding: 30px;
         }
 
         h1 {
           font-size: 2.5rem;
         }
-
-        .search-section {
-          padding: 32px 24px;
-        }
-
-        .search-controls {
-          flex-direction: column;
-          gap: 16px;
-        }
-
-        .search-input,
-        .search-btn {
-          width: 100%;
-        }
-
-        .search-btn {
-          justify-content: center;
-        }
-
-        .results-section {
-          padding: 24px 20px;
-        }
-
-        .ingredient-item {
-          padding: 16px 20px;
-        }
       }
 
+      /* Mobile phones */
       @media (max-width: 480px) {
-        .app {
-          padding: 24px 20px;
+        body {
+          padding: 12px;
+        }
+
+        .app-container {
+          width: 85%;
+          max-width: 400px;
+          padding: 25px 20px;
           border-radius: 20px;
         }
 
@@ -651,12 +665,28 @@
           font-size: 1.1rem;
         }
 
-        .search-title {
-          font-size: 1.5rem;
+        .search-input {
+          font-size: 16px;
         }
 
-        .results-title {
-          font-size: 1.3rem;
+        .results-section {
+          padding: 20px 16px;
+        }
+      }
+
+      /* Small mobile */
+      @media (max-width: 360px) {
+        .app-container {
+          width: 95%;
+          padding: 20px 16px;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .subtitle {
+          font-size: 1rem;
         }
       }
 
@@ -742,6 +772,9 @@
           class="ingredient-list"
           aria-live="polite"
         ></ul>
+
+        <div id="recipeContainer"></div>
+        <div id="instructionsContainer"></div>
 
         <div id="emptyState" class="empty-state">
           <div class="empty-icon">

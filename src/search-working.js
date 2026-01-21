@@ -12,8 +12,6 @@ input.addEventListener("keydown", (e) => {
 async function searchFood() {
   const foodName = input.value.trim();
   
-  console.log('🔍 Starting search for:', foodName);
-  
   // Clear previous results
   document.getElementById("ingredientsList").innerHTML = "";
   document.getElementById("recipeContainer").innerHTML = "";
@@ -39,32 +37,11 @@ async function searchFood() {
   emptyState.style.display = "none";
 
   try {
-    console.log('📡 Making API call...');
-    
-    // Search recipes with CORS fix
+    // Search recipes
     const searchUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${encodeURIComponent(foodName)}&number=1&apiKey=${API_KEY}&addRecipeInformation=true&addRecipeInstructions=true&addRecipeNutrition=true`;
     
-    console.log('📡 Search URL:', searchUrl);
-    
-    const searchRes = await fetch(searchUrl, {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    
-    console.log('📡 Response status:', searchRes.status);
-    console.log('📡 Response headers:', searchRes.headers);
-    
-    if (!searchRes.ok) {
-      const errorText = await searchRes.text();
-      console.error('❌ API Error Response:', errorText);
-      throw new Error(`API failed with status: ${searchRes.status} - ${errorText}`);
-    }
-    
+    const searchRes = await fetch(searchUrl);
     const searchData = await searchRes.json();
-    console.log('📊 Search data:', searchData);
 
     if (!searchData.results || searchData.results.length === 0) {
       emptyState.style.display = "block";

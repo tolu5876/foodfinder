@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -430,7 +430,7 @@
           try {
             // Search recipes
             const searchUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${encodeURIComponent(
-              foodName
+              foodName,
             )}&number=1&apiKey=${API_KEY}`;
 
             console.log("Fetching from:", searchUrl);
@@ -473,8 +473,8 @@
                   <!-- Image and Info -->
                   <div class="md:col-span-1">
                     <img src="${recipe.image}" alt="${
-              recipe.title
-            }" class="w-full rounded-xl shadow-lg mb-4 object-cover h-64">
+                      recipe.title
+                    }" class="w-full rounded-xl shadow-lg mb-4 object-cover h-64">
                     <div class="bg-blue-50 p-4 rounded-lg">
                       <p class="text-sm text-gray-600 mb-2"><strong>Prep Time:</strong> ${
                         detailsData.readyInMinutes
@@ -483,7 +483,7 @@
                         detailsData.servings
                       }</p>
                       <p class="text-sm text-gray-600"><strong>Calories:</strong> ${Math.round(
-                        detailsData.nutrition?.nutrients?.[0]?.amount || 0
+                        detailsData.nutrition?.nutrients?.[0]?.amount || 0,
                       )} per serving</p>
                     </div>
                   </div>
@@ -504,7 +504,7 @@
                             <p class="text-sm text-gray-600">${ing.amount} ${ing.unit}</p>
                           </div>
                         </div>
-                      `
+                      `,
                         )
                         .join("")}
                     </div>
@@ -526,7 +526,7 @@
                           }</span>
                           <p class="text-gray-700">${step.step}</p>
                         </div>
-                      `
+                      `,
                           )
                           .join("") ||
                         '<p class="text-gray-600">No detailed instructions available</p>'
@@ -538,7 +538,7 @@
 
               <div class="text-center mt-6">
                 <a href="search.html?q=${encodeURIComponent(
-                  foodName
+                  foodName,
                 )}" class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-all">
                   View More Recipes
                 </a>
@@ -575,18 +575,17 @@
           }
         });
 
-        // Session Check and Logout Functionality
-        // Load auth.js first
+        // Load Firebase auth first
         const authScript = document.createElement("script");
-        authScript.src = "auth.js";
+        authScript.src = "firebase-auth.js";
         document.head.appendChild(authScript);
 
         authScript.onload = function () {
           // Check if user is logged in
           if (typeof checkSession === "function" && !checkSession()) {
-            // Not logged in, redirect to login
-            window.location.href = "logino.html";
-            return;
+            // Not logged in, show message instead of redirect
+            console.log("User not logged in - showing dashboard anyway");
+            // Don't redirect - let user see dashboard
           }
 
           // Get current user info
@@ -599,21 +598,22 @@
 
           // Logout functionality
           const logoutBtns = document.querySelectorAll(
-            "#logoutBtn, #logoutBtnMobile"
+            "#logoutBtn, #logoutBtnMobile",
           );
           logoutBtns.forEach((btn) => {
-            btn.addEventListener("click", function (e) {
+            btn.addEventListener("click", async function (e) {
               e.preventDefault();
-              if (typeof logout === "function") {
-                const result = logout();
+              if (typeof logoutUser === "function") {
+                const result = await logoutUser();
                 if (result.success) {
                   alert("Logged out successfully!");
-                  window.location.href = "logino.html";
+                  window.location.href = "login-clean.html";
                 }
               } else {
                 // Fallback
                 localStorage.clear();
-                window.location.href = "logino.html";
+                alert("Logged out!");
+                window.location.href = "login-clean.html";
               }
             });
           });

@@ -9,52 +9,6 @@ const countries = [
   "Nigeria","South Africa","United Kingdom","United States","Zimbabwe"
 ];
 
-// ----------------------------
-// Toggle password visibility
-// ----------------------------
-function togglePassword(fieldId) {
-  console.log('togglePassword called for:', fieldId); // Debug line
-  
-  // Check if element exists
-  const pwd = document.getElementById(fieldId);
-  if (!pwd) {
-    console.error('Password field not found:', fieldId);
-    return;
-  }
-  
-  // Simple approach: toggle password type directly
-  try {
-    if (pwd.type === "password") {
-      // Show password
-      pwd.type = "text";
-      console.log('Password shown (type changed to text)');
-    } else {
-      // Hide password
-      pwd.type = "password";
-      console.log('Password hidden (type changed to password)');
-    }
-    
-    // Find and toggle icon using a simple approach
-    const allIcons = document.querySelectorAll('i.fa-eye, i.fa-eye-slash');
-    allIcons.forEach(icon => {
-      const button = icon.closest('button');
-      if (button && button.onclick && button.onclick.toString().includes(fieldId)) {
-        if (pwd.type === "text") {
-          icon.classList.remove('fa-eye');
-          icon.classList.add('fa-eye-slash');
-        } else {
-          icon.classList.remove('fa-eye-slash');
-          icon.classList.add('fa-eye');
-        }
-        console.log('Icon toggled for field:', fieldId);
-      }
-    });
-    
-  } catch (error) {
-    console.error('Error in togglePassword:', error);
-  }
-}
-
 document.addEventListener('DOMContentLoaded', function() {
   // Populate countries dropdown
   const countrySelect = document.getElementById("countrySelect");
@@ -67,12 +21,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+// ----------------------------
+// Toggle password visibility
+// ----------------------------
+function togglePassword(fieldId) {
+  const pwd = document.getElementById(fieldId);
+  const eyeIcon = pwd.parentElement.querySelector('i');
+  
+  if (pwd.type === "password") {
+    // Show password - change to eye-slash icon
+    pwd.type = "text";
+    eyeIcon.classList.remove('fa-eye');
+    eyeIcon.classList.add('fa-eye-slash');
+  } else {
+    // Hide password - change to eye icon
+    pwd.type = "password";
+    eyeIcon.classList.remove('fa-eye-slash');
+    eyeIcon.classList.add('fa-eye');
+  }
+}
+
   // ----------------------------
   // Password strength indicator
   // ----------------------------
   const strengthText = document.getElementById("passwordStrength");
   const passwordInput = document.getElementById("password");
-  if (passwordInput && strengthText) {
+  if (passwordInput) {
     passwordInput.addEventListener("input", function() {
       const val = this.value;
       if(val.length < 8){
@@ -146,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Check terms agreement
     if(!document.getElementById("terms").checked) {
-      showError("error-terms","You must agree to the terms");
+      showError("error-terms","You must agree to terms");
       isValid = false;
     } else {
       hideError("error-terms");
@@ -180,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = 'logino.html';
           }, 2000); // 2 seconds
 
-          // Reset the form
+          // Reset form
           form.reset();
           if (strengthText) strengthText.textContent = "";
         } else {

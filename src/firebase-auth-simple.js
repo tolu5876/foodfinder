@@ -12,37 +12,75 @@ const firebaseConfig = {
 // Initialize Firebase only if not already initialized
 let auth;
 try {
-  if (!firebase.apps.length) {
+  if (typeof firebase !== 'undefined' && !firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
+    auth = firebase.auth();
+    console.log('Firebase initialized successfully');
+  } else if (typeof firebase !== 'undefined') {
+    auth = firebase.auth();
+    console.log('Using existing Firebase instance');
+  } else {
+    throw new Error('Firebase not loaded');
   }
-  auth = firebase.auth();
 } catch (error) {
   console.error('Firebase initialization error:', error);
-  // Fallback to mock auth for testing
+  // Fallback to localStorage auth for testing
   auth = {
     createUserWithEmailAndPassword: async (email, password) => {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          resolve({
-            user: {
-              uid: 'mock_' + Date.now(),
-              email: email,
-              updateProfile: (data) => Promise.resolve()
-            }
+          // Check if user already exists in localStorage
+          const existingUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+          const emailExists = existingUsers.some(user => 
+            user.email.toLowerCase() === email.toLowerCase()
+          );
+          
+          if (emailExists) {
+            reject(new Error('email-already-in-use'));
+            return;
+          }
+          
+          const uid = 'mock_' + Date.now();
+          const user = {
+            uid: uid,
+            email: email,
+            displayName: email.split('@')[0],
+            updateProfile: (data) => Promise.resolve()
+          };
+          
+          // Save to localStorage
+          existingUsers.push({
+            email: email.toLowerCase(),
+            uid: uid,
+            registeredAt: new Date().toISOString()
           });
+          localStorage.setItem('registeredUsers', JSON.stringify(existingUsers));
+          
+          resolve({ user });
         }, 1000);
       });
     },
     signInWithEmailAndPassword: async (email, password) => {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          resolve({
-            user: {
-              uid: 'mock_' + Date.now(),
-              email: email,
-              displayName: email.split('@')[0]
-            }
-          });
+          // Check if user exists in localStorage
+          const existingUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+          const userExists = existingUsers.find(user => 
+            user.email.toLowerCase() === email.toLowerCase()
+          );
+          
+          if (!userExists) {
+            reject(new Error('user-not-found'));
+            return;
+          }
+          
+          const user = {
+            uid: userExists.uid,
+            email: email,
+            displayName: email.split('@')[0]
+          };
+          
+          resolve({ user });
         }, 1000);
       });
     },
@@ -50,6 +88,7 @@ try {
       return Promise.resolve();
     }
   };
+  console.log('Using localStorage fallback auth');
 }
 
 // Generate unique device ID
@@ -105,34 +144,58 @@ async function registerUser(userData) {
       displayName: `${userData.firstName} ${userData.lastName}`
     });
     
+    // Save complete user data to localStorage
+    const completeUserData = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      phone: userData.phone || '',
+      gender: userData.gender || '',
+      country: userData.country || '',
+      registeredAt: new Date().toISOString()
+    };
+    
+    // Save to registered users list
+    const existingUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+    existingUsers.push({
+      email: userData.email.toLowerCase(),
+      uid: user.uid,
+      registeredAt: new Date().toISOString()
+    });
+    localStorage.setItem('registeredUsers', JSON.stringify(existingUsers));
+    
+    // Save current user session
     saveSession({
-      user: {
-        uid: user.uid,
-        email: user.email,
-        displayName: user.displayName,
-        firstName: userData.firstName,
-        lastName: userData.lastName
-      },
+      user: completeUserData,
       deviceId: getDeviceId()
     });
+    
+    console.log('User registered successfully:', completeUserData);
     
     return { 
       success: true, 
       message: 'Registration successful!',
-      user: {
-        uid: user.uid,
-        email: user.email,
-        displayName: user.displayName,
-        firstName: userData.firstName,
-        lastName: userData.lastName
-      }
+      user: completeUserData
     };
     
   } catch (error) {
     console.error('Registration error:', error);
+    
+    // Handle specific Firebase errors
+    let errorMessage = error.message || 'Registration failed';
+    if (error.code === 'auth/email-already-in-use') {
+      errorMessage = 'User with this email already exists! Please login instead.';
+    } else if (error.code === 'auth/weak-password') {
+      errorMessage = 'Password is too weak. Please choose a stronger password.';
+    } else if (error.code === 'auth/invalid-email') {
+      errorMessage = 'Invalid email address. Please check and try again.';
+    }
+    
     return { 
       success: false, 
-      message: error.message || 'Registration failed' 
+      message: errorMessage
     };
   }
 }

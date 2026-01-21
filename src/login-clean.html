@@ -1,11 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FoodFindr - Login</title>
-    <link rel="stylesheet" href="login.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
     <div class="login-container">
@@ -40,7 +43,9 @@
           placeholder="Enter your email or phone number"
           class="input-field"
         />
-        <h6 class="error-message" id="error-email">Email or phone is required</h6>
+        <h6 class="error-message" id="error-email">
+          Email or phone is required
+        </h6>
 
         <label for="password">Password</label>
         <input
@@ -51,11 +56,15 @@
         />
         <h6 class="error-message" id="error-password">Password is required</h6>
 
-        <a href="#" class="forgot-password" id="forgotPasswordLink">Forgot Password?</a>
+        <a href="#" class="forgot-password" id="forgotPasswordLink"
+          >Forgot Password?</a
+        >
 
         <button type="submit" class="login-btn">Login</button>
         <p class="signup-link">
-          <a href="https://your-website.com/register">Don't have an account? Register here</a>
+          <a href="registration-clean.html"
+            >Don't have an account? Register here</a
+          >
         </p>
       </form>
     </div>
@@ -95,132 +104,157 @@
     <script src="firebase-auth-simple.js"></script>
 
     <script>
-        // Helper to show alerts
-        function showAlert(message, duration = 3000, type = "error") {
-            const alertDiv = document.getElementById("loginAlert");
-            if (!alertDiv) return;
+      // Helper to show alerts
+      function showAlert(message, duration = 3000, type = "error") {
+        const alertDiv = document.getElementById("loginAlert");
+        if (!alertDiv) return;
 
-            alertDiv.querySelector("div").textContent = message;
+        alertDiv.querySelector("div").textContent = message;
 
-            // Remove previous alert classes
-            alertDiv.classList.remove("alert-danger", "alert-success");
+        // Remove previous alert classes
+        alertDiv.classList.remove("alert-danger", "alert-success");
 
-            // Add class based on type and set background color
-            if (type === "success") {
-              alertDiv.classList.add("alert-success");
-              alertDiv.style.backgroundColor = "#27ae60";
-              alertDiv.style.color = "#ffffff";
-            } else {
-              alertDiv.classList.add("alert-danger");
-              alertDiv.style.backgroundColor = "#e74c3c";
-              alertDiv.style.color = "#ffffff";
-            }
-
-            alertDiv.style.display = "flex";
-
-            if (duration > 0) {
-              setTimeout(() => {
-                alertDiv.style.display = "none";
-              }, duration);
-            }
+        // Add class based on type and set background color
+        if (type === "success") {
+          alertDiv.classList.add("alert-success");
+          alertDiv.style.backgroundColor = "#27ae60";
+          alertDiv.style.color = "#ffffff";
+        } else {
+          alertDiv.classList.add("alert-danger");
+          alertDiv.style.backgroundColor = "#e74c3c";
+          alertDiv.style.color = "#ffffff";
         }
 
-        // Handle form submission
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
+        alertDiv.style.display = "flex";
 
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value.trim();
-            let valid = true;
+        if (duration > 0) {
+          setTimeout(() => {
+            alertDiv.style.display = "none";
+          }, duration);
+        }
+      }
 
-            // Required field validation
-            if (!email) {
-                showAlert("Email or phone is required!");
-                valid = false;
-            }
-            if (!password) {
-                showAlert("Password is required!");
-                valid = false;
-            }
+      // Handle form submission
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
 
-            if (!valid) {
-                return;
-            }
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value.trim();
+          let valid = true;
 
-            // Show loading state
-            const submitBtn = document.querySelector('.login-btn');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Logging in...';
-            submitBtn.disabled = true;
+          // Required field validation
+          if (!email) {
+            showAlert("Email or phone is required!");
+            valid = false;
+          }
+          if (!password) {
+            showAlert("Password is required!");
+            valid = false;
+          }
 
-            try {
-                // Use Firebase login
-                if (typeof window.loginUser === 'function') {
-                    const loginResult = await window.loginUser(email, password);
-                    
-                    if (loginResult.success) {
-                        showAlert("Login successful!", 1000, "success");
-                        setTimeout(() => {
-                            window.location.href = "Dashboard.html";
-                        }, 1000);
-                    } else {
-                        // Show specific error messages
-                        if (loginResult.message.includes('password')) {
-                            showAlert("Incorrect password! Please try again.");
-                        } else if (loginResult.message.includes('user') || loginResult.message.includes('email')) {
-                            showAlert("User not found! Please check your email or register.");
-                        } else {
-                            showAlert(loginResult.message || "Login failed! Please try again.");
-                        }
-                    }
+          if (!valid) {
+            return;
+          }
+
+          // Show loading state
+          const submitBtn = document.querySelector(".login-btn");
+          const originalText = submitBtn.textContent;
+          submitBtn.textContent = "Logging in...";
+          submitBtn.disabled = true;
+
+          try {
+            // Use Firebase login
+            if (typeof window.loginUser === "function") {
+              const loginResult = await window.loginUser(email, password);
+
+              if (loginResult.success) {
+                showAlert("Login successful!", 1000, "success");
+                setTimeout(() => {
+                  window.location.href = "Dashboard.html";
+                }, 1000);
+              } else {
+                // Show specific error messages
+                if (loginResult.message.includes("password")) {
+                  showAlert("Incorrect password! Please try again.");
+                } else if (
+                  loginResult.message.includes("user") ||
+                  loginResult.message.includes("email")
+                ) {
+                  showAlert(
+                    "User not found! Please check your email or register.",
+                  );
                 } else {
-                    showAlert("Authentication system not available. Please refresh the page.", 3000, "error");
+                  showAlert(
+                    loginResult.message || "Login failed! Please try again.",
+                  );
                 }
-            } catch (error) {
-                console.error('Login error:', error);
-                showAlert("Login failed. Please try again.", 3000, "error");
-            } finally {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
+              }
+            } else {
+              showAlert(
+                "Authentication system not available. Please refresh the page.",
+                3000,
+                "error",
+              );
             }
+          } catch (error) {
+            console.error("Login error:", error);
+            showAlert("Login failed. Please try again.", 3000, "error");
+          } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+          }
         });
 
-        // Forgot password functionality
-        document.getElementById('forgotPasswordLink').addEventListener('click', function (e) {
-            e.preventDefault();
-            document.getElementById('forgotPasswordModal').style.display = 'block';
+      // Forgot password functionality
+      document
+        .getElementById("forgotPasswordLink")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          document.getElementById("forgotPasswordModal").style.display =
+            "block";
         });
 
-        document.querySelector('.close').addEventListener('click', function () {
-            document.getElementById('forgotPasswordModal').style.display = 'none';
+      document.querySelector(".close").addEventListener("click", function () {
+        document.getElementById("forgotPasswordModal").style.display = "none";
+      });
+
+      document
+        .getElementById("resetForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const email = document.getElementById("resetEmail").value.trim();
+
+          if (!email) {
+            document.getElementById("resetAlert").style.display = "flex";
+            document
+              .getElementById("resetAlert")
+              .querySelector("div").textContent =
+              "Please enter your email address";
+            return;
+          }
+
+          // Simulate password reset
+          document.getElementById("resetAlert").style.display = "flex";
+          document
+            .getElementById("resetAlert")
+            .querySelector("div").textContent =
+            "Password reset link sent to your email!";
+
+          setTimeout(() => {
+            document.getElementById("forgotPasswordModal").style.display =
+              "none";
+            document.getElementById("resetAlert").style.display = "none";
+          }, 3000);
         });
 
-        document.getElementById('resetForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const email = document.getElementById('resetEmail').value.trim();
-            
-            if (!email) {
-                document.getElementById('resetAlert').style.display = 'flex';
-                document.getElementById('resetAlert').querySelector('div').textContent = 'Please enter your email address';
-                return;
-            }
-            
-            // Simulate password reset
-            document.getElementById('resetAlert').style.display = 'flex';
-            document.getElementById('resetAlert').querySelector('div').textContent = 'Password reset link sent to your email!';
-            
-            setTimeout(() => {
-                document.getElementById('forgotPasswordModal').style.display = 'none';
-                document.getElementById('resetAlert').style.display = 'none';
-            }, 3000);
-        });
-
-        // Close modal when clicking outside
-        window.addEventListener('click', function (e) {
-            if (e.target === document.getElementById('forgotPasswordModal')) {
-                document.getElementById('forgotPasswordModal').style.display = 'none';
-            }
-        });
+      // Close modal when clicking outside
+      window.addEventListener("click", function (e) {
+        if (e.target === document.getElementById("forgotPasswordModal")) {
+          document.getElementById("forgotPasswordModal").style.display = "none";
+        }
+      });
     </script>
   </body>
 </html>

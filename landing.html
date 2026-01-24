@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FoodFindr - Welcome</title>
+    <link rel="stylesheet" href="main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .landing-container {
+        text-align: center;
+        background: white;
+        padding: 60px 40px;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 90%;
+      }
+
+      .logo {
+        font-size: 60px;
+        color: #667eea;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 2.5em;
+      }
+
+      p {
+        color: #666;
+        margin-bottom: 30px;
+        font-size: 1.2em;
+      }
+
+      .nav-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-btn {
+        padding: 15px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+      }
+
+      .search-btn {
+        background: #667eea;
+        color: white;
+      }
+
+      .search-btn:hover {
+        background: #5a67d8;
+        transform: translateY(-2px);
+      }
+
+      .login-btn {
+        background: #48bb78;
+        color: white;
+      }
+
+      .login-btn:hover {
+        background: #38a169;
+        transform: translateY(-2px);
+      }
+
+      .register-btn {
+        background: #ed8936;
+        color: white;
+      }
+
+      .register-btn:hover {
+        background: #dd6b20;
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="landing-container">
+      <div class="logo">
+        <i class="fas fa-utensils"></i>
+      </div>
+      <h1>FoodFindr</h1>
+      <p>Discover amazing recipes and manage your culinary journey</p>
+
+      <div class="nav-buttons">
+        <a href="search.html" class="nav-btn search-btn">
+          <i class="fas fa-search"></i> Search Recipes
+        </a>
+        <a href="logino.html" class="nav-btn login-btn">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </a>
+        <a href="registration-clean.html" class="nav-btn register-btn">
+          <i class="fas fa-user-plus"></i> Register
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

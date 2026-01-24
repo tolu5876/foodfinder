@@ -1,7 +1,22 @@
 // ============================================
-// AUTHENTICATION SYSTEM
+// FIREBASE AUTHENTICATION SYSTEM
 // ============================================
-// Handles: Registration, Login, Session Management, Single Device Login
+// Handles: Registration, Login, Session Management, Firebase Backend
+
+// Firebase configuration
+const API_BASE = 'http://localhost:3000/api';
+const firebaseConfig = {
+  apiKey: '<API_KEY>',
+  authDomain: '<AUTH_DOMAIN>',
+  databaseURL: '<DATABASE_URL>',
+  projectId: '<PROJECT_ID>',
+  storageBucket: '<STORAGE_BUCKET>',
+  messagingSenderId: '<MESSAGING_SENDER_ID>',
+  appId: '<APP_ID>'
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 // Generate unique device ID
 function getDeviceId() {
@@ -13,151 +28,109 @@ function getDeviceId() {
   return deviceId;
 }
 
-// Get all registered users
-function getAllUsers() {
-  const usersJson = localStorage.getItem('registeredUsers');
-  return usersJson ? JSON.parse(usersJson) : [];
+// Get current session
+function getCurrentSession() {
+  const session = firebase.auth().currentUser;
+  return session ? session : null;
 }
 
-// Save all users
-function saveAllUsers(users) {
-  localStorage.setItem('registeredUsers', JSON.stringify(users));
+// Save session
+function saveSession(userData) {
+  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+  firebase.auth().signInWithEmailAndPassword(userData.email, userData.password);
 }
 
-// Check if email or phone already exists
-function userExists(email, phone) {
-  const users = getAllUsers();
-  return users.some(user => 
-    user.email.toLowerCase() === email.toLowerCase() || 
-    user.phone === phone
-  );
+// Clear session
+function clearSession() {
+  firebase.auth().signOut();
 }
 
-// Register new user
-function registerUser(userData) {
-  const users = getAllUsers();
-  
-  // Check if user already exists
-  if (userExists(userData.email, userData.phone)) {
-    return {
-      success: false,
-      message: 'Email or phone number already registered!'
-    };
-  }
-
-  // Create new user object
-  const newUser = {
-    id: 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
-    firstName: userData.firstName,
-    lastName: userData.lastName,
-    email: userData.email.toLowerCase(),
-    phone: userData.phone,
-    password: userData.password, // In production, this should be hashed
-    gender: userData.gender,
-    country: userData.country,
-    registeredAt: new Date().toISOString(),
-    deviceId: null, // Will be set on first login
-    lastLogin: null
-  };
-
-  // Add user to array
-  users.push(newUser);
-  saveAllUsers(users);
-
-  return {
-    success: true,
-    message: 'Registration successful!',
-    user: newUser
-  };
+// Check if user is logged in
+function checkSession() {
+  const session = getCurrentSession();
+  return session !== null;
 }
 
-// Find user by email or phone
-function findUser(emailOrPhone) {
-  const users = getAllUsers();
-  const input = emailOrPhone.trim().toLowerCase();
-  
-  return users.find(user => 
-    user.email.toLowerCase() === input || 
-    user.phone === emailOrPhone.trim()
-  );
+// Get current user
+function getCurrentUser() {
+  const session = getCurrentSession();
+  return session ? session.user : null;
 }
 
-// Login user
-function loginUser(emailOrPhone, password) {
-  const user = findUser(emailOrPhone);
-  
-  if (!user) {
-    return {
-      success: false,
-      message: 'Email/Phone or password is incorrect!'
-    };
+// Register new user with Firebase
+async function registerUser(userData) {
+  try {
+    const response = await firebase.auth().createUserWithEmailAndPassword(userData.email, userData.password);
+    const user = response.user;
+    await user.updateProfile({
+      displayName: userData.firstName + ' ' + userData.lastName,
+      phoneNumber: userData.phone
+    });
+    return { success: true, user: user };
+  } catch (error) {
+    console.error('Registration error:', error);
+    return { success: false, message: 'Registration failed' };
   }
+}
 
-  if (user.password !== password) {
-    return {
-      success: false,
-      message: 'Email/Phone or password is incorrect!'
-    };
+// Login user with Firebase
+async function loginUser(email, password) {
+  try {
+    const response = await firebase.auth().signInWithEmailAndPassword(email, password);
+    const user = response.user;
+    return { success: true, user: user };
+  } catch (error) {
+    console.error('Login error:', error);
+    return { success: false, message: 'Login failed' };
   }
+}
 
-  const currentDeviceId = getDeviceId();
-  
-  // Check if user is logged in on another device
-  const activeSession = getActiveSession();
-  if (activeSession && activeSession.userId === user.id && activeSession.deviceId !== currentDeviceId) {
-    return {
-      success: false,
-      message: 'You are already logged in on another device. Please logout from that device first.'
-    };
+// Logout user
+async function logoutUser() {
+  try {
+    await firebase.auth().signOut();
+    return { success: true, message: 'Logged out successfully' };
+  } catch (error) {
+    console.error('Logout error:', error);
+    return { success: true, message: 'Logged out' };
   }
+}
 
-  // Check if user has a device assigned and it's different
-  if (user.deviceId && user.deviceId !== currentDeviceId) {
-    return {
-      success: false,
-      message: 'This account is already logged in on another device. Please logout from that device first.'
-    };
+// Get user profile from Firebase
+async function getUserProfile(userId) {
+  try {
+    const user = await firebase.auth().currentUser;
+    return user ? user : null;
+  } catch (error) {
+    console.error('Get profile error:', error);
+    return null;
   }
-
-  // Update user device and last login
-  const users = getAllUsers();
-  const userIndex = users.findIndex(u => u.id === user.id);
-  if (userIndex !== -1) {
-    users[userIndex].deviceId = currentDeviceId;
-    users[userIndex].lastLogin = new Date().toISOString();
-    saveAllUsers(users);
-  }
-
-  // Create session (1 year expiration)
-  const oneYearFromNow = new Date();
-  oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1);
-  
-  const session = {
-    userId: user.id,
-    deviceId: currentDeviceId,
-    email: user.email,
-    phone: user.phone,
-    firstName: user.firstName,
-    lastName: user.lastName,
-    loginTime: new Date().toISOString(),
-    expiresAt: oneYearFromNow.toISOString()
-  };
-
-  localStorage.setItem('activeSession', JSON.stringify(session));
-  localStorage.setItem('isLoggedIn', 'true');
-
-  return {
-    success: true,
-    message: 'Login successful!',
-    user: user,
-    session: session
-  };
 }
 
 // Get active session
 function getActiveSession() {
-  const sessionJson = localStorage.getItem('activeSession');
-  if (!sessionJson) return null;
+  const session = firebase.auth().currentUser;
+  return session ? session : null;
+}
+
+// Get all registered users
+function getAllUsers() {
+  // Implement Firebase Realtime Database or Firestore to retrieve all users
+}
+
+// Save all users
+function saveAllUsers(users) {
+  // Implement Firebase Realtime Database or Firestore to save all users
+}
+
+// Check if email or phone already exists
+function userExists(email, phone) {
+  // Implement Firebase Realtime Database or Firestore to check if email or phone already exists
+}
+
+// Find user by email or phone
+function findUser(emailOrPhone) {
+  // Implement Firebase Realtime Database or Firestore to find user by email or phone
 
   const session = JSON.parse(sessionJson);
   

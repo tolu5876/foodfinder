@@ -1,47 +1,39 @@
 {
-  "buildCommand": "npm install",
-  "outputDirectory": ".",
-  "functions": {
-    "api/auth.js": {
-      "memory": 1024,
-      "maxDuration": 30
+  "version": 2,
+  "builds": [
+    {
+      "src": "**/*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "**/*.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "**/*.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "**/*.jpeg",
+      "use": "@vercel/static"
     }
-  },
+  ],
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/auth.js"
-    },
-    {
-      "src": "/src/(.*)",
-      "dest": "/src/$1"
-    },
-    {
-      "src": "/(.*\\.html)",
-      "dest": "/$1"
-    },
-    {
-      "src": "/(.*\\.css)",
-      "dest": "/$1"
-    },
-    {
-      "src": "/(.*\\.js)",
-      "dest": "/$1"
-    },
-    {
-      "src": "/photo-(.*)",
-      "dest": "/photo-$1"
-    },
     {
       "src": "/",
       "dest": "/index.html"
     },
     {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "src": "/login",
+      "dest": "/login-clean.html"
+    },
+    {
+      "src": "/register",
+      "dest": "/registration-clean.html"
+    },
+    {
+      "src": "/dashboard",
+      "dest": "/Dashboard.html"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }

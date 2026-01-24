@@ -727,6 +727,38 @@
         </div>
         <h1>FoodFindr</h1>
         <p class="subtitle">Premium Recipe Discovery Platform</p>
+        
+        <!-- Navigation Links -->
+        <div class="nav-links" style="margin-top: 20px; display: flex; gap: 15px; justify-content: center;">
+          <a href="login-clean.html" class="nav-link" style="color: var(--primary); text-decoration: none; font-weight: 500; padding: 8px 16px; border-radius: 8px; background: rgba(37, 99, 235, 0.1); transition: all 0.3s ease;">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </a>
+          <a href="registration-clean.html" class="nav-link" style="color: var(--secondary); text-decoration: none; font-weight: 500; padding: 8px 16px; border-radius: 8px; background: rgba(16, 185, 129, 0.1); transition: all 0.3s ease;">
+            <i class="fas fa-user-plus"></i> Register
+          </a>
+          <a href="Dashboard.html" class="nav-link" style="color: var(--accent); text-decoration: none; font-weight: 500; padding: 8px 16px; border-radius: 8px; background: rgba(245, 158, 11, 0.1); transition: all 0.3s ease;">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+          </a>
+        </div>
+        
+        <style>
+          .nav-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          }
+          .nav-link:nth-child(1):hover {
+            background: var(--primary);
+            color: white !important;
+          }
+          .nav-link:nth-child(2):hover {
+            background: var(--secondary);
+            color: white !important;
+          }
+          .nav-link:nth-child(3):hover {
+            background: var(--accent);
+            color: white !important;
+          }
+        </style>
       </div>
 
       <div class="search-section">

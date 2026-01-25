@@ -25,11 +25,11 @@
     },
     {
       "src": "/login",
-      "dest": "/login-clean.html"
+      "dest": "/src/login-clean.html"
     },
     {
       "src": "/register",
-      "dest": "/registration-clean.html"
+      "dest": "/src/registration-clean.html"
     },
     {
       "src": "/dashboard",

@@ -1,119 +1,159 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodFindr - Welcome</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .landing-container {
-            text-align: center;
-            background: white;
-            padding: 60px 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            max-width: 500px;
-            width: 90%;
-        }
-        
-        .logo {
-            font-size: 60px;
-            color: #667eea;
-            margin-bottom: 20px;
-        }
-        
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 2.5em;
-        }
-        
-        p {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 1.2em;
-        }
-        
-        .nav-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .nav-btn {
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-        
-        .search-btn {
-            background: #667eea;
-            color: white;
-        }
-        
-        .search-btn:hover {
-            background: #5a67d8;
-            transform: translateY(-2px);
-        }
-        
-        .login-btn {
-            background: #48bb78;
-            color: white;
-        }
-        
-        .login-btn:hover {
-            background: #38a169;
-            transform: translateY(-2px);
-        }
-        
-        .register-btn {
-            background: #ed8936;
-            color: white;
-        }
-        
-        .register-btn:hover {
-            background: #dd6b20;
-            transform: translateY(-2px);
-        }
-    </style>
-</head>
-<body>
-    <div class="landing-container">
-        <div class="logo">
-            <i class="fas fa-utensils"></i>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FoodFinder | Discover Food Near You</title>
+
+    <link rel="stylesheet" href="src/output.css" />
+  </head>
+
+  <body
+    class="min-h-screen bg-linear-to-br from-white via-orange-100 to-orange-400 text-gray-800"
+  >
+    <header
+      class="sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-orange-200"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <img
+            src="src/IMAGES/foodfinr_logo.png"
+            class="w-12 h-12 rounded-full"
+          />
+          <span class="text-xl font-bold text-gray-900">FoodieFindr</span>
         </div>
-        <h1>FoodFindr</h1>
-        <p>Discover amazing recipes and manage your culinary journey</p>
-        
-        <div class="nav-buttons">
-            <a href="search.html" class="nav-btn search-btn">
-                <i class="fas fa-search"></i> Search Recipes
-            </a>
-            <a href="login-clean.html" class="nav-btn login-btn">
-                <i class="fas fa-sign-in-alt"></i> Login
-            </a>
-            <a href="registration-clean.html" class="nav-btn register-btn">
-                <i class="fas fa-user-plus"></i> Register
-            </a>
+
+        <nav class="hidden md:flex items-center gap-8 font-medium">
+          <a href="index.html" class="hover:text-orange-600">Home</a>
+          <a href="src/login-clean.html" class="hover:text-orange-600">Login</a>
+          <a
+            href="src/registration-clean.html"
+            class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-lg shadow"
+          >
+            Get Started
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <section
+      class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-14 items-center"
+    >
+      <div>
+        <h2
+          class="text-5xl md:text-4xl font-extrabold text-gray-900 leading-tight"
+        >
+          Find Your Favorite Food,<br />
+          Fast.
+        </h2>
+
+        <p class="mt-6 text-lg text-gray-600 max-w-xl">
+          FoodFinder helps you discover restaurants, meals, and food vendors
+          around you in seconds.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            href="src/registration.html"
+            class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-xl shadow-lg"
+          >
+            Get Started
+          </a>
+
+          <a
+            href="src/logino.html"
+            class="border-2 border-orange-500 text-orange-500 hover:bg-orange-50 px-8 py-3 rounded-xl"
+          >
+            Login
+          </a>
         </div>
-    </div>
-</body>
+      </div>
+
+      <div class="flex justify-center">
+        <img
+          src="src/IMAGES/foodfindr_bg_img.jpg"
+          alt="Food"
+          class="rounded-3xl shadow-2xl w-full max-w-md"
+        />
+      </div>
+    </section>
+
+    <section class="bg-white/80 rounded-t-[3rem] py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <h3 class="text-3xl font-bold text-center mb-14">
+          Why Choose FoodFinder?
+        </h3>
+
+        <div class="grid gap-10 md:grid-cols-3">
+          <div class="bg-white p-8 rounded-2xl shadow-lg">
+            <h4 class="text-xl font-semibold text-orange-500 mb-3">
+              Smart Search
+            </h4>
+            <p class="text-gray-600">
+              Quickly find meals and restaurants near your location.
+            </p>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow-lg">
+            <h4 class="text-xl font-semibold text-orange-500 mb-3">
+              Fast & Simple
+            </h4>
+            <p class="text-gray-600">
+              User-friendly interface designed for speed and ease.
+            </p>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow-lg">
+            <h4 class="text-xl font-semibold text-orange-500 mb-3">
+              Secure Login
+            </h4>
+            <p class="text-gray-600">
+              Your account information is handled safely.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 text-center">
+      <h3 class="text-3xl font-bold mb-10">How It Works</h3>
+
+      <div class="flex flex-wrap justify-center gap-6">
+        <div
+          class="bg-linear-to-br from-orange-500 to-orange-400 text-white px-8 py-4 rounded-xl shadow-lg font-semibold"
+        >
+          1. Create an account
+        </div>
+        <div
+          class="bg-linear-to-br from-orange-500 to-orange-400 text-white px-8 py-4 rounded-xl shadow-lg font-semibold"
+        >
+          2. Login to FoodFinder
+        </div>
+        <div
+          class="bg-linear-to-br from-orange-500 to-orange-400 text-white px-8 py-4 rounded-xl shadow-lg font-semibold"
+        >
+          3. Discover food near you
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="bg-linear-to-br from-orange-600 to-orange-400 text-white text-center py-20 rounded-t-[3rem]"
+    >
+      <h3 class="text-4xl font-bold mb-6">Ready to find your next meal?</h3>
+
+      <a
+        href="src/registration.html"
+        class="inline-block bg-white text-orange-600 font-semibold px-10 py-4 rounded-xl shadow-lg hover:bg-orange-50"
+      >
+        Join FoodFinder
+      </a>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-300 text-center py-6">
+      © 2025 FoodFinder. All rights reserved.
+    </footer>
+  </body>
 </html>

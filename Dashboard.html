@@ -21,7 +21,7 @@
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center">
           <div class="flex items-center gap-3">
             <img
-              src="IMAGES/foodfinr_logo.png"
+              src="src/IMAGES/foodfinr_logo.png"
               class="w-12 h-12 rounded-full"
             />
             <span class="text-xl font-bold text-gray-900">FoodieFindr</span>
@@ -181,7 +181,7 @@
 
         <div>
           <img
-            src="IMAGES/foodfindr_bg_img.jpg"
+            src="src/IMAGES/foodfindr_bg_img.jpg"
             class="rounded-2xl shadow-lg w-full"
             alt="Food ingredients"
           />
@@ -195,26 +195,26 @@
             <h2 class="text-3xl font-bold text-gray-900 mb-4">
               Find Your Perfect Recipe
             </h2>
-            <p class="text-gray-600">
+            <p class="text-gray-600 text-lg">
               Search for any food and get instant access to ingredients and
               cooking instructions
             </p>
           </div>
 
-          <div class="max-w-xl mx-auto mb-8">
+          <div class="max-w-2xl mx-auto mb-8">
             <div
-              class="bg-white rounded-2xl shadow-lg p-6 border-2 border-transparent focus-within:border-orange-500 transition-all"
+              class="bg-white rounded-2xl shadow-xl p-8 border-2 border-transparent focus-within:border-orange-500 transition-all"
             >
-              <div class="flex gap-3">
+              <div class="flex flex-col sm:flex-row gap-4">
                 <input
                   type="text"
                   id="dashboardFoodInput"
-                  class="flex-1 px-4 py-3 text-lg rounded-lg border border-gray-200 focus:outline-none focus:border-orange-500"
+                  class="flex-1 px-6 py-4 text-lg rounded-xl border-2 border-gray-200 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all"
                   placeholder="Search a food (e.g., pizza, pasta, salad)"
                   aria-label="Food search input"
                 />
                 <button
-                  class="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-3 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105"
+                  class="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
                   onclick="searchDashboardFood()"
                   aria-label="Search for recipes"
                 >
@@ -224,27 +224,28 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    class="w-5 h-5"
+                    class="w-6 h-6"
                     viewBox="0 0 24 24"
                   >
                     <circle cx="11" cy="11" r="8"></circle>
                     <path d="m21 21-4.35-4.35"></path>
                   </svg>
-                  Search
+                  Search Recipes
                 </button>
               </div>
             </div>
           </div>
 
-          <div id="dashboardRecipeContainer" class="mt-8"></div>
-          <div id="dashboardLoader" class="hidden text-center py-8">
+          <div id="dashboardRecipeContainer" class="mt-12 max-w-6xl mx-auto"></div>
+          <div id="dashboardLoader" class="hidden text-center py-12">
             <div
-              class="inline-block w-12 h-12 border-4 border-gray-300 border-t-orange-500 rounded-full animate-spin"
+              class="inline-block w-16 h-16 border-4 border-gray-300 border-t-orange-500 rounded-full animate-spin"
             ></div>
+            <p class="mt-4 text-gray-600 font-medium">Searching for recipes...</p>
           </div>
           <p
             id="dashboardMessage"
-            class="text-center text-gray-600 py-6 hidden"
+            class="text-center text-gray-600 py-8 text-lg hidden"
           >
             Search for a food to get started 🍽️
           </p>
@@ -320,7 +321,7 @@
             class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
           >
             <img
-              src="IMAGES/foodfinr_logo.png"
+              src="src/IMAGES/foodfinr_logo.png"
               fill="none"
               stroke="currentColor"
               stroke-linecap="round"
@@ -537,7 +538,7 @@
               </div>
 
               <div class="text-center mt-6">
-                <a href="search.html?q=${encodeURIComponent(
+                <a href="src/search.html?q=${encodeURIComponent(
                   foodName,
                 )}" class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-all">
                   View More Recipes

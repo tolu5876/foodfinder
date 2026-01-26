@@ -104,6 +104,63 @@
     <script src="./firebase-auth-simple.js"></script>
 
     <script>
+      // Inline login function to avoid recursion issues
+      function performLogin(email, password) {
+        return new Promise((resolve) => {
+          console.log('Inline login started for:', email);
+          
+          setTimeout(() => {
+            try {
+              // Check if user exists in localStorage
+              const existingUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+              const userExists = existingUsers.find(user => 
+                user.email.toLowerCase() === email.toLowerCase()
+              );
+              
+              if (!userExists) {
+                resolve({ 
+                  success: false, 
+                  message: 'User not found! Please register first.' 
+                });
+                return;
+              }
+              
+              // Create user object
+              const user = {
+                uid: userExists.uid,
+                email: email,
+                displayName: email.split('@')[0]
+              };
+              
+              // Save session
+              localStorage.setItem('userSession', JSON.stringify({
+                user: {
+                  uid: user.uid,
+                  email: user.email,
+                  displayName: user.displayName
+                },
+                deviceId: 'device_' + Date.now()
+              }));
+              
+              console.log('Inline login successful:', user);
+              
+              resolve({ 
+                success: true, 
+                message: 'Login successful!',
+                user: user
+              });
+              
+            } catch (error) {
+              console.error('Inline login error:', error);
+              resolve({ 
+                success: false, 
+                message: 'Login failed. Please try again.' 
+              });
+            }
+          }, 100);
+        });
+      }
+
       // Helper to show alerts
       function showAlert(message, duration = 3000, type = "error") {
         const alertDiv = document.getElementById("loginAlert");
@@ -165,38 +222,23 @@
           submitBtn.disabled = true;
 
           try {
-            // Use Firebase login
-            if (typeof window.loginUser === "function") {
-              const loginResult = await window.loginUser(email, password);
+            // Use inline login function
+            console.log("Using inline login function...");
+            const loginResult = await performLogin(email, password);
+            console.log("Inline login result:", loginResult);
 
-              if (loginResult.success) {
-                showAlert("Login successful!", 1000, "success");
-                setTimeout(() => {
-                  window.location.href = "Dashboard.html";
-                }, 1000);
-              } else {
-                // Show specific error messages
-                if (loginResult.message.includes("password")) {
-                  showAlert("Incorrect password! Please try again.");
-                } else if (
-                  loginResult.message.includes("user") ||
-                  loginResult.message.includes("email")
-                ) {
-                  showAlert(
-                    "User not found! Please check your email or register.",
-                  );
-                } else {
-                  showAlert(
-                    loginResult.message || "Login failed! Please try again.",
-                  );
-                }
-              }
+            if (loginResult && loginResult.success) {
+              showAlert("Login successful!", 1000, "success");
+              setTimeout(() => {
+                window.location.href = "../Dashboard.html";
+              }, 1000);
             } else {
-              showAlert(
-                "Authentication system not available. Please refresh the page.",
-                3000,
-                "error",
-              );
+              // Show specific error messages
+              if (loginResult && loginResult.message) {
+                showAlert(loginResult.message);
+              } else {
+                showAlert("Login failed! Please try again.");
+              }
             }
           } catch (error) {
             console.error("Login error:", error);

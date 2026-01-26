@@ -111,33 +111,73 @@ document.addEventListener('DOMContentLoaded', function () {
     submitBtn.disabled = true;
 
     try {
-      // Use Firebase login
-      if (typeof window.loginUser === 'function') {
-        const loginResult = await window.loginUser(email, password);
-        
-        if (loginResult.success) {
-          showAlert("Login successful!", 1000, "success");
-          setTimeout(() => {
-            window.location.href = "Dashboard.html";
-          }, 1000);
-        } else {
-          // Show specific error messages
-          if (loginResult.message.includes('password')) {
-            showAlert("Incorrect password! Please try again.", 3000, "error");
-          } else if (loginResult.message.includes('user') || loginResult.message.includes('email')) {
-            showAlert("User not found! Please check your email or register.", 3000, "error");
-          } else if (loginResult.message.includes('too many')) {
-            showAlert("Too many login attempts. Please try again later.", 3000, "error");
-          } else {
-            showAlert(loginResult.message || "Login failed! Please try again.", 3000, "error");
-          }
-        }
-      } else {
-        showAlert("Authentication system not available. Please refresh the page.", 3000, "error");
+      // Inline login with proper password validation
+      console.log('Starting inline login for:', email);
+      console.log('Password entered:', password);
+      
+      // Debug: Check what's in localStorage
+      const storedUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      console.log('All stored users:', storedUsers);
+      
+      // Check if user exists in localStorage with password
+      const existingUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      const userExists = existingUsers.find(user => 
+        user.email.toLowerCase() === email.toLowerCase()
+      );
+      
+      console.log('Found user:', userExists);
+      
+      if (!userExists) {
+        showAlert("User not found! Please register first.", 3000, "error");
+        return;
       }
+      
+      // Debug password comparison
+      console.log('Stored password:', userExists.password);
+      console.log('Entered password:', password);
+      console.log('Password match:', userExists.password === password);
+      
+      // Check if password matches (you should store hashed passwords in real apps)
+      if (userExists.password !== password) {
+        showAlert("Incorrect password! Please try again.", 3000, "error");
+        return;
+      }
+      
+      // Create user session
+      const user = {
+        uid: userExists.uid,
+        email: email,
+        displayName: userExists.displayName || email.split('@')[0],
+        firstName: userExists.firstName,
+        lastName: userExists.lastName
+      };
+      
+      // Save session to localStorage
+      localStorage.setItem('userSession', JSON.stringify({
+        user: {
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName,
+          firstName: user.firstName,
+          lastName: user.lastName
+        },
+        deviceId: 'device_' + Date.now()
+      }));
+      
+      console.log('Login successful with correct credentials:', user);
+      
+      showAlert("Login successful!", 1000, "success");
+      setTimeout(() => {
+        window.location.href = "Dashboard.html";
+      }, 1000);
+      
     } catch (error) {
       console.error('Login error:', error);
-      showAlert("Login failed. Please try again.", 3000, "error");
+      if (error.message && error.message.includes('Maximum call stack')) {
+        showAlert("Login system error. Please refresh the page.", 5000, "error");
+      } else {
+        showAlert("Login failed. Please try again.", 3000, "error");
+      }
     } finally {
       submitBtn.textContent = originalText;
       submitBtn.disabled = false;

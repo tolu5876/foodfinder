@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -131,10 +131,10 @@
       .about {
         padding: 90px 10%;
       }
-.abt{
-  border-bottom: 2px rgb(255, 123, 0) solid;
-  padding-bottom: 1px;
-}
+      .abt {
+        border-bottom: 2px rgb(255, 123, 0) solid;
+        padding-bottom: 1px;
+      }
       .about-container {
         display: flex;
         gap: 50px;
@@ -267,7 +267,11 @@
       <h2>Find Your Favorite Food</h2>
       <p>Discover the best restaurants, cafes, and hidden gems near you.</p>
       <button
-        onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'})"
+        onclick="
+          document
+            .querySelector('#about')
+            .scrollIntoView({ behavior: 'smooth' })
+        "
       >
         Learn More
       </button>

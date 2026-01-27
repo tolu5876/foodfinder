@@ -4,7 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us | FoodieFindr</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../output.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+    </style>
   </head>
   <body
     class="min-h-screen bg-gradient-to-br from-orange-50 via-orange-100 to-orange-300"
@@ -158,7 +171,7 @@
                 <path
                   class="opacity-75"
                   fill="currentColor"
-                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                 ></path>
               </svg>
             </button>
@@ -203,6 +216,11 @@
       const submitBtn = document.getElementById("submitBtn");
       const btnText = document.getElementById("btnText");
       const loader = document.getElementById("loader");
+      
+      // Get form elements with correct IDs
+      const name = document.getElementById("user_name");
+      const email = document.getElementById("user_email");
+      const message = document.getElementById("message");
 
       // ERROR ALERT
       const errorAlert = document.createElement("div");
@@ -215,10 +233,10 @@
 
       form.addEventListener("submit", function (e) {
         e.preventDefault();
-
-        const name = document.getElementById("user_name");
-        const email = document.getElementById("user_email");
-        const message = document.getElementById("message");
+        console.log("Form submitted!");
+        console.log("Name:", name.value);
+        console.log("Email:", email.value);
+        console.log("Message:", message.value);
 
         // hide alerts
         successAlert.style.display = "none";
@@ -230,6 +248,7 @@
           !email.value.trim() ||
           !message.value.trim()
         ) {
+          console.log("Validation failed!");
           errorAlert.style.display = "block";
           setTimeout(() => {
             errorAlert.style.display = "none";
@@ -298,6 +317,7 @@
         }
 
         // LOADING
+        console.log("Starting email send process...");
         submitBtn.disabled = true;
         btnText.textContent = "Sending...";
         loader.classList.remove("hidden");
@@ -314,13 +334,40 @@
         );
         formData.append("from_name", "FoodieFindr Contact Form");
 
+        console.log("Sending to Web3Forms with data:", Object.fromEntries(formData));
+        console.log("Access key:", ACCESS_KEY);
+        console.log("Access key length:", ACCESS_KEY.length);
+        console.log("Access key format:", ACCESS_KEY.includes('-') ? 'UUID format' : 'Invalid format');
+        
+        // Test if access key looks valid (UUID format)
+        if (!ACCESS_KEY || ACCESS_KEY === "YOUR_ACCESS_KEY_HERE" || ACCESS_KEY.trim() === "") {
+          throw new Error("Access key is not configured properly");
+        }
+        
+        if (ACCESS_KEY.length !== 36 || !ACCESS_KEY.includes('-')) {
+          console.warn("⚠️ Access key might be invalid - should be 36 characters with dashes");
+        }
+
         fetch("https://api.web3forms.com/submit", {
           method: "POST",
           body: formData,
         })
           .then(async (response) => {
-            let json = await response.json();
-            console.log("Response:", json);
+            console.log("=== WEB3FORMS API RESPONSE ===");
+            console.log("Status:", response.status);
+            console.log("Status Text:", response.statusText);
+            console.log("Headers:", [...response.headers.entries()]);
+            
+            let json;
+            try {
+              json = await response.json();
+              console.log("Response JSON:", json);
+            } catch (e) {
+              console.log("Failed to parse JSON:", e);
+              const text = await response.text();
+              console.log("Response Text:", text);
+              throw new Error("Invalid response from Web3Forms");
+            }
 
             if (response.status === 200 && json.success) {
               // SUCCESS
@@ -329,16 +376,60 @@
               btnText.textContent = "Send Message";
               loader.classList.add("hidden");
 
+              // Show success alert on top of form
               successAlert.innerHTML =
-                "<strong>✅ Success!</strong> Your message has been sent to foodfindr27@gmail.com";
+                "<strong>✅ Message Sent Successfully!</strong><br>Your message has been delivered to foodfindr27@gmail.com<br><small>⏰ Email may take 1-5 minutes to arrive</small>";
               successAlert.style.display = "block";
+              successAlert.style.position = "fixed";
+              successAlert.style.top = "50%";
+              successAlert.style.left = "50%";
+              successAlert.style.transform = "translate(-50%, -50%)";
+              successAlert.style.zIndex = "9999";
+              successAlert.style.backgroundColor = "#10b981";
+              successAlert.style.color = "white";
+              successAlert.style.padding = "20px 30px";
+              successAlert.style.borderRadius = "12px";
+              successAlert.style.boxShadow = "0 10px 25px rgba(0,0,0,0.2)";
+              successAlert.style.fontSize = "16px";
+              successAlert.style.fontWeight = "bold";
+              successAlert.style.textAlign = "center";
+              successAlert.style.minWidth = "350px";
+              successAlert.style.animation = "slideIn 0.3s ease-out";
+              
+              // Save message locally as backup
+              const messageData = {
+                name: name.value.trim(),
+                email: email.value.trim(),
+                message: message.value.trim(),
+                timestamp: new Date().toISOString(),
+                submitted: true
+              };
+              
+              // Save to localStorage for backup
+              let savedMessages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+              savedMessages.push(messageData);
+              localStorage.setItem('contactMessages', JSON.stringify(savedMessages));
+              
+              console.log("✅ Success alert should be visible now!");
+              console.log("💾 Message saved locally as backup");
+              
+              // Also show a browser alert for confirmation
+              alert("✅ Message sent successfully!\n\nYour message has been delivered to foodfindr27@gmail.com\n\n⏰ Note: Email may take 1-5 minutes to arrive in Gmail\n💾 Message saved locally as backup");
+              
               form.reset();
 
               setTimeout(() => {
                 successAlert.style.display = "none";
+                console.log("✅ Success alert hidden after 6 seconds");
               }, 6000);
             } else {
               // ERROR from API
+              console.log("❌ Web3Forms error:");
+              console.log("Status:", response.status);
+              console.log("Success:", json.success);
+              console.log("Message:", json.message);
+              console.log("Errors:", json.errors);
+              
               let errorMsg = json.message || "Failed to send message";
               if (json.errors) {
                 errorMsg += " - " + JSON.stringify(json.errors);

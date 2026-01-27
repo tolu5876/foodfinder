@@ -278,245 +278,278 @@ label {
 
 /* ====== MEDIA QUERIES ====== */
 
-/* Tablets and smaller desktops (1024px and below) */
+/* Extra Large Desktop (1400px and up) */
+@media (min-width: 1400px) {
+  .login-container {
+    max-width: 500px;
+    padding: 50px;
+  }
+  
+  h2 {
+    font-size: 32px;
+  }
+  
+  p {
+    font-size: 16px;
+  }
+  
+  .input-field {
+    font-size: 16px;
+    padding: 18px;
+  }
+  
+  .login-btn {
+    font-size: 18px;
+    padding: 18px;
+  }
+}
+
+/* Large Desktop (1200px to 1399px) */
+@media (max-width: 1399px) {
+  .login-container {
+    max-width: 480px;
+    padding: 45px;
+  }
+  
+  h2 {
+    font-size: 30px;
+  }
+}
+
+/* Desktop (1025px to 1199px) */
+@media (max-width: 1199px) {
+  .login-container {
+    max-width: 460px;
+    padding: 42px;
+  }
+  
+  h2 {
+    font-size: 29px;
+  }
+}
+
+/* Tablets and smaller desktops (768px to 1024px) */
 @media (max-width: 1024px) {
   body {
     padding-top: 30px;
   }
-
+  
   .login-container {
-    max-width: 90%;
+    max-width: 420px;
     padding: 35px;
   }
-
+  
   h2 {
-    font-size: 24px;
+    font-size: 26px;
   }
-
-  .modal-content {
-    max-width: 90%;
-    padding: 30px;
+  
+  p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .input-field {
+    padding: 15px;
+  }
+  
+  .login-btn {
+    padding: 15px;
+    font-size: 16px;
   }
 }
 
-/* Tablets (768px and below) */
-@media (max-width: 768px) {
+/* Large Tablets (600px to 767px) */
+@media (max-width: 767px) {
   body {
     padding-top: 20px;
     align-items: center;
   }
-
+  
   .login-container {
-    max-width: 95%;
+    max-width: 380px;
     padding: 30px;
-    margin: 10px;
+    margin: 20px;
   }
-
+  
   h2 {
-    font-size: 22px;
+    font-size: 24px;
     margin-bottom: 8px;
   }
-
+  
   p {
     font-size: 13px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
-
-  label {
-    font-size: 13px;
-    margin-top: 12px;
-  }
-
+  
   .input-field {
-    padding: 10px;
-    font-size: 13px;
-    margin-top: 5px;
+    padding: 14px;
+    font-size: 14px;
   }
-
-  .forgot-password {
-    font-size: 12px;
-    margin-top: 8px;
-    margin-bottom: 15px;
-  }
-
+  
   .login-btn {
-    padding: 11px;
+    padding: 14px;
     font-size: 15px;
-    margin-top: 15px;
   }
-
+  
+  .forgot-password {
+    font-size: 13px;
+  }
+  
   .signup-link {
     font-size: 13px;
-    margin-top: 15px;
-  }
-
-  .modal-content {
-    max-width: 85%;
-    padding: 25px;
-    margin: 30% auto;
-  }
-
-  .modal-content h3 {
-    font-size: 19px;
-    margin-bottom: 8px;
-  }
-
-  .modal-content p {
-    font-size: 13px;
-    margin-bottom: 15px;
-  }
-
-  .close {
-    font-size: 24px;
-  }
-
-  #resetForm input {
-    padding: 10px;
-    font-size: 13px;
-    margin-top: 5px;
-    margin-bottom: 12px;
-  }
-
-  .reset-btn {
-    padding: 11px;
-    font-size: 15px;
   }
 }
 
-/* Mobile phones (480px and below) */
-@media (max-width: 480px) {
+/* Small Tablets (480px to 599px) */
+@media (max-width: 599px) {
   body {
     padding-top: 15px;
   }
-
+  
   .login-container {
-    max-width: 100%;
-    padding: 20px;
-    border-radius: 6px;
-    margin: 0 10px;
+    max-width: 350px;
+    padding: 25px;
+    margin: 15px;
   }
+  
+  h2 {
+    font-size: 22px;
+  }
+  
+  p {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+  
+  .input-field {
+    padding: 12px;
+    font-size: 13px;
+  }
+  
+  .login-btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+  
+  .forgot-password {
+    font-size: 12px;
+  }
+  
+  .signup-link {
+    font-size: 12px;
+  }
+}
 
+/* Mobile phones (360px to 479px) */
+@media (max-width: 479px) {
+  body {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  
+  .login-container {
+    max-width: 320px;
+    padding: 20px;
+    margin: 10px;
+  }
+  
   h2 {
     font-size: 20px;
     margin-bottom: 6px;
   }
-
+  
   p {
     font-size: 12px;
-    margin-bottom: 15px;
-  }
-
-  label {
-    font-size: 12px;
-    margin-top: 10px;
-  }
-
-  .input-field {
-    padding: 9px;
-    font-size: 12px;
-    margin-top: 4px;
-    margin-bottom: 3px;
-  }
-
-  .forgot-password {
-    font-size: 11px;
-    margin-top: 6px;
     margin-bottom: 12px;
   }
-
+  
+  .input-field {
+    padding: 10px;
+    font-size: 12px;
+  }
+  
   .login-btn {
     padding: 10px;
-    font-size: 14px;
-    margin-top: 12px;
+    font-size: 13px;
   }
-
-  .login-btn:hover {
-    transform: scale(1.01);
+  
+  .forgot-password {
+    font-size: 11px;
   }
-
+  
   .signup-link {
-    font-size: 12px;
-    margin-top: 12px;
+    font-size: 11px;
   }
-
-  .modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .modal-content {
-    max-width: 90vw;
-    padding: 20px;
-    margin: 0;
-  }
-
-  .modal-content h3 {
-    font-size: 18px;
-    margin-bottom: 6px;
-  }
-
-  .modal-content p {
-    font-size: 12px;
-    margin-bottom: 12px;
-  }
-
-  .close {
-    font-size: 22px;
-  }
-
-  #resetForm label {
-    font-size: 12px;
-    margin-top: 10px;
-  }
-
-  #resetForm input {
-    padding: 9px;
-    font-size: 12px;
-    margin-top: 4px;
-    margin-bottom: 10px;
-  }
-
-  .reset-btn {
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  .reset-btn:hover {
-    transform: scale(1.01);
+  
+  .error-message {
+    font-size: 10px;
   }
 }
 
-/* Extra small devices (360px and below) */
-@media (max-width: 360px) {
+/* Small Mobile (320px to 359px) */
+@media (max-width: 359px) {
   .login-container {
     padding: 15px;
+    margin: 8px;
   }
-
+  
   h2 {
     font-size: 18px;
   }
-
+  
   p {
     font-size: 11px;
   }
-
-  label {
-    font-size: 11px;
-  }
-
+  
   .input-field {
     padding: 8px;
     font-size: 11px;
   }
-
-  .login-btn,
-  .reset-btn {
-    padding: 9px;
-    font-size: 13px;
+  
+  .login-btn {
+    padding: 8px;
+    font-size: 12px;
   }
+  
+  .forgot-password {
+    font-size: 10px;
+  }
+  
+  .signup-link {
+    font-size: 10px;
+  }
+}
 
-  .modal-content {
-    padding: 15px;
+/* Ultra Small Mobile (280px to 319px) */
+@media (max-width: 319px) {
+  .login-container {
+    padding: 12px;
+    margin: 5px;
+  }
+  
+  h2 {
+    font-size: 16px;
+  }
+  
+  p {
+    font-size: 10px;
+  }
+  
+  .input-field {
+    padding: 6px;
+    font-size: 10px;
+  }
+  
+  .login-btn {
+    padding: 6px;
+    font-size: 11px;
+  }
+  
+  .forgot-password {
+    font-size: 9px;
+  }
+  
+  .signup-link {
+    font-size: 9px;
   }
 }

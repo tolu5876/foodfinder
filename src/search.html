@@ -314,9 +314,6 @@
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         animation: fadeInUp 1s ease-out 0.3s both;
       }
-        text-transform: uppercase;
-        position: relative;
-      }
 
       .subtitle::after {
         content: "";
@@ -803,7 +800,75 @@
 
       /* ===== MEDIA QUERIES ===== */
 
-      /* Tablets */
+      /* Extra Large Desktop (1400px and up) */
+      @media (min-width: 1400px) {
+        .app {
+          width: 85%;
+          max-width: 1400px;
+        }
+        
+        .app-container {
+          padding: 60px;
+        }
+        
+        h1 {
+          font-size: 4.5rem;
+        }
+        
+        .logo {
+          width: 140px;
+          height: 140px;
+        }
+        
+        .search-input {
+          font-size: 1.3rem;
+          padding: 28px 32px;
+        }
+        
+        .search-btn {
+          padding: 28px 40px;
+          font-size: 1.2rem;
+        }
+      }
+
+      /* Large Desktop (1200px to 1399px) */
+      @media (max-width: 1399px) {
+        .app {
+          width: 88%;
+          max-width: 1300px;
+        }
+        
+        .app-container {
+          padding: 55px;
+        }
+        
+        h1 {
+          font-size: 4.2rem;
+        }
+      }
+
+      /* Desktop (1025px to 1199px) */
+      @media (max-width: 1199px) {
+        .app {
+          width: 90%;
+          max-width: 1100px;
+        }
+        
+        .app-container {
+          padding: 50px;
+        }
+        
+        h1 {
+          font-size: 4rem;
+        }
+        
+        .logo {
+          width: 120px;
+          height: 120px;
+        }
+      }
+
+      /* Tablets (768px to 1024px) */
       @media (max-width: 1024px) {
         .app {
           width: 95%;
@@ -812,12 +877,50 @@
         }
         
         .app-container {
-          padding: 30px;
+          padding: 40px 30px;
+          border-radius: 25px;
+        }
+
+        h1 {
+          font-size: 3.5rem;
+        }
+
+        .subtitle {
+          font-size: 1.3rem;
+        }
+        
+        .logo {
+          width: 110px;
+          height: 110px;
+          margin-bottom: 30px;
+        }
+        
+        .search-section {
+          padding: 40px;
+        }
+        
+        .search-title {
+          font-size: 1.8rem;
+        }
+        
+        .search-input {
+          font-size: 1.1rem;
+          padding: 22px 26px;
+        }
+        
+        .search-btn {
+          padding: 22px 32px;
+          font-size: 1rem;
+        }
+        
+        .recipe-grid {
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 1.3rem;
         }
       }
 
-      /* Large tablets */
-      @media (max-width: 768px) {
+      /* Large Tablets (600px to 767px) */
+      @media (max-width: 767px) {
         body {
           padding: 0;
         }
@@ -829,21 +932,61 @@
         }
         
         .app-container {
-          padding: 25px 20px;
+          padding: 35px 25px;
           border-radius: 20px;
         }
 
         h1 {
-          font-size: 2.8rem;
+          font-size: 3rem;
         }
 
         .subtitle {
           font-size: 1.2rem;
         }
+        
+        .logo {
+          width: 100px;
+          height: 100px;
+          margin-bottom: 25px;
+        }
+        
+        .search-section {
+          padding: 35px;
+        }
+        
+        .search-title {
+          font-size: 1.6rem;
+        }
+        
+        .search-controls {
+          flex-direction: column;
+          gap: 15px;
+        }
+        
+        .search-input {
+          font-size: 1rem;
+          padding: 20px 24px;
+        }
+        
+        .search-btn {
+          padding: 20px 30px;
+          font-size: 1rem;
+          width: 100%;
+          justify-content: center;
+        }
+        
+        .recipe-grid {
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 1.2rem;
+        }
+        
+        .recipe-card {
+          padding: 1.2rem;
+        }
       }
 
-      /* Small tablets */
-      @media (max-width: 600px) {
+      /* Small Tablets (480px to 599px) */
+      @media (max-width: 599px) {
         .app {
           width: 98%;
           max-width: 100%;
@@ -851,21 +994,58 @@
         }
         
         .app-container {
-          padding: 20px 15px;
-          border-radius: 16px;
+          padding: 30px 20px;
+          border-radius: 18px;
         }
 
         h1 {
-          font-size: 2.4rem;
+          font-size: 2.8rem;
         }
 
         .subtitle {
           font-size: 1.1rem;
         }
+        
+        .logo {
+          width: 90px;
+          height: 90px;
+          margin-bottom: 20px;
+        }
+        
+        .search-section {
+          padding: 30px;
+        }
+        
+        .search-title {
+          font-size: 1.5rem;
+        }
+        
+        .search-input {
+          font-size: 0.95rem;
+          padding: 18px 22px;
+        }
+        
+        .search-btn {
+          padding: 18px 28px;
+          font-size: 0.95rem;
+        }
+        
+        .recipe-grid {
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          gap: 1rem;
+        }
+        
+        .recipe-card {
+          padding: 1rem;
+        }
+        
+        .recipe-image {
+          height: 180px;
+        }
       }
 
-      /* Mobile phones */
-      @media (max-width: 480px) {
+      /* Mobile Phones (360px to 479px) */
+      @media (max-width: 479px) {
         body {
           padding: 0;
         }
@@ -877,10 +1057,81 @@
         }
         
         .app-container {
-          padding: 20px 12px;
+          padding: 25px 15px;
           margin: 0;
           border-radius: 0;
           min-height: 100vh;
+        }
+
+        h1 {
+          font-size: 2.4rem;
+        }
+
+        .subtitle {
+          font-size: 1rem;
+        }
+        
+        .logo {
+          width: 80px;
+          height: 80px;
+          margin-bottom: 18px;
+        }
+        
+        .search-section {
+          padding: 25px;
+          border-radius: 15px;
+        }
+        
+        .search-title {
+          font-size: 1.4rem;
+        }
+        
+        .search-controls {
+          gap: 12px;
+        }
+        
+        .search-input {
+          font-size: 0.9rem;
+          padding: 16px 20px;
+        }
+        
+        .search-btn {
+          padding: 16px 24px;
+          font-size: 0.9rem;
+        }
+        
+        .recipe-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+        
+        .recipe-card {
+          padding: 0.8rem;
+        }
+        
+        .recipe-image {
+          height: 160px;
+        }
+        
+        .recipe-title {
+          font-size: 1.1rem;
+        }
+        
+        .results-section {
+          padding: 12px;
+        }
+      }
+
+      /* Small Mobile (320px to 359px) */
+      @media (max-width: 359px) {
+        .app {
+          width: 100%;
+          margin: 0;
+        }
+        
+        .app-container {
+          padding: 20px 12px;
+          margin: 0;
         }
 
         h1 {
@@ -888,31 +1139,93 @@
         }
 
         .subtitle {
-          font-size: 1rem;
+          font-size: 0.9rem;
         }
-
-        .results-section {
-          padding: 12px;
+        
+        .logo {
+          width: 70px;
+          height: 70px;
+          margin-bottom: 15px;
+        }
+        
+        .search-section {
+          padding: 20px;
+        }
+        
+        .search-title {
+          font-size: 1.3rem;
+        }
+        
+        .search-input {
+          font-size: 0.85rem;
+          padding: 14px 18px;
+        }
+        
+        .search-btn {
+          padding: 14px 20px;
+          font-size: 0.85rem;
+        }
+        
+        .recipe-card {
+          padding: 0.6rem;
+        }
+        
+        .recipe-image {
+          height: 140px;
+        }
+        
+        .recipe-title {
+          font-size: 1rem;
         }
       }
 
-      /* Small mobile */
-      @media (max-width: 360px) {
-        .app {
-          width: 100%;
-          margin: 0;
-        }
-        
+      /* Ultra Small Mobile (280px to 319px) */
+      @media (max-width: 319px) {
         .app-container {
           padding: 15px 10px;
-          margin: 0;
         }
-
+        
         h1 {
           font-size: 1.8rem;
         }
-
+        
         .subtitle {
+          font-size: 0.8rem;
+        }
+        
+        .logo {
+          width: 60px;
+          height: 60px;
+          margin-bottom: 12px;
+        }
+        
+        .search-section {
+          padding: 15px;
+        }
+        
+        .search-title {
+          font-size: 1.2rem;
+        }
+        
+        .search-input {
+          font-size: 0.8rem;
+          padding: 12px 16px;
+        }
+        
+        .search-btn {
+          padding: 12px 18px;
+          font-size: 0.8rem;
+        }
+        
+        .recipe-card {
+          padding: 0.5rem;
+        }
+        
+        .recipe-image {
+          height: 120px;
+        }
+        
+        .recipe-title {
           font-size: 0.9rem;
         }
       }

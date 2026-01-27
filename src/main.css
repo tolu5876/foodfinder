@@ -164,134 +164,179 @@ body {
 
 /* ====== MEDIA QUERIES ====== */
 
-/* Tablets and smaller desktops (1024px and below) */
+/* Extra Large Desktop (1400px and up) */
+@media (min-width: 1400px) {
+  .form-container {
+    max-width: 500px;
+    padding: 50px;
+  }
+  
+  h2 {
+    font-size: 32px;
+  }
+  
+  p {
+    font-size: 16px;
+  }
+  
+  .input-field {
+    font-size: 16px;
+    padding: 18px;
+  }
+  
+  .register-btn {
+    font-size: 18px;
+    padding: 18px;
+  }
+}
+
+/* Large Desktop (1200px to 1399px) */
+@media (max-width: 1399px) {
+  .form-container {
+    max-width: 480px;
+    padding: 45px;
+  }
+  
+  h2 {
+    font-size: 30px;
+  }
+}
+
+/* Desktop (1025px to 1199px) */
+@media (max-width: 1199px) {
+  .form-container {
+    max-width: 460px;
+    padding: 42px;
+  }
+  
+  h2 {
+    font-size: 29px;
+  }
+}
+
+/* Tablets and smaller desktops (768px to 1024px) */
 @media (max-width: 1024px) {
   body {
     padding-top: 30px;
   }
-
+  
   .form-container {
-    width: 50%;
-    padding: 25px;
+    max-width: 420px;
+    padding: 35px;
   }
-
+  
   h2 {
-    font-size: 24px;
+    font-size: 26px;
   }
-
+  
   p {
     font-size: 14px;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
-
-  label {
-    font-size: 13px;
-    margin-top: 12px;
+  
+  .input-field {
+    padding: 15px;
+    font-size: 14px;
   }
-
-  input,
-  select {
-    padding: 9px;
-    font-size: 13px;
-  }
-
-  .error-message {
-    font-size: 11px;
-  }
-
-  .subt {
-    padding: 9px;
-    font-size: 15px;
+  
+  .register-btn {
+    padding: 15px;
+    font-size: 16px;
   }
 }
 
-/* Tablets (768px and below) */
-@media (max-width: 768px) {
+/* Large Tablets (600px to 767px) */
+@media (max-width: 767px) {
   body {
     padding-top: 20px;
     align-items: center;
   }
-
+  
   .form-container {
-    width: 85%;
-    max-width: 100%;
-    padding: 25px;
-    height: auto;
+    max-width: 380px;
+    padding: 30px;
+    margin: 20px;
   }
-
+  
   h2 {
-    font-size: 22px;
-    margin-bottom: 10px;
+    font-size: 24px;
+    margin-bottom: 8px;
   }
-
+  
   p {
     font-size: 13px;
     margin-bottom: 18px;
   }
-
-  label {
-    font-size: 12px;
-    margin-top: 12px;
+  
+  .input-field {
+    padding: 14px;
+    font-size: 14px;
   }
-
-  input,
-  select {
-    padding: 10px;
-    font-size: 13px;
-    margin-top: 3px;
-    margin-bottom: 2px;
-  }
-
-  .error-message {
-    font-size: 11px;
-    margin-bottom: 8px;
-  }
-
-  .subt {
-    margin-top: 18px;
-    padding: 10px;
+  
+  .register-btn {
+    padding: 14px;
     font-size: 15px;
   }
-
-  #form-data {
-    margin-top: 25px;
-    padding: 15px;
-  }
-
-  #form-data h3 {
-    font-size: 16px;
-  }
-
-  #uploaded-image {
-    margin-top: 10px;
+  
+  .error-message {
+    font-size: 11px;
   }
 }
 
-/* Mobile phones (480px and below) */
-@media (max-width: 480px) {
+/* Small Tablets (480px to 599px) */
+@media (max-width: 599px) {
   body {
     padding-top: 15px;
-    padding-bottom: 15px;
   }
-
+  
   .form-container {
-    width: 95%;
-    max-width: 100%;
-    padding: 20px;
-    border-radius: 5px;
-    margin: 0 10px;
+    max-width: 350px;
+    padding: 25px;
+    margin: 15px;
   }
-
+  
   h2 {
-    font-size: 20px;
-    margin-bottom: 8px;
+    font-size: 22px;
   }
-
+  
   p {
     font-size: 12px;
     margin-bottom: 15px;
   }
+  
+  .input-field {
+    padding: 12px;
+    font-size: 13px;
+  }
+  
+  .register-btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+  
+  .error-message {
+    font-size: 10px;
+  }
+}
 
+/* Mobile phones (360px to 479px) */
+@media (max-width: 479px) {
+  body {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  
+  .form-container {
+    max-width: 320px;
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  h2 {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+  
   label {
     font-size: 11px;
     margin-top: 10px;
@@ -382,5 +427,65 @@ body {
 
   #form-data h3 {
     font-size: 13px;
+  }
+}
+
+/* Small Mobile (320px to 359px) */
+@media (max-width: 359px) {
+  .form-container {
+    padding: 15px;
+    margin: 8px;
+  }
+  
+  h2 {
+    font-size: 18px;
+  }
+  
+  p {
+    font-size: 11px;
+  }
+  
+  .input-field {
+    padding: 8px;
+    font-size: 11px;
+  }
+  
+  .register-btn {
+    padding: 8px;
+    font-size: 12px;
+  }
+  
+  .error-message {
+    font-size: 8px;
+  }
+}
+
+/* Ultra Small Mobile (280px to 319px) */
+@media (max-width: 319px) {
+  .form-container {
+    padding: 12px;
+    margin: 5px;
+  }
+  
+  h2 {
+    font-size: 16px;
+  }
+  
+  p {
+    font-size: 10px;
+  }
+  
+  .input-field {
+    padding: 6px;
+    font-size: 10px;
+  }
+  
+  .register-btn {
+    padding: 6px;
+    font-size: 11px;
+  }
+  
+  .error-message {
+    font-size: 7px;
   }
 }

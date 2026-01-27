@@ -383,13 +383,13 @@
                 const result = await logoutUser();
                 if (result.success) {
                   alert("Logged out successfully!");
-                  window.location.href = "src/login-clean.html";
+                  window.location.href = "login-clean.html";
                 }
               } else {
                 // Fallback
                 localStorage.clear();
                 alert("Logged out!");
-                window.location.href = "src/login-clean.html";
+                window.location.href = "login-clean.html";
               }
             });
           });

@@ -1,11 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us | FoodieFindr</title>
     <link rel="stylesheet" href="../output.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
       @keyframes slideIn {
         from {
@@ -28,7 +31,7 @@
     >
       <div class="max-w-7xl mx-auto px-6 py-4 flex items-center">
         <div class="flex items-center gap-3">
-          <img src="images/foodfinr_logo.png" class="w-12 h-12 rounded-full" />
+          <img src="foodfinr_logo.png" class="w-12 h-12 rounded-full" />
           <span class="text-xl font-bold text-gray-900">FoodieFindr</span>
         </div>
         <div class="hidden md:flex items-center ml-auto gap-28">
@@ -216,7 +219,7 @@
       const submitBtn = document.getElementById("submitBtn");
       const btnText = document.getElementById("btnText");
       const loader = document.getElementById("loader");
-      
+
       // Get form elements with correct IDs
       const name = document.getElementById("user_name");
       const email = document.getElementById("user_email");
@@ -264,7 +267,7 @@
         ) {
           // FALLBACK: Use mailto link if access key not set
           const subject = encodeURIComponent(
-            "New Contact Form Message from " + name.value.trim()
+            "New Contact Form Message from " + name.value.trim(),
           );
           const body = encodeURIComponent(
             "Name: " +
@@ -274,7 +277,7 @@
               email.value.trim() +
               "\n\n" +
               "Message:\n" +
-              message.value.trim()
+              message.value.trim(),
           );
           const mailtoLink =
             "mailto:foodfindr27@gmail.com?subject=" + subject + "&body=" + body;
@@ -330,22 +333,34 @@
         formData.append("message", message.value.trim());
         formData.append(
           "subject",
-          "New Contact Form Message from " + name.value.trim()
+          "New Contact Form Message from " + name.value.trim(),
         );
         formData.append("from_name", "FoodieFindr Contact Form");
 
-        console.log("Sending to Web3Forms with data:", Object.fromEntries(formData));
+        console.log(
+          "Sending to Web3Forms with data:",
+          Object.fromEntries(formData),
+        );
         console.log("Access key:", ACCESS_KEY);
         console.log("Access key length:", ACCESS_KEY.length);
-        console.log("Access key format:", ACCESS_KEY.includes('-') ? 'UUID format' : 'Invalid format');
-        
+        console.log(
+          "Access key format:",
+          ACCESS_KEY.includes("-") ? "UUID format" : "Invalid format",
+        );
+
         // Test if access key looks valid (UUID format)
-        if (!ACCESS_KEY || ACCESS_KEY === "YOUR_ACCESS_KEY_HERE" || ACCESS_KEY.trim() === "") {
+        if (
+          !ACCESS_KEY ||
+          ACCESS_KEY === "YOUR_ACCESS_KEY_HERE" ||
+          ACCESS_KEY.trim() === ""
+        ) {
           throw new Error("Access key is not configured properly");
         }
-        
-        if (ACCESS_KEY.length !== 36 || !ACCESS_KEY.includes('-')) {
-          console.warn("⚠️ Access key might be invalid - should be 36 characters with dashes");
+
+        if (ACCESS_KEY.length !== 36 || !ACCESS_KEY.includes("-")) {
+          console.warn(
+            "⚠️ Access key might be invalid - should be 36 characters with dashes",
+          );
         }
 
         fetch("https://api.web3forms.com/submit", {
@@ -357,7 +372,7 @@
             console.log("Status:", response.status);
             console.log("Status Text:", response.statusText);
             console.log("Headers:", [...response.headers.entries()]);
-            
+
             let json;
             try {
               json = await response.json();
@@ -395,27 +410,34 @@
               successAlert.style.textAlign = "center";
               successAlert.style.minWidth = "350px";
               successAlert.style.animation = "slideIn 0.3s ease-out";
-              
+
               // Save message locally as backup
               const messageData = {
                 name: name.value.trim(),
                 email: email.value.trim(),
                 message: message.value.trim(),
                 timestamp: new Date().toISOString(),
-                submitted: true
+                submitted: true,
               };
-              
+
               // Save to localStorage for backup
-              let savedMessages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+              let savedMessages = JSON.parse(
+                localStorage.getItem("contactMessages") || "[]",
+              );
               savedMessages.push(messageData);
-              localStorage.setItem('contactMessages', JSON.stringify(savedMessages));
-              
+              localStorage.setItem(
+                "contactMessages",
+                JSON.stringify(savedMessages),
+              );
+
               console.log("✅ Success alert should be visible now!");
               console.log("💾 Message saved locally as backup");
-              
+
               // Also show a browser alert for confirmation
-              alert("✅ Message sent successfully!\n\nYour message has been delivered to foodfindr27@gmail.com\n\n⏰ Note: Email may take 1-5 minutes to arrive in Gmail\n💾 Message saved locally as backup");
-              
+              alert(
+                "✅ Message sent successfully!\n\nYour message has been delivered to foodfindr27@gmail.com\n\n⏰ Note: Email may take 1-5 minutes to arrive in Gmail\n💾 Message saved locally as backup",
+              );
+
               form.reset();
 
               setTimeout(() => {
@@ -429,7 +451,7 @@
               console.log("Success:", json.success);
               console.log("Message:", json.message);
               console.log("Errors:", json.errors);
-              
+
               let errorMsg = json.message || "Failed to send message";
               if (json.errors) {
                 errorMsg += " - " + JSON.stringify(json.errors);

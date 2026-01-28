@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Test</title>
+</head>
+<body>
+    <h1>Testing Images</h1>
+    
+    <h2>Placeholder Test:</h2>
+    <img src="https://via.placeholder.com/48x48/ff6b35/ffffff?text=FF" alt="Test 1" />
+    
+    <h2>Unsplash Test:</h2>
+    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop" alt="Test 2" />
+    
+    <h2>Simple Test:</h2>
+    <img src="https://picsum.photos/200/200" alt="Test 3" />
+    
+    <script>
+        // Test image loading
+        const images = document.querySelectorAll('img');
+        images.forEach((img, index) => {
+            img.onload = function() {
+                console.log(`Image ${index + 1} loaded successfully`);
+            };
+            img.onerror = function() {
+                console.error(`Image ${index + 1} failed to load`);
+                this.style.border = '2px solid red';
+                this.alt = 'FAILED TO LOAD';
+            };
+        });
+    </script>
+</body>
+</html>

@@ -18,7 +18,7 @@
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center">
           <div class="flex items-center gap-3">
             <img
-              src="IMAGES/foodfinr_logo.png"
+              src="images/foodfinr_logo.png"
               class="w-12 h-12 rounded-full"
             />
             <span class="text-xl font-bold text-gray-900">FoodieFindr</span>
@@ -149,7 +149,7 @@
             class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
           >
             <img
-              src="IMAGES/foodfinr_logo.png"
+              src="images/foodfinr_logo.png"
               fill="none"
               stroke="currentColor"
               stroke-linecap="round"

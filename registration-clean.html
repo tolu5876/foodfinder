@@ -1,11 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FoodFindr - Registration</title>
     <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
     <div class="form-container">
@@ -14,11 +17,15 @@
       <form id="myForm">
         <label for="Firstname">Firstname</label>
         <input type="text" id="Firstname" placeholder="Enter your first name" />
-        <h6 class="error-message" id="error-firstname">This Firstname should be filled*</h6>
+        <h6 class="error-message" id="error-firstname">
+          This Firstname should be filled*
+        </h6>
 
         <label for="Lastname">Lastname</label>
         <input type="text" id="Lastname" placeholder="Enter your last name" />
-        <h6 class="error-message" id="error-lastname">This Lastname should be filled*</h6>
+        <h6 class="error-message" id="error-lastname">
+          This Lastname should be filled*
+        </h6>
 
         <label for="email">Email</label>
         <input type="email" id="email" placeholder="Enter your email" />
@@ -26,7 +33,9 @@
 
         <label for="DOB">Phone number</label>
         <input type="tel" id="DOB" placeholder="Enter your phone number" />
-        <h6 class="error-message" id="error-dob">This phone number should be filled*</h6>
+        <h6 class="error-message" id="error-dob">
+          This phone number should be filled*
+        </h6>
 
         <label for="gender">Gender</label>
         <select name="gender" id="gender">
@@ -35,7 +44,9 @@
           <option value="female">Female</option>
           <option value="other">Other</option>
         </select>
-        <h6 class="error-message" id="error-gender">Please select your gender*</h6>
+        <h6 class="error-message" id="error-gender">
+          Please select your gender*
+        </h6>
 
         <label for="countrySelect">Country</label>
         <select name="country" id="countrySelect">
@@ -80,7 +91,9 @@
           <option value="ID">Indonesia</option>
           <option value="NZ">New Zealand</option>
         </select>
-        <h6 class="error-message" id="error-country">This Country should be filled*</h6>
+        <h6 class="error-message" id="error-country">
+          This Country should be filled*
+        </h6>
 
         <label for="password">Enter a New Password</label>
         <div style="position: relative">
@@ -104,7 +117,9 @@
             <i class="fas fa-eye"></i>
           </button>
         </div>
-        <h6 class="error-message" id="error-password">This password should be filled*</h6>
+        <h6 class="error-message" id="error-password">
+          This password should be filled*
+        </h6>
 
         <label for="confirmPassword">Confirm Password</label>
         <div style="position: relative">
@@ -132,7 +147,9 @@
             <i class="fas fa-eye"></i>
           </button>
         </div>
-        <h6 class="error-message" id="error-confirm">Please confirm your password*</h6>
+        <h6 class="error-message" id="error-confirm">
+          Please confirm your password*
+        </h6>
 
         <div>
           <label for="terms"
@@ -164,7 +181,7 @@
         </div>
 
         <input type="submit" value="Register" class="subt" />
-        <p><a href="https://your-website.com/login">Already have an account? Login</a></p>
+        <p><a href="src/login-clean.html">Already have an account? Login</a></p>
       </form>
     </div>
 
@@ -173,141 +190,146 @@
     <script src="firebase-auth-simple.js"></script>
 
     <script>
-        // Toggle password visibility
-        function togglePassword(fieldId) {
-            const passwordField = document.getElementById(fieldId);
-            const eyeIcon = document.querySelector(`#${fieldId}-eye i`);
-            
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                eyeIcon.classList.remove("fa-eye");
-                eyeIcon.classList.add("fa-eye-slash");
-            } else {
-                passwordField.type = "password";
-                eyeIcon.classList.remove("fa-eye-slash");
-                eyeIcon.classList.add("fa-eye");
-            }
-        }
+      // Toggle password visibility
+      function togglePassword(fieldId) {
+        const passwordField = document.getElementById(fieldId);
+        const eyeIcon = document.querySelector(`#${fieldId}-eye i`);
 
-        // Handle form submission
-        document.getElementById('myForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Hide all error messages first
-            document.querySelectorAll('.error-message').forEach(error => {
-                error.style.display = 'none';
-            });
-            
-            // Get form data
-            const formData = {
-                first_name: document.getElementById('Firstname').value,
-                last_name: document.getElementById('Lastname').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('DOB').value,
-                gender: document.getElementById('gender').value,
-                country: document.getElementById('countrySelect').value,
-                password: document.getElementById('password').value,
-                confirmPassword: document.getElementById('confirmPassword').value
-            };
-            
-            let hasError = false;
-            
-            // Validate first name
-            if (!formData.first_name.trim()) {
-                document.getElementById('error-firstname').style.display = 'block';
-                hasError = true;
+        if (passwordField.type === "password") {
+          passwordField.type = "text";
+          eyeIcon.classList.remove("fa-eye");
+          eyeIcon.classList.add("fa-eye-slash");
+        } else {
+          passwordField.type = "password";
+          eyeIcon.classList.remove("fa-eye-slash");
+          eyeIcon.classList.add("fa-eye");
+        }
+      }
+
+      // Handle form submission
+      document
+        .getElementById("myForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          // Hide all error messages first
+          document.querySelectorAll(".error-message").forEach((error) => {
+            error.style.display = "none";
+          });
+
+          // Get form data
+          const formData = {
+            first_name: document.getElementById("Firstname").value,
+            last_name: document.getElementById("Lastname").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("DOB").value,
+            gender: document.getElementById("gender").value,
+            country: document.getElementById("countrySelect").value,
+            password: document.getElementById("password").value,
+            confirmPassword: document.getElementById("confirmPassword").value,
+          };
+
+          let hasError = false;
+
+          // Validate first name
+          if (!formData.first_name.trim()) {
+            document.getElementById("error-firstname").style.display = "block";
+            hasError = true;
+          }
+
+          // Validate last name
+          if (!formData.last_name.trim()) {
+            document.getElementById("error-lastname").style.display = "block";
+            hasError = true;
+          }
+
+          // Validate email
+          if (!formData.email.trim()) {
+            document.getElementById("error-email").style.display = "block";
+            hasError = true;
+          }
+
+          // Validate phone
+          if (!formData.phone.trim()) {
+            document.getElementById("error-dob").style.display = "block";
+            hasError = true;
+          }
+
+          // Validate gender
+          if (!formData.gender) {
+            document.getElementById("error-gender").style.display = "block";
+            hasError = true;
+          }
+
+          // Validate country
+          if (!formData.country) {
+            document.getElementById("error-country").style.display = "block";
+            hasError = true;
+          }
+
+          // Validate password
+          if (!formData.password.trim()) {
+            document.getElementById("error-password").style.display = "block";
+            hasError = true;
+          } else if (formData.password.length < 8) {
+            document.getElementById("error-password").style.display = "block";
+            document.getElementById("error-password").textContent =
+              "Password must be at least 8 characters long*";
+            hasError = true;
+          } else if (/\d/.test(formData.password)) {
+            document.getElementById("error-password").style.display = "block";
+            document.getElementById("error-password").textContent =
+              "Password must contain only letters, no numbers allowed*";
+            hasError = true;
+          }
+
+          // Validate confirm password
+          if (!formData.confirmPassword.trim()) {
+            document.getElementById("error-confirm").style.display = "block";
+            hasError = true;
+          } else if (formData.password !== formData.confirmPassword) {
+            document.getElementById("error-confirm").style.display = "block";
+            document.getElementById("error-confirm").textContent =
+              "Passwords do not match*";
+            hasError = true;
+          }
+
+          // If any validation error, stop submission
+          if (hasError) {
+            return;
+          }
+
+          // Show loading
+          const submitBtn = document.querySelector(".subt");
+          submitBtn.value = "Registering...";
+          submitBtn.disabled = true;
+
+          try {
+            // Register user
+            const result = await registerUser(formData);
+
+            if (result.success) {
+              // Show success message
+              document.getElementById("successAlert").style.display = "flex";
+
+              // Clear form
+              document.getElementById("myForm").reset();
+
+              // Redirect to login after 2 seconds
+              setTimeout(() => {
+                window.location.href = "login-clean.html";
+              }, 2000);
+            } else {
+              alert("Registration failed: " + result.message);
             }
-            
-            // Validate last name
-            if (!formData.last_name.trim()) {
-                document.getElementById('error-lastname').style.display = 'block';
-                hasError = true;
-            }
-            
-            // Validate email
-            if (!formData.email.trim()) {
-                document.getElementById('error-email').style.display = 'block';
-                hasError = true;
-            }
-            
-            // Validate phone
-            if (!formData.phone.trim()) {
-                document.getElementById('error-dob').style.display = 'block';
-                hasError = true;
-            }
-            
-            // Validate gender
-            if (!formData.gender) {
-                document.getElementById('error-gender').style.display = 'block';
-                hasError = true;
-            }
-            
-            // Validate country
-            if (!formData.country) {
-                document.getElementById('error-country').style.display = 'block';
-                hasError = true;
-            }
-            
-            // Validate password
-            if (!formData.password.trim()) {
-                document.getElementById('error-password').style.display = 'block';
-                hasError = true;
-            } else if (formData.password.length < 8) {
-                document.getElementById('error-password').style.display = 'block';
-                document.getElementById('error-password').textContent = 'Password must be at least 8 characters long*';
-                hasError = true;
-            } else if (/\d/.test(formData.password)) {
-                document.getElementById('error-password').style.display = 'block';
-                document.getElementById('error-password').textContent = 'Password must contain only letters, no numbers allowed*';
-                hasError = true;
-            }
-            
-            // Validate confirm password
-            if (!formData.confirmPassword.trim()) {
-                document.getElementById('error-confirm').style.display = 'block';
-                hasError = true;
-            } else if (formData.password !== formData.confirmPassword) {
-                document.getElementById('error-confirm').style.display = 'block';
-                document.getElementById('error-confirm').textContent = 'Passwords do not match*';
-                hasError = true;
-            }
-            
-            // If any validation error, stop submission
-            if (hasError) {
-                return;
-            }
-            
-            // Show loading
-            const submitBtn = document.querySelector('.subt');
-            submitBtn.value = 'Registering...';
-            submitBtn.disabled = true;
-            
-            try {
-                // Register user
-                const result = await registerUser(formData);
-                
-                if (result.success) {
-                    // Show success message
-                    document.getElementById('successAlert').style.display = 'flex';
-                    
-                    // Clear form
-                    document.getElementById('myForm').reset();
-                    
-                    // Redirect to login after 2 seconds
-                    setTimeout(() => {
-                        window.location.href = 'login-clean.html';
-                    }, 2000);
-                } else {
-                    alert('Registration failed: ' + result.message);
-                }
-            } catch (error) {
-                console.error('Registration error:', error);
-                alert('Registration failed. Please try again.');
-            } finally {
-                // Reset button
-                submitBtn.value = 'Register';
-                submitBtn.disabled = false;
-            }
+          } catch (error) {
+            console.error("Registration error:", error);
+            alert("Registration failed. Please try again.");
+          } finally {
+            // Reset button
+            submitBtn.value = "Register";
+            submitBtn.disabled = false;
+          }
         });
     </script>
   </body>

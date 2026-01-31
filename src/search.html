@@ -15,13 +15,13 @@
 
     <style>
       :root {
-        --primary: #2563eb;
-        --primary-dark: #1d4ed8;
-        --primary-light: #3b82f6;
-        --secondary: #10b981;
-        --secondary-dark: #059669;
-        --accent: #f59e0b;
-        --accent-dark: #d97706;
+        --primary: #fb923c;
+        --primary-dark: #f97316;
+        --primary-light: #fdba74;
+        --secondary: #fed7aa;
+        --secondary-dark: #fdba74;
+        --accent: #ea580c;
+        --accent-dark: #dc2626;
         --success: #22c55e;
         --warning: #f97316;
         --danger: #ef4444;
@@ -29,12 +29,12 @@
         --gray: #6b7280;
         --light: #f3f4f6;
         --white: #ffffff;
-        --bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --bg: linear-gradient(135deg, #ffffff 0%, #fed7aa 50%, #fb923c 100%);
         --card: rgba(255, 255, 255, 0.98);
-        --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        --shadow-lg: 0 30px 60px -12px rgba(0, 0, 0, 0.35);
-        --border: #e5e7eb;
-        --gradient-text: linear-gradient(135deg, #667eea, #764ba2);
+        --shadow: 0 25px 50px -12px rgba(251, 146, 60, 0.25);
+        --shadow-lg: 0 30px 60px -12px rgba(251, 146, 60, 0.35);
+        --border: #fed7aa;
+        --gradient-text: linear-gradient(135deg, #fb923c, #ea580c);
       }
 
       * {
@@ -46,7 +46,7 @@
       body {
         font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
         min-height: 100vh;
-        background: var(--bg);
+        background: linear-gradient(135deg, #ffffff 0%, #fed7aa 50%, #fb923c 100%);
         background-attachment: fixed;
         display: flex;
         align-items: center;
@@ -67,17 +67,17 @@
         bottom: 0;
         background: radial-gradient(
             circle at 20% 80%,
-            rgba(120, 119, 198, 0.3) 0%,
+            rgba(251, 146, 60, 0.3) 0%,
             transparent 50%
           ),
           radial-gradient(
             circle at 80% 20%,
-            rgba(255, 119, 198, 0.3) 0%,
+            rgba(251, 146, 60, 0.2) 0%,
             transparent 50%
           ),
           radial-gradient(
             circle at 40% 40%,
-            rgba(120, 219, 255, 0.2) 0%,
+            rgba(254, 215, 170, 0.3) 0%,
             transparent 50%
           );
         pointer-events: none;
@@ -97,19 +97,57 @@
         }
       }
 
+      .app {
+        width: 90%;
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+        position: relative;
+      }
+
       .app-container {
-        background: var(--card);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
         backdrop-filter: blur(20px);
-        width: 25%;
-        max-width: 400px;
-        padding: 50px 60px;
-        border-radius: 40px;
-        box-shadow: 0 40px 80px -12px rgba(0, 0, 0, 0.45);
-        border: 2px solid rgba(255, 255, 255, 0.4);
+        width: 100%;
+        padding: 50px;
+        border-radius: 30px;
+        box-shadow: 
+          0 50px 100px -20px rgba(0, 0, 0, 0.5),
+          0 30px 60px -30px rgba(0, 0, 0, 0.6),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1);
         position: relative;
         z-index: 1;
         overflow: hidden;
+        min-width: 0;
+        box-sizing: border-box;
+      }
+
+      .app-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          #fb923c 0%,
+          #f97316 25%,
+          #ea580c 50%,
+          #dc2626 75%,
+          #fed7aa 100%
+        );
+        border-radius: 30px 30px 0 0;
+        animation: gradientShift 3s ease-in-out infinite;
+      }
+
+      @keyframes gradientShift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
       }
 
       .app::before {
@@ -171,7 +209,7 @@
 
       .header {
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 50px;
         position: relative;
       }
 
@@ -179,29 +217,32 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
         background: linear-gradient(
           135deg,
-          var(--primary),
-          var(--primary-dark)
+          #fb923c 0%,
+          #f97316 50%,
+          #ea580c 100%
         );
-        border-radius: 30px;
-        margin-bottom: 30px;
-        box-shadow: 0 20px 40px rgba(37, 99, 235, 0.5);
+        border-radius: 35px;
+        margin-bottom: 35px;
+        box-shadow: 
+          0 30px 60px rgba(251, 146, 60, 0.4),
+          0 15px 35px rgba(249, 115, 22, 0.3),
+          inset 0 0 0 2px rgba(255, 255, 255, 0.2);
         position: relative;
         overflow: hidden;
         animation: logoFloat 4s ease-in-out infinite;
+        transition: all 0.3s ease;
       }
 
-      @keyframes logoFloat {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
+      .logo:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 
+          0 40px 80px rgba(251, 146, 60, 0.5),
+          0 20px 40px rgba(249, 115, 22, 0.4),
+          inset 0 0 0 2px rgba(255, 255, 255, 0.3);
       }
 
       .logo::before {
@@ -214,53 +255,62 @@
         background: linear-gradient(
           45deg,
           transparent,
-          rgba(255, 255, 255, 0.3),
+          rgba(255, 255, 255, 0.4),
           transparent
         );
         animation: logoShine 3s ease-in-out infinite;
       }
 
+      @keyframes logoFloat {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-10px) rotate(2deg); }
+      }
+
       @keyframes logoShine {
-        0% {
-          transform: translateX(-100%) translateY(-100%) rotate(45deg);
-        }
-        50% {
-          transform: translateX(100%) translateY(100%) rotate(45deg);
-        }
-        100% {
-          transform: translateX(100%) translateY(100%) rotate(45deg);
-        }
+        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
       }
 
       .logo i {
         color: white;
-        font-size: 32px;
+        font-size: 40px;
         position: relative;
         z-index: 1;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       }
 
       h1 {
         font-family: "Playfair Display", serif;
-        font-size: 3.5rem;
-        font-weight: 700;
-        margin-bottom: 16px;
-        background: var(--gradient-text);
+        font-size: 4rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        background: linear-gradient(
+          135deg,
+          #fb923c 0%,
+          #f97316 50%,
+          #ea580c 100%
+        );
         -webkit-background-clip: text;
-        /* -webkit-text-fill-color: transparent; */
         background-clip: text;
-        text-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
-        letter-spacing: -1px;
-        color: white;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 4px 20px rgba(251, 146, 60, 0.3);
+        animation: titleGlow 3s ease-in-out infinite alternate;
+      }
+
+      @keyframes titleGlow {
+        0% { filter: brightness(1) drop-shadow(0 0 20px rgba(251, 146, 60, 0.3)); }
+        100% { filter: brightness(1.2) drop-shadow(0 0 30px rgba(234, 88, 12, 0.4)); }
       }
 
       .subtitle {
-        /* color: var(--gray); */
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         font-weight: 500;
         margin-bottom: 0;
-        letter-spacing: 0.8px;
-        text-transform: uppercase;
-        position: relative;
+        letter-spacing: 1px;
+        color: rgba(255, 255, 255, 0.9);
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        animation: fadeInUp 1s ease-out 0.3s both;
       }
 
       .subtitle::after {
@@ -350,46 +400,55 @@
       .search-input {
         flex: 1;
         padding: 24px 28px;
-        border: none;
-        border-radius: 20px;
         font-size: 1.2rem;
         font-weight: 500;
+        border: none;
+        border-radius: 20px;
         background: rgba(255, 255, 255, 0.95);
-        color: var(--dark);
+        color: #333;
         box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
         transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        display: block;
+        width: 100%;
+        opacity: 1;
+        visibility: visible;
         position: relative;
+        z-index: 1;
       }
 
       .search-input::placeholder {
-        color: var(--gray);
-        font-weight: 400;
+        color: rgba(0, 0, 0, 0.4);
         font-style: italic;
       }
 
       .search-input:focus {
         outline: none;
-        background: white;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-        transform: translateY(-6px);
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        transform: translateY(-2px);
       }
 
       .search-btn {
-        padding: 24px 40px;
+        padding: 24px 35px;
+        font-size: 1.1rem;
+        font-weight: 600;
         border: none;
         border-radius: 20px;
-        background: white;
-        color: var(--primary);
-        font-size: 1.2rem;
-        font-weight: 700;
+        background: linear-gradient(
+          135deg,
+          #fb923c 0%,
+          #f97316 50%,
+          #ea580c 100%
+        );
+        color: white;
         cursor: pointer;
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: all 0.3s ease;
+        box-shadow: 
+          0 10px 30px rgba(251, 146, 60, 0.3),
+          0 5px 15px rgba(249, 115, 22, 0.2);
         display: flex;
         align-items: center;
-        gap: 16px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
+        gap: 10px;
         position: relative;
         overflow: hidden;
       }
@@ -404,23 +463,30 @@
         background: linear-gradient(
           90deg,
           transparent,
-          rgba(37, 99, 235, 0.1),
+          rgba(255, 255, 255, 0.3),
           transparent
         );
-        transition: left 0.6s ease;
+        transition: left 0.5s ease;
+      }
+
+      .search-btn:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 
+          0 20px 40px rgba(251, 146, 60, 0.4),
+          0 10px 20px rgba(249, 115, 22, 0.3);
       }
 
       .search-btn:hover::before {
         left: 100%;
       }
 
-      .search-btn:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      .search-btn:active {
+        transform: translateY(-1px) scale(1.01);
       }
 
-      .search-btn:active {
-        transform: translateY(-2px);
+      .search-btn i {
+        font-size: 1.2rem;
+        animation: pulse 2s ease-in-out infinite;
       }
 
       .search-loader {
@@ -447,45 +513,340 @@
 
       /* ===== RESULTS SECTION ===== */
       .results-section {
-        background: rgb(255, 255, 255);
-        border-radius: 24px;
-        padding: 16px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-        border: 1px solid var(--border);
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        border-radius: 32px;
+        padding: 40px;
+        box-shadow: 
+          0 20px 40px rgba(0, 0, 0, 0.08),
+          0 0 0 1px rgba(0, 0, 0, 0.05),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         width: 100%;
+        max-width: 100%;
+        min-width: 0;
         box-sizing: border-box;
+        overflow: hidden;
+        position: relative;
+        backdrop-filter: blur(10px);
+      }
+
+      .results-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        border-radius: 32px 32px 0 0;
+      }
+
+      .recipe-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+
+      .recipe-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 
+          0 10px 30px rgba(0, 0, 0, 0.1),
+          0 1px 2px rgba(0, 0, 0, 0.06),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+        word-wrap: break-word;
+        position: relative;
+      }
+
+      .recipe-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        border-radius: 24px 24px 0 0;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .recipe-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 
+          0 20px 40px rgba(0, 0, 0, 0.15),
+          0 0 0 1px rgba(37, 99, 235, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      }
+
+      .recipe-card:hover::before {
+        opacity: 1;
+      }
+
+      .recipe-image {
+        width: 100%;
+        max-width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 16px;
+        margin-bottom: 1.5rem;
+        display: block;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .recipe-card:hover .recipe-image {
+        transform: scale(1.05);
+      }
+
+      .recipe-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 1rem;
+        line-height: 1.3;
+        background: linear-gradient(135deg, var(--dark), var(--primary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .recipe-meta {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+        padding: 1rem;
+        background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+        border-radius: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .recipe-meta span {
+        font-size: 0.9rem;
+        color: var(--gray);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+      }
+
+      .recipe-meta span i {
+        color: var(--primary);
+        font-size: 1rem;
+      }
+
+      .ingredients-title,
+      .instructions-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      }
+
+      .ingredients-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        color: var(--dark);
+      }
+
+      .ingredient-item {
+        background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+        border: 1px solid #0ea5e9;
+        padding: 0.75rem 1rem;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .ingredient-item::before {
+        content: "✓";
+        position: absolute;
+        left: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--primary);
+        color: white;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        transition: left 0.3s ease;
+      }
+
+      .ingredient-item:hover {
+        background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+        border-color: var(--primary);
+        transform: translateX(8px);
+        padding-left: 2rem;
+      }
+
+      .ingredient-item:hover::before {
+        left: 8px;
+      }
+
+      .instructions-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .instruction-step {
+        background: linear-gradient(135deg, #fef3c7, #fde68a);
+        border: 1px solid #f59e0b;
+        padding: 1rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        color: var(--dark);
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .instruction-step::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(180deg, var(--accent), #f59e0b);
+        border-radius: 12px 0 0 12px;
+      }
+
+      .instruction-step:hover {
+        background: linear-gradient(135deg, #fed7aa, #fdba74);
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+      }
+
+      .step-number {
+        background: linear-gradient(135deg, var(--accent), #f59e0b);
+        color: white;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.3);
       }
 
       .results-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 24px;
-        padding-bottom: 20px;
-        border-bottom: 2px solid var(--light);
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 3px solid transparent;
+        background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent)) bottom;
+        background-size: 100% 3px;
+        background-repeat: no-repeat;
+        position: relative;
+      }
+
+      .results-header::after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        border-radius: 3px;
+        opacity: 0.3;
       }
 
       .results-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--dark);
+        font-size: 1.8rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--dark), var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 1rem;
+        position: relative;
+      }
+
+      .results-title i {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 1.5rem;
       }
 
       .results-count {
         background: linear-gradient(
           135deg,
           var(--primary),
-          var(--primary-dark)
+          var(--secondary)
         );
         color: white;
-        padding: 6px 16px;
-        border-radius: 24px;
-        font-size: 0.9rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        font-size: 1rem;
         font-weight: 700;
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        box-shadow: 
+          0 8px 16px rgba(37, 99, 235, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .results-count::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .results-count:hover::before {
+        left: 100%;
       }
 
       .ingredient-list {
@@ -601,25 +962,202 @@
 
       /* ===== MEDIA QUERIES ===== */
 
-      /* Tablets */
-      @media (max-width: 1024px) {
+      /* Extra Large Desktop (1400px and up) */
+      @media (min-width: 1400px) {
+        .app {
+          width: 85%;
+          max-width: 1400px;
+        }
+        
         .app-container {
-          width: 40%;
-          max-width: 600px;
-          padding: 40px;
+          padding: 60px;
+        }
+        
+        h1 {
+          font-size: 4.5rem;
+        }
+        
+        .logo {
+          width: 140px;
+          height: 140px;
+        }
+        
+        .search-input {
+          font-size: 1.3rem;
+          padding: 28px 32px;
+        }
+        
+        .search-btn {
+          padding: 28px 40px;
+          font-size: 1.2rem;
         }
       }
 
-      /* Large tablets */
-      @media (max-width: 768px) {
-        body {
-          padding: 16px;
+      /* Large Desktop (1200px to 1399px) */
+      @media (max-width: 1399px) {
+        .app {
+          width: 88%;
+          max-width: 1300px;
+        }
+        
+        .app-container {
+          padding: 55px;
+        }
+        
+        h1 {
+          font-size: 4.2rem;
+        }
+      }
+
+      /* Desktop (1025px to 1199px) */
+      @media (max-width: 1199px) {
+        .app {
+          width: 90%;
+          max-width: 1100px;
+        }
+        
+        .app-container {
+          padding: 50px;
+        }
+        
+        h1 {
+          font-size: 4rem;
+        }
+        
+        .logo {
+          width: 120px;
+          height: 120px;
+        }
+      }
+
+      /* Tablets (768px to 1024px) */
+      @media (max-width: 1024px) {
+        .app {
+          width: 95%;
+          max-width: 1000px;
+          margin: 15px auto;
+        }
+        
+        .app-container {
+          padding: 40px 30px;
+          border-radius: 25px;
         }
 
+        h1 {
+          font-size: 3.5rem;
+        }
+
+        .subtitle {
+          font-size: 1.3rem;
+        }
+        
+        .logo {
+          width: 110px;
+          height: 110px;
+          margin-bottom: 30px;
+        }
+        
+        .search-section {
+          padding: 40px;
+        }
+        
+        .search-title {
+          font-size: 1.8rem;
+        }
+        
+        .search-input {
+          font-size: 1.1rem;
+          padding: 22px 26px;
+        }
+        
+        .search-btn {
+          padding: 22px 32px;
+          font-size: 1rem;
+        }
+        
+        .recipe-grid {
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 1.3rem;
+        }
+      }
+
+      /* Large Tablets (600px to 767px) */
+      @media (max-width: 767px) {
+        body {
+          padding: 0;
+        }
+
+        .app {
+          width: 95%;
+          max-width: 100%;
+          margin: 10px auto;
+        }
+        
         .app-container {
-          width: 50%;
-          max-width: 500px;
-          padding: 95px;
+          padding: 35px 25px;
+          border-radius: 20px;
+        }
+
+        h1 {
+          font-size: 3rem;
+        }
+
+        .subtitle {
+          font-size: 1.2rem;
+        }
+        
+        .logo {
+          width: 100px;
+          height: 100px;
+          margin-bottom: 25px;
+        }
+        
+        .search-section {
+          padding: 35px;
+        }
+        
+        .search-title {
+          font-size: 1.6rem;
+        }
+        
+        .search-controls {
+          flex-direction: column;
+          gap: 15px;
+        }
+        
+        .search-input {
+          font-size: 1rem;
+          padding: 20px 24px;
+        }
+        
+        .search-btn {
+          padding: 20px 30px;
+          font-size: 1rem;
+          width: 100%;
+          justify-content: center;
+        }
+        
+        .recipe-grid {
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 1.2rem;
+        }
+        
+        .recipe-card {
+          padding: 1.2rem;
+        }
+      }
+
+      /* Small Tablets (480px to 599px) */
+      @media (max-width: 599px) {
+        .app {
+          width: 98%;
+          max-width: 100%;
+          margin: 8px auto;
+        }
+        
+        .app-container {
+          padding: 30px 20px;
+          border-radius: 18px;
         }
 
         h1 {
@@ -627,58 +1165,135 @@
         }
 
         .subtitle {
-          font-size: 1.2rem;
+          font-size: 1.1rem;
         }
-      }
-
-      /* Small tablets */
-      @media (max-width: 600px) {
-        .app-container {
-          width: 60%;
-          max-width: 450px;
+        
+        .logo {
+          width: 90px;
+          height: 90px;
+          margin-bottom: 20px;
+        }
+        
+        .search-section {
           padding: 30px;
         }
-
-        h1 {
-          font-size: 2.5rem;
+        
+        .search-title {
+          font-size: 1.5rem;
+        }
+        
+        .search-input {
+          font-size: 0.95rem;
+          padding: 18px 22px;
+        }
+        
+        .search-btn {
+          padding: 18px 28px;
+          font-size: 0.95rem;
+        }
+        
+        .recipe-grid {
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          gap: 1rem;
+        }
+        
+        .recipe-card {
+          padding: 1rem;
+        }
+        
+        .recipe-image {
+          height: 180px;
         }
       }
 
-      /* Mobile phones */
-      @media (max-width: 480px) {
+      /* Mobile Phones (360px to 479px) */
+      @media (max-width: 479px) {
         body {
-          padding: 12px;
+          padding: 0;
         }
 
+        .app {
+          width: 100%;
+          max-width: 100%;
+          margin: 0;
+        }
+        
         .app-container {
-          width: 85%;
-          max-width: 400px;
-          padding: 25px 20px;
-          border-radius: 20px;
+          padding: 25px 15px;
+          margin: 0;
+          border-radius: 0;
+          min-height: 100vh;
         }
 
         h1 {
-          font-size: 2.2rem;
+          font-size: 2.4rem;
         }
 
         .subtitle {
+          font-size: 1rem;
+        }
+        
+        .logo {
+          width: 80px;
+          height: 80px;
+          margin-bottom: 18px;
+        }
+        
+        .search-section {
+          padding: 25px;
+          border-radius: 15px;
+        }
+        
+        .search-title {
+          font-size: 1.4rem;
+        }
+        
+        .search-controls {
+          gap: 12px;
+        }
+        
+        .search-input {
+          font-size: 0.9rem;
+          padding: 16px 20px;
+        }
+        
+        .search-btn {
+          padding: 16px 24px;
+          font-size: 0.9rem;
+        }
+        
+        .recipe-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+        
+        .recipe-card {
+          padding: 0.8rem;
+        }
+        
+        .recipe-image {
+          height: 160px;
+        }
+        
+        .recipe-title {
           font-size: 1.1rem;
         }
-
-        .search-input {
-          font-size: 16px;
-        }
-
+        
         .results-section {
-          padding: 20px 16px;
+          padding: 12px;
         }
       }
 
-      /* Small mobile */
-      @media (max-width: 360px) {
+      /* Small Mobile (320px to 359px) */
+      @media (max-width: 359px) {
+        .app {
+          width: 100%;
+          margin: 0;
+        }
+        
         .app-container {
-          width: 95%;
-          padding: 20px 16px;
+          padding: 20px 12px;
+          margin: 0;
         }
 
         h1 {
@@ -686,7 +1301,94 @@
         }
 
         .subtitle {
+          font-size: 0.9rem;
+        }
+        
+        .logo {
+          width: 70px;
+          height: 70px;
+          margin-bottom: 15px;
+        }
+        
+        .search-section {
+          padding: 20px;
+        }
+        
+        .search-title {
+          font-size: 1.3rem;
+        }
+        
+        .search-input {
+          font-size: 0.85rem;
+          padding: 14px 18px;
+        }
+        
+        .search-btn {
+          padding: 14px 20px;
+          font-size: 0.85rem;
+        }
+        
+        .recipe-card {
+          padding: 0.6rem;
+        }
+        
+        .recipe-image {
+          height: 140px;
+        }
+        
+        .recipe-title {
           font-size: 1rem;
+        }
+      }
+
+      /* Ultra Small Mobile (280px to 319px) */
+      @media (max-width: 319px) {
+        .app-container {
+          padding: 15px 10px;
+        }
+        
+        h1 {
+          font-size: 1.8rem;
+        }
+        
+        .subtitle {
+          font-size: 0.8rem;
+        }
+        
+        .logo {
+          width: 60px;
+          height: 60px;
+          margin-bottom: 12px;
+        }
+        
+        .search-section {
+          padding: 15px;
+        }
+        
+        .search-title {
+          font-size: 1.2rem;
+        }
+        
+        .search-input {
+          font-size: 0.8rem;
+          padding: 12px 16px;
+        }
+        
+        .search-btn {
+          padding: 12px 18px;
+          font-size: 0.8rem;
+        }
+        
+        .recipe-card {
+          padding: 0.5rem;
+        }
+        
+        .recipe-image {
+          height: 120px;
+        }
+        
+        .recipe-title {
+          font-size: 0.9rem;
         }
       }
 
@@ -716,74 +1418,510 @@
       .pulse {
         animation: pulse 2s ease-in-out infinite;
       }
+
+      /* ===== PERFECT MOBILE RESPONSIVE MEDIA QUERIES ===== */
+      
+      /* Large Desktop (1440px and above) */
+      @media screen and (min-width: 1440px) {
+        .app {
+          max-width: 1400px;
+          margin: 0 auto;
+        }
+        
+        .header {
+          padding: 3rem 2rem;
+        }
+        
+        .search-section {
+          padding: 3rem 2rem;
+        }
+        
+        .search-input {
+          font-size: 1.125rem;
+          padding: 1.25rem 1.5rem;
+        }
+        
+        .search-btn {
+          padding: 1.25rem 2rem;
+          font-size: 1.125rem;
+        }
+      }
+      
+      /* Desktop (1025px to 1439px) */
+      @media screen and (min-width: 1025px) and (max-width: 1439px) {
+        .header {
+          padding: 2.5rem 1.5rem;
+        }
+        
+        .search-section {
+          padding: 2.5rem 1.5rem;
+        }
+      }
+      
+      /* Tablet Landscape (769px to 1024px) */
+      @media screen and (min-width: 769px) and (max-width: 1024px) {
+        .header {
+          padding: 2rem 1.5rem;
+        }
+        
+        .header h1 {
+          font-size: 2.5rem;
+        }
+        
+        .subtitle {
+          font-size: 1rem;
+        }
+        
+        .search-section {
+          padding: 2rem 1.5rem;
+        }
+        
+        .search-title {
+          font-size: 1.75rem;
+        }
+        
+        .search-controls {
+          flex-direction: row;
+          gap: 1rem;
+        }
+        
+        .search-input {
+          flex: 1;
+          font-size: 1rem;
+          padding: 1rem 1.25rem;
+        }
+        
+        .search-btn {
+          padding: 1rem 1.5rem;
+          font-size: 1rem;
+          white-space: nowrap;
+        }
+        
+        .recipe-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        
+        .recipe-card {
+          padding: 1.5rem;
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        
+        .recipe-image {
+          height: 200px;
+        }
+      }
+      
+      /* Tablet Portrait (481px to 768px) */
+      @media screen and (min-width: 481px) and (max-width: 768px) {
+        .header {
+          padding: 1.5rem 1rem;
+        }
+        
+        .header h1 {
+          font-size: 2.25rem;
+        }
+        
+        .subtitle {
+          font-size: 0.95rem;
+        }
+        
+        .search-section {
+          padding: 1.5rem 1rem;
+        }
+        
+        .search-title {
+          font-size: 1.5rem;
+          margin-bottom: 1.5rem;
+        }
+        
+        .search-controls {
+          flex-direction: column;
+          gap: 1rem;
+        }
+        
+        .search-input {
+          width: 100%;
+          font-size: 1rem;
+          padding: 1rem 1.25rem;
+        }
+        
+        .search-btn {
+          width: 100%;
+          padding: 1rem 1.5rem;
+          font-size: 1rem;
+          justify-content: center;
+        }
+        
+        .recipe-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        
+        .recipe-card {
+          padding: 1.25rem;
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        
+        .recipe-image {
+          height: 180px;
+        }
+        
+        .recipe-title {
+          font-size: 1.25rem;
+        }
+        
+        .recipe-meta {
+          flex-direction: column;
+          gap: 0.5rem;
+          align-items: flex-start;
+        }
+      }
+      
+      /* Mobile Landscape (421px to 480px) */
+      @media screen and (min-width: 421px) and (max-width: 480px) {
+        .header {
+          padding: 1.25rem 0.75rem;
+        }
+        
+        .header h1 {
+          font-size: 2rem;
+        }
+        
+        .subtitle {
+          font-size: 0.9rem;
+        }
+        
+        .search-section {
+          padding: 1.25rem 0.75rem;
+        }
+        
+        .search-title {
+          font-size: 1.375rem;
+          margin-bottom: 1.25rem;
+        }
+        
+        .search-controls {
+          flex-direction: column;
+          gap: 0.875rem;
+        }
+        
+        .search-input {
+          width: 100%;
+          font-size: 0.95rem;
+          padding: 0.875rem 1.125rem;
+        }
+        
+        .search-btn {
+          width: 100%;
+          padding: 0.875rem 1.25rem;
+          font-size: 0.95rem;
+        }
+        
+        .recipe-grid {
+          grid-template-columns: 1fr;
+          gap: 1.25rem;
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        
+        .recipe-card {
+          padding: 1rem;
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        
+        .recipe-image {
+          height: 160px;
+        }
+        
+        .recipe-title {
+          font-size: 1.125rem;
+        }
+        
+        .ingredients-list {
+          font-size: 0.875rem;
+        }
+        
+        .instruction-step {
+          font-size: 0.875rem;
+        }
+      }
+      
+      /* Mobile Portrait (320px to 420px) */
+      @media screen and (min-width: 320px) and (max-width: 420px) {
+        .header {
+          padding: 1rem 0.5rem;
+        }
+        
+        .logo {
+          width: 50px;
+          height: 50px;
+          font-size: 1.5rem;
+        }
+        
+        .header h1 {
+          font-size: 1.75rem;
+        }
+        
+        .subtitle {
+          font-size: 0.85rem;
+          margin-top: 0.25rem;
+        }
+        
+        .search-section {
+          padding: 1rem 0.5rem;
+        }
+        
+        .search-title {
+          font-size: 1.25rem;
+          margin-bottom: 1rem;
+        }
+        
+        .search-title i {
+          font-size: 1rem;
+        }
+        
+        .search-controls {
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+        
+        .search-input {
+          width: 100%;
+          font-size: 0.875rem;
+          padding: 0.75rem 1rem;
+          border-radius: 0.75rem;
+        }
+        
+        .search-btn {
+          width: 100%;
+          padding: 0.75rem 1rem;
+          font-size: 0.875rem;
+          border-radius: 0.75rem;
+        }
+        
+        .search-btn i {
+          margin-right: 0.5rem;
+        }
+        
+        .recipe-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        
+        .recipe-card {
+          padding: 0.875rem;
+          border-radius: 1rem;
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        
+        .recipe-image {
+          height: 140px;
+          border-radius: 0.75rem;
+        }
+        
+        .recipe-title {
+          font-size: 1rem;
+          margin-bottom: 0.5rem;
+        }
+        
+        .recipe-meta {
+          flex-direction: column;
+          gap: 0.375rem;
+          align-items: flex-start;
+          margin-bottom: 0.75rem;
+        }
+        
+        .recipe-meta span {
+          font-size: 0.75rem;
+        }
+        
+        .ingredients-title,
+        .instructions-title {
+          font-size: 0.875rem;
+          margin-bottom: 0.5rem;
+        }
+        
+        .ingredients-list {
+          font-size: 0.75rem;
+          gap: 0.375rem;
+          margin-bottom: 0.75rem;
+        }
+        
+        .ingredient-item {
+          padding: 0.375rem 0.5rem;
+          border-radius: 0.5rem;
+        }
+        
+        .instructions-list {
+          gap: 0.5rem;
+        }
+        
+        .instruction-step {
+          font-size: 0.75rem;
+          padding: 0.5rem;
+          border-radius: 0.5rem;
+        }
+        
+        .step-number {
+          width: 20px;
+          height: 20px;
+          font-size: 0.625rem;
+        }
+        
+        .loader {
+          width: 30px;
+          height: 30px;
+          border-width: 3px;
+        }
+        
+        .message {
+          font-size: 0.875rem;
+          padding: 0.75rem;
+        }
+      }
+      
+      /* Ultra Small Mobile (280px to 319px) */
+      @media screen and (max-width: 319px) {
+        .header {
+          padding: 0.75rem 0.375rem;
+        }
+        
+        .logo {
+          width: 40px;
+          height: 40px;
+          font-size: 1.25rem;
+        }
+        
+        .header h1 {
+          font-size: 1.5rem;
+        }
+        
+        .subtitle {
+          font-size: 0.75rem;
+        }
+        
+        .search-section {
+          padding: 0.75rem 0.375rem;
+        }
+        
+        .search-title {
+          font-size: 1.125rem;
+        }
+        
+        .search-input {
+          font-size: 0.8rem;
+          padding: 0.625rem 0.875rem;
+        }
+        
+        .search-btn {
+          font-size: 0.8rem;
+          padding: 0.625rem 0.875rem;
+        }
+        
+        .recipe-card {
+          padding: 0.75rem;
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        
+        .recipe-image {
+          height: 120px;
+        }
+        
+        .recipe-title {
+          font-size: 0.875rem;
+        }
+      }
     </style>
   </head>
 
   <body>
     <div class="app">
-      <div class="header">
-        <div class="logo">
-          <i class="fas fa-utensils"></i>
-        </div>
-        <h1>FoodFindr</h1>
-        <p class="subtitle">Premium Recipe Discovery Platform</p>
-      </div>
-
-      <div class="search-section">
-        <h2 class="search-title">
-          <i class="fas fa-search"></i>
-          Recipe Search
-        </h2>
-
-        <div class="search-controls">
-          <input
-            type="text"
-            id="foodInput"
-            class="search-input"
-            placeholder="Search for premium recipes (e.g., truffle pasta, wagyu burger, lobster bisque)"
-            aria-label="Food search input"
-          />
-          <button
-            class="search-btn"
-            onclick="searchFood()"
-            aria-label="Search for ingredients"
-          >
-            <i class="fas fa-search"></i>
-            Search
-          </button>
-        </div>
-
-        <div class="search-loader" id="loader"></div>
-      </div>
-
-      <div class="results-section">
-        <div class="results-header">
-          <h3 class="results-title">
-            <i class="fas fa-list"></i>
-            Premium Ingredients
-          </h3>
-          <span class="results-count" id="resultsCount" style="display: none"
-            >0</span
-          >
-        </div>
-
-        <ul
-          id="ingredientsList"
-          class="ingredient-list"
-          aria-live="polite"
-        ></ul>
-
-        <div id="recipeContainer"></div>
-        <div id="instructionsContainer"></div>
-
-        <div id="emptyState" class="empty-state">
-          <div class="empty-icon">
-            <i class="fas fa-crown"></i>
+      <div class="app-container">
+        <div class="header">
+          <div class="logo">
+            <i class="fas fa-utensils"></i>
           </div>
-          <div class="empty-title">Discover Premium Recipes</div>
-          <div class="empty-text">
-            Search for gourmet ingredients and professional cooking instructions
-            🍽️
+          <h1>FoodFindr</h1>
+          <p class="subtitle">Premium Recipe Discovery Platform</p>
+        </div>
+
+        <div class="search-section">
+          <h2 class="search-title">
+            <i class="fas fa-search"></i>
+            Recipe Search
+          </h2>
+
+          <div class="search-controls">
+            <input
+              type="text"
+              id="foodInput"
+              class="search-input"
+              placeholder="Search for premium recipes (e.g., truffle pasta, wagyu burger, lobster bisque)"
+              aria-label="Food search input"
+            />
+            <button
+              class="search-btn"
+              onclick="searchFood()"
+              aria-label="Search for ingredients"
+            >
+              <i class="fas fa-search"></i>
+              Search
+            </button>
+          </div>
+
+          <div class="search-loader" id="loader"></div>
+        </div>
+
+        <div class="results-section">
+          <div class="results-header">
+            <h3 class="results-title">
+              <i class="fas fa-list"></i>
+              Premium Ingredients
+            </h3>
+            <span class="results-count" id="resultsCount" style="display: none"
+              >0</span
+            >
+          </div>
+
+          <ul
+            id="ingredientsList"
+            class="ingredient-list"
+            aria-live="polite"
+          ></ul>
+
+          <div id="recipeContainer"></div>
+          <div id="instructionsContainer"></div>
+
+          <div id="emptyState" class="empty-state">
+            <div class="empty-icon">
+              <i class="fas fa-crown"></i>
+            </div>
+            <div class="empty-title">Discover Premium Recipes</div>
+            <div class="empty-text">
+              Search for gourmet ingredients and professional cooking instructions
+              🍽️
+            </div>
           </div>
         </div>
       </div>

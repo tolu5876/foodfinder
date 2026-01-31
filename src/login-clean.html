@@ -200,18 +200,22 @@
           const email = document.getElementById("email").value.trim();
           const password = document.getElementById("password").value.trim();
           let valid = true;
+          let errorMessage = "";
 
           // Required field validation
-          if (!email) {
-            showAlert("Email or phone is required!");
+          if (!email && !password) {
+            errorMessage = "Email and password are required!";
             valid = false;
-          }
-          if (!password) {
-            showAlert("Password is required!");
+          } else if (!email) {
+            errorMessage = "Email or phone is required!";
+            valid = false;
+          } else if (!password) {
+            errorMessage = "Password is required!";
             valid = false;
           }
 
           if (!valid) {
+            showAlert(errorMessage);
             return;
           }
 
@@ -230,7 +234,7 @@
             if (loginResult && loginResult.success) {
               showAlert("Login successful!", 1000, "success");
               setTimeout(() => {
-                window.location.href = "../Dashboard.html";
+                window.location.href = "Dashboard.html";
               }, 1000);
             } else {
               // Show specific error messages

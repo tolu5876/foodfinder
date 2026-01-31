@@ -209,44 +209,230 @@
         color: white;
       }
 
-      /* RESPONSIVE */
-      @media (max-width: 768px) {
-        header {
-          flex-direction: column;
-          gap: 15px;
-        }
+      /* ===== COMPREHENSIVE MEDIA QUERIES ===== */
 
-        .hero h2 {
-          font-size: 36px;
-        }
+/* Extra Large Desktop (1400px and up) */
+@media (min-width: 1400px) {
+  header {
+    padding: 20px 60px;
+  }
+  
+  .hero h2 {
+    font-size: 48px;
+  }
+  
+  .slide img {
+    height: 500px;
+  }
+  
+  .about-container {
+    padding: 60px;
+  }
+}
 
-        .slide img {
-          height: 300px;
-        }
+/* Large Desktop (1200px to 1399px) */
+@media (max-width: 1399px) {
+  header {
+    padding: 20px 50px;
+  }
+  
+  .hero h2 {
+    font-size: 44px;
+  }
+  
+  .slide img {
+    height: 450px;
+  }
+}
 
-        .about-container {
-          flex-direction: column;
-          text-align: center;
-        }
+/* Desktop (1025px to 1199px) */
+@media (max-width: 1199px) {
+  header {
+    padding: 20px 40px;
+  }
+  
+  .hero h2 {
+    font-size: 40px;
+  }
+  
+  .slide img {
+    height: 400px;
+  }
+  
+  .about-container {
+    padding: 40px;
+  }
+}
 
-        .search-bar input {
-          width: 90%;
-        }
-      }
+/* Tablets (768px to 1024px) */
+@media (max-width: 1024px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 30px;
+  }
 
-      @media (max-width: 480px) {
-        .hero h2 {
-          font-size: 28px;
-        }
+  .hero h2 {
+    font-size: 36px;
+  }
 
-        .slide img {
-          height: 220px;
-        }
+  .slide img {
+    height: 300px;
+  }
 
-        nav a {
-          margin: 5px;
-        }
-      }
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+  }
+
+  .search-bar input {
+    width: 90%;
+  }
+  
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  nav a {
+    margin: 5px 10px;
+  }
+}
+
+/* Large Tablets (600px to 767px) */
+@media (max-width: 767px) {
+  header {
+    padding: 15px 20px;
+  }
+  
+  .hero h2 {
+    font-size: 32px;
+  }
+  
+  .slide img {
+    height: 280px;
+  }
+  
+  .about-container {
+    padding: 25px;
+  }
+  
+  .search-bar input {
+    width: 95%;
+    font-size: 16px;
+  }
+  
+  nav a {
+    font-size: 14px;
+    margin: 3px 8px;
+  }
+}
+
+/* Small Tablets (480px to 599px) */
+@media (max-width: 599px) {
+  header {
+    padding: 12px 15px;
+  }
+  
+  .hero h2 {
+    font-size: 30px;
+  }
+  
+  .slide img {
+    height: 250px;
+  }
+  
+  .about-container {
+    padding: 20px;
+  }
+  
+  .search-bar input {
+    width: 100%;
+    font-size: 15px;
+  }
+  
+  nav a {
+    font-size: 13px;
+    margin: 2px 5px;
+  }
+}
+
+/* Mobile phones (360px to 479px) */
+@media (max-width: 479px) {
+  header {
+    padding: 10px 12px;
+  }
+  
+  .hero h2 {
+    font-size: 28px;
+  }
+
+  .slide img {
+    height: 220px;
+  }
+
+  nav a {
+    margin: 3px;
+    font-size: 12px;
+  }
+  
+  .about-container {
+    padding: 15px;
+  }
+  
+  .search-bar input {
+    font-size: 14px;
+  }
+}
+
+/* Small Mobile (320px to 359px) */
+@media (max-width: 359px) {
+  header {
+    padding: 8px 10px;
+  }
+  
+  .hero h2 {
+    font-size: 24px;
+  }
+  
+  .slide img {
+    height: 200px;
+  }
+  
+  nav a {
+    font-size: 11px;
+    margin: 2px 3px;
+  }
+  
+  .about-container {
+    padding: 12px;
+  }
+}
+
+/* Ultra Small Mobile (280px to 319px) */
+@media (max-width: 319px) {
+  header {
+    padding: 6px 8px;
+  }
+  
+  .hero h2 {
+    font-size: 20px;
+  }
+  
+  .slide img {
+    height: 180px;
+  }
+  
+  nav a {
+    font-size: 10px;
+    margin: 1px 2px;
+  }
+  
+  .about-container {
+    padding: 10px;
+  }
+}
     </style>
   </head>
 
@@ -288,13 +474,13 @@
     <section class="slider">
       <div class="slider-container">
         <div class="slide active">
-          <img src="photo-1540189549336-e6e99c3679fe.jpeg" alt="Food" />
+          <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800&h=400&fit=crop" alt="Food" />
         </div>
         <div class="slide">
-          <img src="photo-1504674900247-0877df9cc836.jpeg" alt="Restaurant" />
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=400&fit=crop" alt="Restaurant" />
         </div>
         <div class="slide">
-          <img src="photo-1499028344343-cd173ffc68a9.jpeg" alt="Fast Food" />
+          <img src="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?w=800&h=400&fit=crop" alt="Fast Food" />
         </div>
       </div>
     </section>

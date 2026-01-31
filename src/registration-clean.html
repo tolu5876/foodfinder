@@ -276,12 +276,14 @@
             document.getElementById("error-password").textContent =
               "Password must be at least 8 characters long*";
             hasError = true;
-          } else if (/\d/.test(formData.password)) {
-            document.getElementById("error-password").style.display = "block";
-            document.getElementById("error-password").textContent =
-              "Password must contain only letters, no numbers allowed*";
-            hasError = true;
           }
+
+          //  else if (/\d/.test(formData.password)) {
+          //   document.getElementById("error-password").style.display = "block";
+          //   document.getElementById("error-password").textContent =
+          //     "Password must contain only letters, no numbers allowed*";
+          //   hasError = true;
+          // }
 
           // Validate confirm password
           if (!formData.confirmPassword.trim()) {

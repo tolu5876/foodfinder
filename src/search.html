@@ -15,13 +15,13 @@
 
     <style>
       :root {
-        --primary: #2563eb;
-        --primary-dark: #1d4ed8;
-        --primary-light: #3b82f6;
-        --secondary: #10b981;
-        --secondary-dark: #059669;
-        --accent: #f59e0b;
-        --accent-dark: #d97706;
+        --primary: #fb923c;
+        --primary-dark: #f97316;
+        --primary-light: #fdba74;
+        --secondary: #fed7aa;
+        --secondary-dark: #fdba74;
+        --accent: #ea580c;
+        --accent-dark: #dc2626;
         --success: #22c55e;
         --warning: #f97316;
         --danger: #ef4444;
@@ -29,12 +29,12 @@
         --gray: #6b7280;
         --light: #f3f4f6;
         --white: #ffffff;
-        --bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --bg: linear-gradient(135deg, #ffffff 0%, #fed7aa 50%, #fb923c 100%);
         --card: rgba(255, 255, 255, 0.98);
-        --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        --shadow-lg: 0 30px 60px -12px rgba(0, 0, 0, 0.35);
-        --border: #e5e7eb;
-        --gradient-text: linear-gradient(135deg, #667eea, #764ba2);
+        --shadow: 0 25px 50px -12px rgba(251, 146, 60, 0.25);
+        --shadow-lg: 0 30px 60px -12px rgba(251, 146, 60, 0.35);
+        --border: #fed7aa;
+        --gradient-text: linear-gradient(135deg, #fb923c, #ea580c);
       }
 
       * {
@@ -46,7 +46,7 @@
       body {
         font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
         min-height: 100vh;
-        background: var(--bg);
+        background: linear-gradient(135deg, #ffffff 0%, #fed7aa 50%, #fb923c 100%);
         background-attachment: fixed;
         display: flex;
         align-items: center;
@@ -67,17 +67,17 @@
         bottom: 0;
         background: radial-gradient(
             circle at 20% 80%,
-            rgba(120, 119, 198, 0.3) 0%,
+            rgba(251, 146, 60, 0.3) 0%,
             transparent 50%
           ),
           radial-gradient(
             circle at 80% 20%,
-            rgba(255, 119, 198, 0.3) 0%,
+            rgba(251, 146, 60, 0.2) 0%,
             transparent 50%
           ),
           radial-gradient(
             circle at 40% 40%,
-            rgba(120, 219, 255, 0.2) 0%,
+            rgba(254, 215, 170, 0.3) 0%,
             transparent 50%
           );
         pointer-events: none;
@@ -135,11 +135,11 @@
         height: 4px;
         background: linear-gradient(
           90deg,
-          #667eea 0%,
-          #764ba2 25%,
-          #f093fb 50%,
-          #f5576c 75%,
-          #4facfe 100%
+          #fb923c 0%,
+          #f97316 25%,
+          #ea580c 50%,
+          #dc2626 75%,
+          #fed7aa 100%
         );
         border-radius: 30px 30px 0 0;
         animation: gradientShift 3s ease-in-out infinite;
@@ -221,15 +221,15 @@
         height: 120px;
         background: linear-gradient(
           135deg,
-          #667eea 0%,
-          #764ba2 50%,
-          #f093fb 100%
+          #fb923c 0%,
+          #f97316 50%,
+          #ea580c 100%
         );
         border-radius: 35px;
         margin-bottom: 35px;
         box-shadow: 
-          0 30px 60px rgba(102, 126, 234, 0.4),
-          0 15px 35px rgba(118, 75, 162, 0.3),
+          0 30px 60px rgba(251, 146, 60, 0.4),
+          0 15px 35px rgba(249, 115, 22, 0.3),
           inset 0 0 0 2px rgba(255, 255, 255, 0.2);
         position: relative;
         overflow: hidden;
@@ -240,8 +240,8 @@
       .logo:hover {
         transform: translateY(-5px) scale(1.05);
         box-shadow: 
-          0 40px 80px rgba(102, 126, 234, 0.5),
-          0 20px 40px rgba(118, 75, 162, 0.4),
+          0 40px 80px rgba(251, 146, 60, 0.5),
+          0 20px 40px rgba(249, 115, 22, 0.4),
           inset 0 0 0 2px rgba(255, 255, 255, 0.3);
       }
 
@@ -287,22 +287,20 @@
         margin-bottom: 20px;
         background: linear-gradient(
           135deg,
-          #667eea 0%,
-          #764ba2 30%,
-          #f093fb 60%,
-          #f5576c 100%
+          #fb923c 0%,
+          #f97316 50%,
+          #ea580c 100%
         );
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        text-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
-        letter-spacing: -2px;
+        text-shadow: 0 4px 20px rgba(251, 146, 60, 0.3);
         animation: titleGlow 3s ease-in-out infinite alternate;
       }
 
       @keyframes titleGlow {
-        0% { filter: brightness(1) drop-shadow(0 0 20px rgba(102, 126, 234, 0.3)); }
-        100% { filter: brightness(1.2) drop-shadow(0 0 30px rgba(118, 75, 162, 0.4)); }
+        0% { filter: brightness(1) drop-shadow(0 0 20px rgba(251, 146, 60, 0.3)); }
+        100% { filter: brightness(1.2) drop-shadow(0 0 30px rgba(234, 88, 12, 0.4)); }
       }
 
       .subtitle {
@@ -438,16 +436,16 @@
         border-radius: 20px;
         background: linear-gradient(
           135deg,
-          #667eea 0%,
-          #764ba2 50%,
-          #f093fb 100%
+          #fb923c 0%,
+          #f97316 50%,
+          #ea580c 100%
         );
         color: white;
         cursor: pointer;
         transition: all 0.3s ease;
         box-shadow: 
-          0 10px 30px rgba(102, 126, 234, 0.3),
-          0 5px 15px rgba(118, 75, 162, 0.2);
+          0 10px 30px rgba(251, 146, 60, 0.3),
+          0 5px 15px rgba(249, 115, 22, 0.2);
         display: flex;
         align-items: center;
         gap: 10px;
@@ -474,8 +472,8 @@
       .search-btn:hover {
         transform: translateY(-3px) scale(1.02);
         box-shadow: 
-          0 20px 40px rgba(102, 126, 234, 0.4),
-          0 10px 20px rgba(118, 75, 162, 0.3);
+          0 20px 40px rgba(251, 146, 60, 0.4),
+          0 10px 20px rgba(249, 115, 22, 0.3);
       }
 
       .search-btn:hover::before {

@@ -107,54 +107,58 @@
       // Inline login function to avoid recursion issues
       function performLogin(email, password) {
         return new Promise((resolve) => {
-          console.log('Inline login started for:', email);
-          
+          console.log("Inline login started for:", email);
+
           setTimeout(() => {
             try {
               // Check if user exists in localStorage
-              const existingUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-              const userExists = existingUsers.find(user => 
-                user.email.toLowerCase() === email.toLowerCase()
+              const existingUsers = JSON.parse(
+                localStorage.getItem("registeredUsers") || "[]",
               );
-              
+              const userExists = existingUsers.find(
+                (user) => user.email.toLowerCase() === email.toLowerCase(),
+              );
+
               if (!userExists) {
-                resolve({ 
-                  success: false, 
-                  message: 'User not found! Please register first.' 
+                resolve({
+                  success: false,
+                  message: "User not found! Please register first.",
                 });
                 return;
               }
-              
+
               // Create user object
               const user = {
                 uid: userExists.uid,
                 email: email,
-                displayName: email.split('@')[0]
+                displayName: email.split("@")[0],
               };
-              
+
               // Save session
-              localStorage.setItem('userSession', JSON.stringify({
-                user: {
-                  uid: user.uid,
-                  email: user.email,
-                  displayName: user.displayName
-                },
-                deviceId: 'device_' + Date.now()
-              }));
-              
-              console.log('Inline login successful:', user);
-              
-              resolve({ 
-                success: true, 
-                message: 'Login successful!',
-                user: user
+              localStorage.setItem(
+                "userSession",
+                JSON.stringify({
+                  user: {
+                    uid: user.uid,
+                    email: user.email,
+                    displayName: user.displayName,
+                  },
+                  deviceId: "device_" + Date.now(),
+                }),
+              );
+
+              console.log("Inline login successful:", user);
+
+              resolve({
+                success: true,
+                message: "Login successful!",
+                user: user,
               });
-              
             } catch (error) {
-              console.error('Inline login error:', error);
-              resolve({ 
-                success: false, 
-                message: 'Login failed. Please try again.' 
+              console.error("Inline login error:", error);
+              resolve({
+                success: false,
+                message: "Login failed. Please try again.",
               });
             }
           }, 100);
@@ -173,7 +177,7 @@
 
         // Add class based on type and set background color
         if (type === "success") {
-          alertDiv.classList.add("alert-success");
+          // alertDiv.classList.add("alert-success");
           alertDiv.style.backgroundColor = "#27ae60";
           alertDiv.style.color = "#ffffff";
         } else {

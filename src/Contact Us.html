@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us | FoodieFindr</title>
-    <link rel="stylesheet" href="../output.css" />
+    <link rel="stylesheet" href="output.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -20,53 +21,56 @@
           transform: translate(-50%, -50%) scale(1);
         }
       }
+
+      /* Mobile menu slide-down animation */
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .mobile-slide {
+        animation: slideDown 180ms ease-out forwards;
+      }
     </style>
   </head>
   <body
-    class="min-h-screen bg-gradient-to-br from-orange-50 via-orange-100 to-orange-300"
+    class="min-h-screen bg-linear-to-br from-orange-50 via-orange-100 to-orange-300"
   >
     <!-- FIXED NAVBAR -->
-    <header
-      class="fixed top-0 left-0 w-full bg-white border-b border-black/20 z-50"
-    >
-      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center">
-        <div class="flex items-center gap-3">
-          <img src="https://i.pinimg.com/1200x/91/1c/d2/911cd2e508ea084fa02f855a104e7f6e.jpg" class="w-12 h-12 rounded-full" />
-          <span class="text-xl font-bold text-gray-900">FoodieFindr</span>
-        </div>
-        <div class="hidden md:flex items-center ml-auto gap-28">
-          <nav class="flex items-center gap-8 text-gray-800">
-            <a href="Dashboard.html" class="hover:text-orange-600">Home</a>
-            <a href="search.html" class="hover:text-orange-600">Categories</a>
-            <a href="team.html" class="hover:text-orange-600">Team</a>
-          </nav>
-          <button id="menuBtn" class="md:hidden text-3xl transition">☰</button>
-        </div>
+<header class="fixed top-0 left-0 w-full bg-white border-b border-black/5 z-[2000]">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
+    
+    <div class="logo flex items-center gap-3 cursor-pointer shrink-0"> 
+      <img src="IMAGES/web logo.jpg" alt="Logo" class="w-12 h-12 md:w-[58px] md:h-[58px] rounded-full object-cover">
+      <span class="text-[19px] md:text-[23px] font-bold text-[#111827] tracking-tight whitespace-nowrap flex items-center">
+        Foodie<span class="text-[#ff6b35]">Findr</span>
+      </span>
+    </div>
 
-        <!-- Mobile Menu -->
-        <div
-          id="mobileMenu"
-          class="hidden md:hidden bg-white/90 backdrop-blur-xl border-t border-white/40 px-6 py-6 space-y-4"
-        >
-          <a
-            href="Dashboard.html"
-            class="block font-medium text-gray-700 hover:text-orange-600"
-            >Home</a
-          >
-          <a
-            href="about.html"
-            class="block font-medium text-gray-700 hover:text-orange-600"
-            >About</a
-          >
-          <a
-            href="team.html"
-            class="block font-medium text-gray-700 hover:text-orange-600"
-            >Team</a
-          >
-        </div>
-      </div>
-    </header>
+    <nav class="hidden lg:flex items-center gap-10">
+      <a href="Dashboard.html" class="text-[13.5px] font-[650] tracking-[1.2px] text-[#4b5563] uppercase transition-all duration-300 hover:text-[#ff6b35]">HOME</a>
+      <a href="search.html" class="text-[13.5px] font-[650] tracking-[1.2px] text-[#4b5563] uppercase transition-all duration-300 hover:text-[#ff6b35]">CATEGORIES</a>
+      <a href="about.html" class="text-[13.5px] font-[650] tracking-[1.2px] text-[#4b5563] uppercase transition-all duration-300 hover:text-[#ff6b35]">ABOUT US</a>
+      <a href="Contact Us.html" class="relative text-[13.5px] font-[650] tracking-[1.2px] text-[#ff6b35] uppercase transition-all duration-300 after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:w-full after:h-[3px] after:bg-[#ff6b35]">CONTACT</a>
+      <a href="team.html" class="text-[13.5px] font-[650] tracking-[1.2px] text-[#4b5563] uppercase transition-all duration-300 hover:text-[#ff6b35]">TEAM</a>
+    </nav>
 
+    <button id="menuBtn" class="lg:hidden text-[1.8rem] text-[#111827] p-1 focus:outline-none">☰</button>
+  </div>
+
+  <div id="mobileMenu" class="hidden flex flex-col w-full bg-white shadow-lg border-t border-[#f3f4f6]">
+    <a href="Dashboard.html" class="px-10 py-4 text-[14px] font-semibold tracking-wide text-[#4b5563] uppercase hover:bg-gray-50 border-b border-gray-50">HOME</a>
+    <a href="search.html" class="px-10 py-4 text-[14px] font-semibold tracking-wide text-[#4b5563] uppercase hover:bg-gray-50 border-b border-gray-50">CATEGORIES</a>
+    <a href="about.html" class="px-10 py-4 text-[14px] font-semibold tracking-wide text-[#4b5563] uppercase hover:bg-gray-50 border-b border-gray-50">ABOUT US</a>
+    <a href="Contact Us.html" class="px-10 py-4 text-[14px] font-semibold tracking-wide text-[#ff6b35] uppercase bg-[#fff7f0] border-l-4 border-[#ff6b35]">CONTACT</a>
+    <a href="team.html" class="px-10 py-4 text-[14px] font-semibold tracking-wide text-[#4b5563] uppercase hover:bg-gray-50">TEAM</a>
+  </div>
+</header>
     <!-- SUCCESS ALERT -->
     <div
       id="contactAlert"
@@ -183,36 +187,78 @@
       </div>
     </section>
 
+    <footer class="border-t border-black/10 py-8 w-full bg-transparent">
+  <div
+    class="max-w-[1400px] mx-auto px-10 flex items-center justify-between whitespace-nowrap"
+  >
+    <!-- Brand -->
+    <a href="#" class="flex items-center gap-3">
+      <img
+        src="IMAGES/web logo.jpg"
+        alt="FoodieFindr Logo"
+        class="w-[50px] h-[50px] rounded-full object-cover"
+      />
+      <span class="text-xl font-bold text-[#111827]">
+        FoodieFindr
+      </span>
+    </a>
+
+    <!-- Copyright -->
+    <p class="text-sm text-[#6b7280] pl-4 ml-4 border-l-2 border-[#e5e7eb] leading-relaxed">
+      © 2026 FoodieFindr —
+      <a href="#" class="text-[#4b5563]">
+        @All rights reserved
+      </a>
+    </p>
+
+    <!-- Social Icons -->
+    <div class="flex gap-3">
+      <a href="#" class="text-[#9ca3af]">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+        </svg>
+      </a>
+
+      <a href="#" class="text-[#9ca3af]">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+          <path d="M17.5 6.5h.01"></path>
+        </svg>
+      </a>
+
+      <a href="#" class="text-[#9ca3af]">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
     <!-- SCRIPT -->
     <script>
-      /* ============================================
-         📧 EMAIL SETUP - SUPER SIMPLE!
-         ============================================
-         
-         ⚠️ TO MAKE THIS WORK, YOU NEED TO GET ONE ACCESS KEY:
-         
-         STEP 1: Go to https://web3forms.com/
-         STEP 2: Enter your email: foodfindr27@gmail.com
-         STEP 3: Click "Get Your Access Key"
-         STEP 4: Check your email and copy the access key
-         STEP 5: Replace "YOUR_ACCESS_KEY_HERE" below with your key
-         
-         THAT'S IT! The form will send emails to foodfindr27@gmail.com
-      */
-
-      // ✅ Access Key Configured!
+      
       const ACCESS_KEY = "d40bc135-a056-466a-8087-4bd49394a36f";
 
-      // MOBILE MENU
-      const btn = document.getElementById("menuBtn");
-      const menu = document.getElementById("mobileMenu");
-      if (btn && menu) {
-        btn.addEventListener("click", () => {
-          menu.classList.toggle("hidden");
-          btn.textContent = menu.classList.contains("hidden") ? "☰" : "✕";
-        });
-      }
+     // MOBILE MENU
+const btn = document.getElementById('menuBtn');
+const menu = document.getElementById('mobileMenu');
 
+btn.addEventListener('click', () => {
+  const isHidden = menu.classList.contains('hidden');
+  
+  if (isHidden) {
+    menu.classList.remove('hidden');
+    menu.classList.add('flex', 'mobile-slide'); // Added animation class here
+    btn.innerHTML = '✕';
+  } else {
+    menu.classList.add('hidden');
+    menu.classList.remove('flex', 'mobile-slide');
+    btn.innerHTML = '☰';
+  }
+});
       // CONTACT FORM LOGIC
       const form = document.getElementById("contactForm");
       const successAlert = document.getElementById("contactAlert");

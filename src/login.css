@@ -255,12 +255,12 @@ label {
 
 .login-container .alert {
   box-shadow: 0 2px 8px rgba(231, 76, 60, 0.15);
-  border: 1px solid #e74c3c;
+  /* border: 1px solid #e74c3c; */
   font-size: 16px;
   font-weight: 500;
   padding: 12px 18px;
   border-radius: 8px;
-  color: #a94442;
+  /* color: #a94442; */
   background: #fff6f6;
   margin-bottom: 10px;
 }

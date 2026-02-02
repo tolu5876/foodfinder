@@ -1,76 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FoodieFindr</title>
-    <link rel="stylesheet" href=" output.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+      body { font-family: 'Poppins', sans-serif; }
+    </style>
   </head>
 
-  <body
-    class="min-h-screen bg-linear-to-br from-white via-orange-100 to-orange-400"
-  >
-    <div class="px-4 sm:px-6 lg:px-8">
-      <!-- ================= NAVBAR ================= -->
-      <header
-        class="fixed top-0 left-0 w-full bg-white border-b border-black/20 z-50"
-      >
+  <body class="min-h-screen mx-9 bg-linear-to-br from-white via-orange-100 to-orange-400 flex flex-col">
+    <div class="grow">
+      <header class="fixed top-0 left-0 w-full bg-white border-b border-black/20 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center">
           <div class="flex items-center gap-3">
-            <img src="https://i.pinimg.com/1200x/91/1c/d2/911cd2e508ea084fa02f855a104e7f6e.jpg" class="w-12 h-12 rounded-full" />
-            <span class="text-xl font-bold text-gray-900">FoodieFindr</span>
+            <img src="IMAGES/web logo.jpg" alt="Logo" class="w-12 h-12 md:w-[58px] md:h-[58px] rounded-full object-cover">
+            <span class="text-[19px] md:text-[23px] font-bold text-[#111827] tracking-tight whitespace-nowrap flex items-center">
+              Foodie<span class="text-[#ff6b35]">Findr</span>
+            </span>
           </div>
 
           <div class="hidden md:flex items-center ml-auto gap-28">
-            <nav
-              class="flex items-center gap-8 text-sm font-bold uppercase tracking-widest text-gray-600"
-            >
-              <a
-                href="Dashboard.html"
-                class="text-orange-600 border-b-2 border-orange-500 pb-0.5"
-                >Home</a
-              >
+            <nav class="flex items-center gap-8 text-sm font-bold uppercase tracking-widest text-gray-600">
+              <a href="Dashboard.html" class="text-orange-600 border-b-2 border-orange-500 pb-0.5">Home</a>
               <a href="search.html" class="hover:text-orange-600">Categories</a>
               <a href="team.html" class="hover:text-orange-600">Team</a>
             </nav>
 
             <div class="flex items-center gap-3">
-              <div
-                class="flex items-center gap-2 px-4 py-1.5 border rounded shadow"
-              >
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  class="w-5 h-5"
-                  viewBox="0 0 24 24"
-                >
+              <div class="flex items-center gap-2 px-4 py-1.5 border rounded shadow">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                   <circle cx="11" cy="11" r="8"></circle>
                   <path d="m21 21-4.35-4.35"></path>
                 </svg>
-
-                <input
-                  type="search"
-                  placeholder="Search ingredients"
-                  class="w-20 focus:outline-none placeholder:text-xs"
-                />
-                <button><a href="search.html"> Search</a></button>
+                <input type="search" placeholder="Search ingredients" class="w-20 focus:outline-none placeholder:text-xs" />
+                <button class="text-xs font-bold"><a href="search.html">Search</a></button>
               </div>
 
-              <a
-                href="#"
-                id="logoutBtn"
-                class="flex items-center gap-2 px-4 py-1.5 bg-orange-500 hover:bg-orange-600 font-bold text-black rounded shadow"
-              >
+              <a href="#" id="logoutBtn" class="flex items-center gap-2 px-4 py-1.5 bg-orange-500 hover:bg-orange-600 font-bold text-black rounded shadow transition-colors">
                 <svg fill="currentColor" class="w-5 h-5" viewBox="0 0 24 24">
-                  <path
-                    d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-                  />
+                  <path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                 </svg>
                 Logout
               </a>
@@ -80,134 +52,51 @@
           <button id="menuBtn" class="md:hidden text-3xl ml-auto">☰</button>
         </div>
 
-        <div
-          id="mobileMenu"
-          class="hidden md:hidden px-6 pb-4 space-y-3 bg-white"
-        >
-          <a
-            href="Dashboard.html"
-            class="block font-bold uppercase tracking-widest text-gray-600"
-            >Home</a
-          >
-          <a
-            href="search.html"
-            class="block font-bold uppercase tracking-widest text-gray-600"
-            >Categories</a
-          >
-          <a
-            href="team.html"
-            class="block font-bold uppercase tracking-widest text-gray-600"
-            >Team</a
-          >
-
-          <div
-            class="flex items-center gap-2 px-4 py-1.5 border rounded shadow w-57"
-          >
-            <svg
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              class="w-5 h-5"
-              viewBox="0 0 24 24"
-            >
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.35-4.35"></path>
-            </svg>
-
-            <input
-              type="search"
-              placeholder="Search ingredients"
-              class="w-30 focus:outline-none placeholder:text-xs"
-            />
-            <button
-              class="bg-orange-500 rounded font-medium tracking-wide px-2 py-0.5"
-            >
-              <a href="search.html"> Search</a>
-            </button>
+        <div id="mobileMenu" class="hidden md:hidden px-6 pb-4 space-y-3 bg-white border-b">
+          <a href="Dashboard.html" class="block font-bold uppercase tracking-widest text-gray-600">Home</a>
+          <a href="search.html" class="block font-bold uppercase tracking-widest text-gray-600">Categories</a>
+          <a href="team.html" class="block font-bold uppercase tracking-widest text-gray-600">Team</a>
+          <div class="flex items-center gap-2 px-4 py-1.5 border rounded shadow">
+            <input type="search" placeholder="Search ingredients" class="grow focus:outline-none placeholder:text-xs" />
+            <button class="bg-orange-500 rounded font-medium text-xs px-3 py-1 text-white"><a href="search.html">Search</a></button>
           </div>
-          <div class="w-57">
-            <a
-              href="#"
-              id="logoutBtnMobile"
-              class="flex items-center gap-2 px-4 py-1.5 bg-orange-500 hover:bg-orange-600 font-bold text-black rounded shadow"
-            >
-              <svg fill="currentColor" class="w-5 h-5" viewBox="0 0 24 24">
-                <path
-                  d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-                />
-              </svg>
-              Logout
-            </a>
-          </div>
+          <a href="#" id="logoutBtnMobile" class="flex items-center justify-center gap-2 px-4 py-2 bg-orange-500 font-bold text-black rounded shadow">
+            Logout
+          </a>
         </div>
       </header>
 
-      <section
-        class="max-w-7xl mx-auto px-6 pt-32 pb-20 grid md:grid-cols-2 gap-12 items-center"
-      >
-        <div>
-          <h1
-            class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight"
-          >
-            Explore <br />Ingredients.<br />
-            Master Every Dish.
+      <section class="max-w-7xl mx-auto px-6 pt-40 pb-20 grid md:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+            Explore <br />Ingredients.<br /> Master Every Dish.
           </h1>
-
           <p class="mt-6 text-gray-700 max-w-lg">
-            Stop guessing. Search thousands of recipes from around the world and
-            get exact ingredients and measurements for your next meal.
+            Stop guessing. Search thousands of recipes from around the world and get exact ingredients and measurements for your next meal.
           </p>
-
           <div class="mt-8 flex gap-4">
-            <a
-              href="about.html"
-              class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg shadow"
-            >
-              About Us
-            </a>
-            <a
-              href="Contact Us.html"
-              class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg shadow"
-            >
-              Contact Us
-            </a>
+            <a href="about.html" class="bg-orange-500  hover:bg-orange-600 text-white px-6 py-3 rounded-lg shadow transition-transform hover:scale-105">About Us</a>
+            <a href="Contact Us.html" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg shadow transition-transform hover:scale-105">Contact Us</a>
           </div>
         </div>
-
-        <div>
-          <img
-            src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vZCUyMGluZ3JlZGllbnRzfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-            class="rounded-2xl shadow-lg w-full"
-            alt="Food ingredients"
-          />
+        <div data-aos="fade-left">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=60" class="rounded-2xl shadow-lg w-full h-72 object-cover" alt="Food ingredients" />
         </div>
       </section>
 
       <section class="py-20 bg-white/70">
         <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8">
-          <div class="bg-white p-6 rounded-xl shadow text-center">
+          <div class="bg-white p-6 rounded-xl shadow text-center" data-aos="zoom-in">
             <h3 class="font-semibold text-lg text-gray-900">Smart Search</h3>
-            <p class="text-gray-600 mt-2">
-              Find recipes using ingredients you already have.
-            </p>
+            <p class="text-gray-600 mt-2">Find recipes using ingredients you already have.</p>
           </div>
-
-          <div class="bg-white p-6 rounded-xl shadow text-center">
-            <h3 class="font-semibold text-lg text-gray-900">
-              Accurate Recipes
-            </h3>
-            <p class="text-gray-600 mt-2">
-              Exact measurements and step-by-step cooking instructions.
-            </p>
+          <div class="bg-white p-6 rounded-xl shadow text-center" data-aos="zoom-in" data-aos-delay="100">
+            <h3 class="font-semibold text-lg text-gray-900">Accurate Recipes</h3>
+            <p class="text-gray-600 mt-2">Exact measurements and step-by-step instructions.</p>
           </div>
-
-          <div class="bg-white p-6 rounded-xl shadow text-center">
+          <div class="bg-white p-6 rounded-xl shadow text-center" data-aos="zoom-in" data-aos-delay="200">
             <h3 class="font-semibold text-lg text-gray-900">Global Dishes</h3>
-            <p class="text-gray-600 mt-2">
-              Discover meals from different cultures worldwide.
-            </p>
+            <p class="text-gray-600 mt-2">Discover meals from different cultures worldwide.</p>
           </div>
         </div>
       </section>
@@ -215,182 +104,80 @@
       <section class="py-20">
         <div class="container mx-auto px-6 text-center">
           <h2 class="text-3xl font-bold text-gray-900 mb-10">How It Works</h2>
-
           <div class="grid md:grid-cols-3 gap-8">
-            <div>
+            <div data-aos="fade-up">
               <span class="text-orange-500 text-4xl font-bold">1</span>
-              <p class="mt-2 text-gray-700">Search ingredients</p>
+              <p class="mt-2 text-gray-700 font-medium">Search ingredients</p>
             </div>
-            <div>
+            <div data-aos="fade-up" data-aos-delay="100">
               <span class="text-orange-500 text-4xl font-bold">2</span>
-              <p class="mt-2 text-gray-700">Choose a recipe</p>
+              <p class="mt-2 text-gray-700 font-medium">Choose a recipe</p>
             </div>
-            <div>
+            <div data-aos="fade-up" data-aos-delay="200">
               <span class="text-orange-500 text-4xl font-bold">3</span>
-              <p class="mt-2 text-gray-700">Cook with confidence</p>
+              <p class="mt-2 text-gray-700 font-medium">Cook with confidence</p>
             </div>
           </div>
         </div>
       </section>
 
       <section class="py-16 text-center">
-        <h2 class="text-3xl font-bold text-gray-900">
-          Ready to start cooking smarter?
-        </h2>
-
-        <a
-          href="search.html"
-          class="inline-block mt-6 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg shadow-lg"
-        >
+        <h2 class="text-3xl font-bold text-gray-900">Ready to start cooking smarter?</h2>
+        <a href="search.html" class="inline-block mt-6 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg shadow-lg font-bold transition-all hover:scale-105">
           Get Started
         </a>
       </section>
-
-      <footer class="text-gray-600 body-font">
-        <div
-          class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
-        >
-          <a
-            class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
-          >
-            <img
-              src="https://i.pinimg.com/1200x/91/1c/d2/911cd2e508ea084fa02f855a104e7f6e.jpg"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              class="w-20 h-20 text-white p-2 rounded-full"
-              viewBox="0 0 24 24"
-            />
-
-            <span class="ml-3 text-xl">FoodieFindr</span>
-          </a>
-          <p
-            class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"
-          >
-            © 2026 FoodieFindr —
-            <a
-              href="#"
-              class="text-gray-600 ml-1"
-              rel="noopener noreferrer"
-              target="_blank"
-              >@All rights reserved</a
-            >
-          </p>
-          <span
-            class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start"
-          >
-            <a href="#" class="ml-3 text-gray-500">
-              <svg
-                fill="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="w-5 h-5"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
-                ></path>
-              </svg>
-            </a>
-            <a href="#" class="ml-3 text-gray-500">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="w-5 h-5"
-                viewBox="0 0 24 24"
-              >
-                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                <path
-                  d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"
-                ></path>
-              </svg>
-            </a>
-            <a href="#" class="ml-3 text-gray-500">
-              <svg
-                fill="currentColor"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="0"
-                class="w-5 h-5"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke="none"
-                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
-                ></path>
-                <circle cx="4" cy="4" r="2" stroke="none"></circle>
-              </svg>
-            </a>
-          </span>
-        </div>
-      </footer>
-      <script>
-        const btn = document.getElementById("menuBtn");
-        const menu = document.getElementById("mobileMenu");
-
-        btn.addEventListener("click", () => {
-          menu.classList.toggle("hidden");
-
-          // Toggle icon
-          if (menu.classList.contains("hidden")) {
-            btn.textContent = "☰";
-          } else {
-            btn.textContent = "✕";
-          }
-        });
-
-        // Load Firebase auth first
-        const authScript = document.createElement("script");
-        authScript.src = "firebase-auth.js";
-        document.head.appendChild(authScript);
-
-        authScript.onload = function () {
-          // Check if user is logged in
-          if (typeof checkSession === "function" && !checkSession()) {
-            // Not logged in, redirect to login
-            console.log("User not logged in - redirecting to login");
-            window.location.href = "src/login-clean.html";
-            return;
-          }
-
-          // Get current user info
-          if (typeof getCurrentUser === "function") {
-            const user = getCurrentUser();
-            if (user) {
-              console.log("Logged in as:", user.email);
-            }
-          }
-
-          // Logout functionality
-          const logoutBtns = document.querySelectorAll(
-            "#logoutBtn, #logoutBtnMobile",
-          );
-          logoutBtns.forEach((btn) => {
-            btn.addEventListener("click", async function (e) {
-              e.preventDefault();
-              if (typeof logoutUser === "function") {
-                const result = await logoutUser();
-                if (result.success) {
-                  alert("Logged out successfully!");
-                  window.location.href = "login-clean.html";
-                }
-              } else {
-                // Fallback
-                localStorage.clear();
-                alert("Logged out!");
-                window.location.href = "login-clean.html";
-              }
-            });
-          });
-        };
-      </script>
     </div>
+
+    <footer class="border-t border-black/10 py-8 w-full bg-transparent mt-auto">
+      <div class="max-w-7xl mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        <div class="flex flex-col md:flex-row items-center gap-4 md:gap-0">
+          <a href="#" class="flex items-center gap-3 no-underline">
+            <img src="IMAGES/web logo.jpg" alt="FoodieFindr Logo" class="w-[50px] h-[50px] rounded-full object-cover shrink-0" />
+            <span class="text-xl font-bold text-[#111827]">FoodieFindr</span>
+          </a>
+          <p class="text-sm text-[#6b7280] md:pl-4 md:ml-4 md:border-l-2 md:border-[#e5e7eb] leading-relaxed text-center md:text-left">
+            © 2026 FoodieFindr —
+            <a href="#" class="text-[#4b5563] hover:text-orange-500 transition-colors">@All rights reserved</a>
+          </p>
+        </div>
+
+        <div class="flex gap-6 md:gap-4 justify-center">
+          <a href="#" class="text-[#9ca3af] hover:text-orange-500 transition-colors">
+            <svg class="w-6 h-6 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+          </a>
+          <a href="#" class="text-[#9ca3af] hover:text-orange-500 transition-colors">
+            <svg class="w-6 h-6 md:w-5 md:h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><path d="M17.5 6.5h.01"></path></svg>
+          </a>
+          <a href="#" class="text-[#9ca3af] hover:text-orange-500 transition-colors">
+            <svg class="w-6 h-6 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 800, once: true });
+
+      const btn = document.getElementById("menuBtn");
+      const menu = document.getElementById("mobileMenu");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+        btn.textContent = menu.classList.contains("hidden") ? "☰" : "✕";
+      });
+
+      // Simple Firebase/Auth placeholder logic
+      const logoutBtns = document.querySelectorAll("#logoutBtn, #logoutBtnMobile");
+      logoutBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          alert("Logging out...");
+          window.location.href = "login-clean.html";
+        });
+      });
+    </script>
   </body>
 </html>

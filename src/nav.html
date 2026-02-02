@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FoodieFindr Navbar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Font very close to screenshot -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="nav.css">
+
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.navbar {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.logo span {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  gap: 48px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #4b5563;
+  padding-bottom: 6px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #ff6b35;
+}
+
+/* ACTIVE LINK (TEAM) */
+.nav-links a.active {
+  color: #ff6b35;
+  border-bottom: 3px solid #ff6b35;
+}
+
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-container">
+    <!-- Logo -->
+    <div class="logo">
+        <img src="IMAGES/Website logo.jpg">
+
+        <span>FoodieFindr</span>
+    </div>
+
+    <!-- Nav links -->
+    <nav class="nav-links">
+      <a href="#">HOME</a>
+      <a href="#">CATEGORIES</a>
+      <a href="#">ABOUT US</a>
+      <a href="#">CONTACT</a>
+      <a href="#" class="active">TEAM</a>
+    </nav>
+  </div>
+</header>
+
+</body>
+</html>

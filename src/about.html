@@ -5,316 +5,473 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FoodieFindr</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-   <style>
-  :root {
-    --primary: #ff6b35;
-    --text-dark: #111827;
-    --text-grey: #4b5563;
-    --bg-light: #fff7f0;
-  }
+    <style>
+      :root {
+        --primary: #ff6b35;
+        --text-dark: #111827;
+        --text-grey: #4b5563;
+        --bg-light: #fff7f0;
+      }
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
 
-  body {
-    min-height: 100%;
-    background-color: var(--bg-light) !important;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll on body */
-  }
+      body {
+        min-height: 100%;
+        background-color: var(--bg-light) !important;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        overflow-x: hidden; /* Prevent horizontal scroll on body */
+      }
 
-  html {
-    height: 100%;
-    overflow-x: hidden; /* Prevent horizontal scroll on html */
-  }
+      html {
+        height: 100%;
+        overflow-x: hidden; /* Prevent horizontal scroll on html */
+      }
 
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
 
-  /* ================= HEADER & NAVBAR ================= */
-  header.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #ffffff;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-    z-index: 2000;
-  }
+      /* ================= HEADER & NAVBAR ================= */
+      header.site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        z-index: 2000;
+      }
 
-  .nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 16px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 16px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
 
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-  }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+      }
 
-  .logo img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
+      .logo img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
 
-  .logo span {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--text-dark);
-    display: flex;
-    align-items: center;
-  }
+      .logo span {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--text-dark);
+        display: flex;
+        align-items: center;
+      }
 
-  .orange-text {
-    color: var(--primary) !important;
-  }
+      .orange-text {
+        color: var(--primary) !important;
+      }
 
-  .nav-links {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-  }
+      .nav-links {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+      }
 
-  .nav-links a {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    color: var(--text-grey);
-    padding: 8px 0;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    position: relative;
-  }
+      .nav-links a {
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        color: var(--text-grey);
+        padding: 8px 0;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        position: relative;
+      }
 
-  .nav-links a:hover {
-    color: var(--primary);
-  }
+      .nav-links a:hover {
+        color: var(--primary);
+      }
 
-  .nav-links a.active {
-    color: var(--primary);
-  }
+      .nav-links a.active {
+        color: var(--primary);
+      }
 
-  .nav-links a.active::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--primary);
-  }
+      .nav-links a.active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--primary);
+      }
 
-  .menu-btn {
-    display: none;
-    font-size: 1.8rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--text-dark);
-    padding: 5px;
-    transition: transform 0.2s;
-  }
+      .menu-btn {
+        display: none;
+        font-size: 1.8rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-dark);
+        padding: 5px;
+        transition: transform 0.2s;
+      }
 
-  .mobile-menu {
-    display: none;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 100%;
-    background: #ffffff;
-    flex-direction: column;
-    padding: 20px 0;
-    box-shadow: 0 15px 20px rgba(0,0,0,0.05);
-    border-top: 1px solid #f3f4f6;
-    z-index: 1999;
-  }
+      .mobile-menu {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        background: #ffffff;
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 15px 20px rgba(0, 0, 0, 0.05);
+        border-top: 1px solid #f3f4f6;
+        z-index: 1999;
+      }
 
-  .mobile-menu a {
-    padding: 15px 40px;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: var(--text-grey);
-    text-transform: uppercase;
-  }
+      .mobile-menu a {
+        padding: 15px 40px;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: var(--text-grey);
+        text-transform: uppercase;
+      }
 
-  .mobile-menu a.active {
-    color: var(--primary);
-    background: var(--bg-light);
-    border-left: 4px solid var(--primary);
-  }
+      .mobile-menu a.active {
+        color: var(--primary);
+        background: var(--bg-light);
+        border-left: 4px solid var(--primary);
+      }
 
-  /* ================= CONTENT STYLES ================= */
-  .hero {
-    padding: 150px 5%;
-    text-align: center;
-    background: linear-gradient(135deg, #ffefd5 0%, #fff7f0 100%);
-  }
+      /* ================= CONTENT STYLES ================= */
+      .hero {
+        padding: 150px 5%;
+        text-align: center;
+        background: linear-gradient(135deg, #ffefd5 0%, #fff7f0 100%);
+      }
 
-  .hero h2 { font-size: clamp(2rem, 5vw, 3.5rem); color: var(--primary); margin-bottom: 20px; font-weight: 700; }
-  .hero p { font-size: 1.1rem; margin-bottom: 30px; max-width: 650px; margin-inline: auto; color: var(--text-grey); }
-  
-  .hero button {
-    padding: 16px 36px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 50px;
-    border: none;
-    background: var(--primary);
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-  }
+      .hero h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        color: var(--primary);
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+      .hero p {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+        max-width: 650px;
+        margin-inline: auto;
+        color: var(--text-grey);
+      }
 
-  .search-bar { margin-top: 40px; }
-  .search-bar input {
-    padding: 16px 28px;
-    width: 90%;
-    max-width: 550px;
-    border-radius: 50px;
-    border: 2px solid #eee;
-    font-size: 1rem;
-    outline: none;
-    transition: all 0.3s ease;
-  }
+      .hero button {
+        padding: 16px 36px;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        border: none;
+        background: var(--primary);
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+      }
 
-  .slider { padding: 60px 5%; }
-  .slider-container {
-    max-width: 1100px;
-    margin: auto;
-    overflow: hidden;
-    border-radius: 30px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-  }
-  .slide { display: none; }
-  .slide.active { display: block; }
-  .slide img { width: 100%; height: 500px; object-fit: cover; }
+      .search-bar {
+        margin-top: 40px;
+      }
+      .search-bar input {
+        padding: 16px 28px;
+        width: 90%;
+        max-width: 550px;
+        border-radius: 50px;
+        border: 2px solid #eee;
+        font-size: 1rem;
+        outline: none;
+        transition: all 0.3s ease;
+      }
 
-  .about { padding: 100px 10%; }
-  .about-container { display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
-  .about-text { flex: 1; min-width: 320px; }
-  .about-text h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 25px; }
-  .about-text p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; color: var(--text-grey); }
-  .about-image { flex: 1; min-width: 320px; }
-  .about-image img { width: 100%; border-radius: 30px; box-shadow: 0 20px 30px rgba(0,0,0,0.08); }
+      .slider {
+        padding: 60px 5%;
+      }
+      .slider-container {
+        max-width: 1100px;
+        margin: auto;
+        overflow: hidden;
+        border-radius: 30px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+      .slide {
+        display: none;
+      }
+      .slide.active {
+        display: block;
+      }
+      .slide img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+      }
 
-  .terms { padding: 80px 10%; background: transparent; }
-  .terms-container { max-width: 800px; margin: auto; }
-  .terms h2 { color: var(--primary); margin-bottom: 30px; text-align: center; font-weight: 700; }
-  .terms h3 { color: var(--text-dark); margin-top: 25px; margin-bottom: 10px; font-size: 1.2rem; font-weight: 600; }
-  .terms p { line-height: 1.8; margin-bottom: 15px; color: var(--text-grey); font-size: 0.95rem; }
+      .about {
+        padding: 100px 10%;
+      }
+      .about-container {
+        display: flex;
+        gap: 60px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .about-text {
+        flex: 1;
+        min-width: 320px;
+      }
+      .about-text h2 {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 25px;
+      }
+      .about-text p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+        color: var(--text-grey);
+      }
+      .about-image {
+        flex: 1;
+        min-width: 320px;
+      }
+      .about-image img {
+        width: 100%;
+        border-radius: 30px;
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.08);
+      }
 
-  .site-footer {
-    background-color: transparent !important;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-    padding: 32px 0;
-    margin-top: auto; 
-    width: 100%;
-  }
+      .terms {
+        padding: 80px 10%;
+        background: transparent;
+      }
+      .terms-container {
+        max-width: 800px;
+        margin: auto;
+      }
+      .terms h2 {
+        color: var(--primary);
+        margin-bottom: 30px;
+        text-align: center;
+        font-weight: 700;
+      }
+      .terms h3 {
+        color: var(--text-dark);
+        margin-top: 25px;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+      .terms p {
+        line-height: 1.8;
+        margin-bottom: 15px;
+        color: var(--text-grey);
+        font-size: 0.95rem;
+      }
 
-  .footer-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+      .site-footer {
+        background-color: transparent !important;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        padding: 32px 0;
+        margin-top: auto;
+        width: 100%;
+      }
 
-  .footer-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  .footer-logo { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
-  .footer-title { font-size: 1.25rem; font-weight: 700; color: #111827; }
-  .footer-copyright { font-size: 0.875rem; color: #6b7280; padding-left: 16px; margin-left: 16px; border-left: 2px solid #e5e7eb; line-height: 1.5; }
-  .footer-copyright a { color: #4b5563; text-decoration: none; }
-  .social-links { display: flex; gap: 12px; }
-  .social-icon { color: #9ca3af; }
-  .social-icon svg { width: 20px; height: 20px; }
+      .footer-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
 
-  /* ================= CORRECT RESPONSIVENESS (FIXED OVERFLOW) ================= */
-  
-  /* Tablets */
-  @media (max-width: 1024px) {
-    .nav-links { display: none; }
-    .menu-btn { display: block; }
-    .nav-container { padding: 16px 24px; }
-  }
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+      .footer-logo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .footer-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #111827;
+      }
+      .footer-copyright {
+        font-size: 0.875rem;
+        color: #6b7280;
+        padding-left: 16px;
+        margin-left: 16px;
+        border-left: 2px solid #e5e7eb;
+        line-height: 1.5;
+      }
+      .footer-copyright a {
+        color: #4b5563;
+        text-decoration: none;
+      }
+      .social-links {
+        display: flex;
+        gap: 12px;
+      }
+      .social-icon {
+        color: #9ca3af;
+      }
+      .social-icon svg {
+        width: 20px;
+        height: 20px;
+      }
 
-  /* Mobile Screens */
-  @media (max-width: 768px) {
-    /* Prevent horizontal scroll */
-    * { max-width: 100vw; }
+      /* ================= CORRECT RESPONSIVENESS (FIXED OVERFLOW) ================= */
 
-    .nav-container { padding: 10px 20px; }
-    
-    .logo img { width: 45px; height: 45px; flex-shrink: 0; }
-    .logo span { font-size: 18px; white-space: nowrap; }
+      /* Tablets */
+      @media (max-width: 1024px) {
+        .nav-links {
+          display: none;
+        }
+        .menu-btn {
+          display: block;
+        }
+        .nav-container {
+          padding: 16px 24px;
+        }
+      }
 
-    .hero { padding: 100px 20px 40px; }
-    .hero h2 { font-size: 1.8rem; }
+      /* Mobile Screens */
+      @media (max-width: 768px) {
+        /* Prevent horizontal scroll */
+        * {
+          max-width: 100vw;
+        }
 
-    .search-bar input { width: 100%; }
+        .nav-container {
+          padding: 10px 20px;
+        }
 
-    .slider { padding: 30px 20px; }
-    .slide img { height: 300px; }
+        .logo img {
+          width: 45px;
+          height: 45px;
+          flex-shrink: 0;
+        }
+        .logo span {
+          font-size: 18px;
+          white-space: nowrap;
+        }
 
-    .about { padding: 50px 20px; }
-    .about-container { flex-direction: column; text-align: center; gap: 30px; }
-    .about-text, .about-image { min-width: 100%; flex: none; }
-    
-    .terms { padding: 40px 20px; }
+        .hero {
+          padding: 100px 20px 40px;
+        }
+        .hero h2 {
+          font-size: 1.8rem;
+        }
 
-    .footer-container {
-      flex-direction: column;
-      text-align: center;
-      gap: 20px;
-      padding: 0 20px;
-    }
+        .search-bar input {
+          width: 100%;
+        }
 
-    .footer-copyright {
-      border-left: none;
-      margin-left: 0;
-      padding-left: 0;
-    }
-  }
+        .slider {
+          padding: 30px 20px;
+        }
+        .slide img {
+          height: 300px;
+        }
 
-  .mobile-menu.show { display: flex; animation: slideDown 0.3s ease forwards; }
-  @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-</style>
+        .about {
+          padding: 50px 20px;
+        }
+        .about-container {
+          flex-direction: column;
+          text-align: center;
+          gap: 30px;
+        }
+        .about-text,
+        .about-image {
+          min-width: 100%;
+          flex: none;
+        }
+
+        .terms {
+          padding: 40px 20px;
+        }
+
+        .footer-container {
+          flex-direction: column;
+          text-align: center;
+          gap: 20px;
+          padding: 0 20px;
+        }
+
+        .footer-copyright {
+          border-left: none;
+          margin-left: 0;
+          padding-left: 0;
+        }
+      }
+
+      .mobile-menu.show {
+        display: flex;
+        animation: slideDown 0.3s ease forwards;
+      }
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
   </head>
 
   <body>
     <header class="site-header">
       <div class="nav-container">
-     <div class="logo">
-  <img src="IMAGES/web logo.jpg" alt="Logo">
-  <span>Foodie<span class="orange-text">Findr</span></span>
-</div>
+        <div class="logo">
+          <img src="IMAGES/web logo.jpg" alt="Logo" />
+          <span>Foodie<span class="orange-text">Findr</span></span>
+        </div>
 
         <nav class="nav-links">
-          <a href="Dashboard.html" >HOME</a>
+          <a href="Dashboard.html">HOME</a>
           <a href="search.html">CATEGORIES</a>
           <a href="about.html" class="active">ABOUT US</a>
           <a href="Contact Us.html">CONTACT</a>
@@ -327,7 +484,7 @@
       <div id="mobileMenu" class="mobile-menu">
         <a href="Dashboard.html">HOME</a>
         <a href="search.html">CATEGORIES</a>
-        <a href="about.html"  class="active">ABOUT US</a>
+        <a href="about.html" class="active">ABOUT US</a>
         <a href="Contact Us.html">CONTACT</a>
         <a href="team.html">TEAM</a>
       </div>
@@ -335,21 +492,46 @@
 
     <section class="hero">
       <h2 data-aos="fade-up">Find Your Favorite Food</h2>
-      <p data-aos="fade-up" data-aos-delay="100">Discover the best restaurants, cafes, and hidden gems near you.</p>
-      <button data-aos="fade-up" data-aos-delay="200" onclick="document.querySelector('#about').scrollIntoView({ behavior: 'smooth' })">
+      <p data-aos="fade-up" data-aos-delay="100">
+        Discover the best restaurants, cafes, and hidden gems near you.
+      </p>
+      <button
+        data-aos="fade-up"
+        data-aos-delay="200"
+        onclick="
+          document
+            .querySelector('#about')
+            .scrollIntoView({ behavior: 'smooth' })
+        "
+      >
         Learn More
       </button>
 
-      <div class="search-bar" data-aos="zoom-in" data-aos-delay="300">
+      <!-- <div class="search-bar" data-aos="zoom-in" data-aos-delay="300">
         <input type="text" placeholder="Search restaurants, dishes, or cuisines..." />
-      </div>
+      </div> -->
     </section>
 
     <section class="slider">
       <div class="slider-container" data-aos="fade-up">
-        <div class="slide active"><img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1200&h=600&fit=crop" alt="Food"></div>
-        <div class="slide"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&h=600&fit=crop" alt="Food"></div>
-        <div class="slide"><img src="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?w=1200&h=600&fit=crop" alt="Food"></div>
+        <div class="slide active">
+          <img
+            src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1200&h=600&fit=crop"
+            alt="Food"
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&h=600&fit=crop"
+            alt="Food"
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?w=1200&h=600&fit=crop"
+            alt="Food"
+          />
+        </div>
       </div>
     </section>
 
@@ -357,11 +539,20 @@
       <div class="about-container">
         <div class="about-text" data-aos="fade-right">
           <h2>About FoodieFindr</h2>
-          <p>We help you discover the best food spots near you. From street food to fine dining, we make finding delicious meals fast and easy.</p>
-          <p>Our mission is to connect food lovers with amazing local restaurants and create a community centered around great taste.</p>
+          <p>
+            We help you discover the best food spots near you. From street food
+            to fine dining, we make finding delicious meals fast and easy.
+          </p>
+          <p>
+            Our mission is to connect food lovers with amazing local restaurants
+            and create a community centered around great taste.
+          </p>
         </div>
         <div class="about-image" data-aos="fade-left">
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="About">
+          <img
+            src="https://images.unsplash.com/photo-1504674900247-0877df9cc836"
+            alt="About"
+          />
         </div>
       </div>
     </section>
@@ -369,72 +560,98 @@
     <section class="terms">
       <div class="terms-container" data-aos="fade-up">
         <h2>Terms & Conditions</h2>
-        
+
         <h3>1. Use of Site</h3>
-        <p>You may use FoodieFindr for personal, non-commercial purposes only. Any unauthorized crawling or scraping of data is strictly prohibited.</p>
-        
+        <p>
+          You may use FoodieFindr for personal, non-commercial purposes only.
+          Any unauthorized crawling or scraping of data is strictly prohibited.
+        </p>
+
         <h3>2. User Content</h3>
-        <p>Reviews and content shared by users must be respectful and lawful. FoodieFindr reserves the right to remove any content deemed inappropriate.</p>
-        
+        <p>
+          Reviews and content shared by users must be respectful and lawful.
+          FoodieFindr reserves the right to remove any content deemed
+          inappropriate.
+        </p>
+
         <h3>3. Privacy Policy</h3>
-        <p>Your privacy is important to us. Your use of FoodieFindr is subject to our comprehensive Privacy Policy regarding how we handle your data.</p>
+        <p>
+          Your privacy is important to us. Your use of FoodieFindr is subject to
+          our comprehensive Privacy Policy regarding how we handle your data.
+        </p>
       </div>
     </section>
-    
 
-   <footer class="site-footer">
-  <div class="footer-container">
-    <a href="#" class="footer-brand">
-      <img src="IMAGES/web logo.jpg" alt="FoodieFindr Logo" class="footer-logo" />
-      <span class="footer-title">FoodieFindr</span>
-    </a>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <a href="#" class="footer-brand">
+          <img
+            src="IMAGES/web logo.jpg"
+            alt="FoodieFindr Logo"
+            class="footer-logo"
+          />
+          <span class="footer-title">FoodieFindr</span>
+        </a>
 
-    <p class="footer-copyright">
-      © 2026 FoodieFindr —
-      <a href="#" target="_blank" rel="noopener noreferrer">@All rights reserved</a>
-    </p>
+        <p class="footer-copyright">
+          © 2026 FoodieFindr —
+          <a href="#" target="_blank" rel="noopener noreferrer"
+            >@All rights reserved</a
+          >
+        </p>
 
-    <span class="social-links">
-      <a href="#" class="social-icon">
-        <svg fill="currentColor" viewBox="0 0 24 24">
-          <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-        </svg>
-      </a>
-      <a href="#" class="social-icon">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-          <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-        </svg>
-      </a>
-      <a href="#" class="social-icon">
-        <svg fill="currentColor" viewBox="0 0 24 24">
-          <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-          <circle cx="4" cy="4" r="2"></circle>
-        </svg>
-      </a>
-    </span>
-  </div>
-</footer>
+        <span class="social-links">
+          <a href="#" class="social-icon">
+            <svg fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
+              ></path>
+            </svg>
+          </a>
+          <a href="#" class="social-icon">
+            <svg
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path
+                d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"
+              ></path>
+            </svg>
+          </a>
+          <a href="#" class="social-icon">
+            <svg fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+              ></path>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </span>
+      </div>
+    </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({ duration: 1000, once: true });
 
       // Improved Mobile Menu Logic
-      const btn = document.getElementById('menuBtn');
-      const menu = document.getElementById('mobileMenu');
+      const btn = document.getElementById("menuBtn");
+      const menu = document.getElementById("mobileMenu");
 
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener("click", (e) => {
         e.stopPropagation();
-        const isOpen = menu.classList.toggle('show');
-        btn.textContent = isOpen ? '✕' : '☰';
+        const isOpen = menu.classList.toggle("show");
+        btn.textContent = isOpen ? "✕" : "☰";
       });
 
       // Close menu if clicking outside
-      document.addEventListener('click', (e) => {
+      document.addEventListener("click", (e) => {
         if (!menu.contains(e.target) && !btn.contains(e.target)) {
-          menu.classList.remove('show');
-          btn.textContent = '☰';
+          menu.classList.remove("show");
+          btn.textContent = "☰";
         }
       });
 

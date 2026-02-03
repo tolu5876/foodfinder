@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FF Logo - FoodFindr</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #ffffff 0%, #fed7aa 50%, #fb923c 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo-wrapper {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        /* Logo Style 1: Gradient Circle with FF */
+        .logo-style-1 {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fb923c 0%, #f97316 30%, #ea580c 70%, #dc2626 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(251, 146, 60, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-style-1::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        .ff-text-1 {
+            font-size: 80px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            letter-spacing: -5px;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Logo Style 2: Modern Square */
+        .logo-style-2 {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffffff 0%, #fff7ed 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(251, 146, 60, 0.2);
+            border: 3px solid #fb923c;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ff-text-2 {
+            font-size: 80px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fb923c 0%, #f97316 30%, #ea580c 70%, #dc2626 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -5px;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Logo Style 3: Minimal Circle */
+        .logo-style-3 {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 30px rgba(251, 146, 60, 0.25);
+            border: 4px solid #fb923c;
+            position: relative;
+        }
+
+        .ff-text-3 {
+            font-size: 70px;
+            font-weight: 800;
+            color: #fb923c;
+            letter-spacing: -3px;
+        }
+
+        /* Logo Style 4: SVG Version */
+        .logo-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 10px 20px rgba(251, 146, 60, 0.3));
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        }
+
+        .logo-title {
+            text-align: center;
+            color: #ea580c;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .logo-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <h1 style="color: #ea580c; font-size: 36px; margin-bottom: 20px;">FoodFindr FF Logo Designs</h1>
+        
+        <div class="logo-grid">
+            <!-- Style 1: Gradient Circle -->
+            <div class="logo-item">
+                <div class="logo-wrapper">
+                    <div class="logo-style-1">
+                        <div class="ff-text-1">FF</div>
+                    </div>
+                </div>
+                <div class="logo-title">Style 1: Gradient Circle</div>
+                <button class="download-btn" onclick="downloadLogo('style1')">Download SVG</button>
+            </div>
+
+            <!-- Style 2: Modern Square -->
+            <div class="logo-item">
+                <div class="logo-wrapper">
+                    <div class="logo-style-2">
+                        <div class="ff-text-2">FF</div>
+                    </div>
+                </div>
+                <div class="logo-title">Style 2: Modern Square</div>
+                <button class="download-btn" onclick="downloadLogo('style2')">Download SVG</button>
+            </div>
+
+            <!-- Style 3: Minimal Circle -->
+            <div class="logo-item">
+                <div class="logo-wrapper">
+                    <div class="logo-style-3">
+                        <div class="ff-text-3">FF</div>
+                    </div>
+                </div>
+                <div class="logo-title">Style 3: Minimal Circle</div>
+                <button class="download-btn" onclick="downloadLogo('style3')">Download SVG</button>
+            </div>
+
+            <!-- Style 4: Professional SVG -->
+            <div class="logo-item">
+                <div class="logo-wrapper">
+                    <svg class="logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#fb923c;stop-opacity:1" />
+                                <stop offset="30%" style="stop-color:#f97316;stop-opacity:1" />
+                                <stop offset="70%" style="stop-color:#ea580c;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.25"/>
+                            </filter>
+                        </defs>
+                        
+                        <!-- Background Circle -->
+                        <circle cx="100" cy="100" r="90" fill="url(#logoGradient)" filter="url(#shadow)"/>
+                        
+                        <!-- FF Letters -->
+                        <text x="100" y="100" 
+                              font-family="Arial, sans-serif" 
+                              font-size="72" 
+                              font-weight="900" 
+                              fill="white" 
+                              text-anchor="middle" 
+                              dominant-baseline="middle"
+                              letter-spacing="-8">FF</text>
+                        
+                        <!-- Highlight Effect -->
+                        <ellipse cx="100" cy="40" rx="60" ry="20" fill="rgba(255,255,255,0.2)"/>
+                    </svg>
+                </div>
+                <div class="logo-title">Style 4: Professional SVG</div>
+                <button class="download-btn" onclick="downloadLogo('style4')">Download SVG</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function downloadLogo(style) {
+            let svgContent = '';
+            
+            switch(style) {
+                case 'style1':
+                    svgContent = `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#fb923c;stop-opacity:1" />
+            <stop offset="30%" style="stop-color:#f97316;stop-opacity:1" />
+            <stop offset="70%" style="stop-color:#ea580c;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+        </linearGradient>
+        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="0" dy="8" stdDeviation="8" flood-opacity="0.3"/>
+        </filter>
+    </defs>
+    <circle cx="100" cy="100" r="90" fill="url(#grad1)" filter="url(#shadow)"/>
+    <text x="100" y="100" font-family="Arial, sans-serif" font-size="80" font-weight="900" fill="white" text-anchor="middle" dominant-baseline="middle" letter-spacing="-8">FF</text>
+</svg>`;
+                    break;
+                    
+                case 'style2':
+                    svgContent = `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#fb923c;stop-opacity:1" />
+            <stop offset="30%" style="stop-color:#f97316;stop-opacity:1" />
+            <stop offset="70%" style="stop-color:#ea580c;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+        </linearGradient>
+        <filter id="shadow2" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="0" dy="8" stdDeviation="8" flood-opacity="0.2"/>
+        </filter>
+    </defs>
+    <rect x="10" y="10" width="180" height="180" rx="20" fill="white" stroke="url(#grad2)" stroke-width="6" filter="url(#shadow2)"/>
+    <text x="100" y="100" font-family="Arial, sans-serif" font-size="80" font-weight="900" fill="url(#grad2)" text-anchor="middle" dominant-baseline="middle" letter-spacing="-8">FF</text>
+</svg>`;
+                    break;
+                    
+                case 'style3':
+                    svgContent = `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="shadow3" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="0" dy="6" stdDeviation="6" flood-opacity="0.25"/>
+        </filter>
+    </defs>
+    <circle cx="100" cy="100" r="85" fill="white" stroke="#fb923c" stroke-width="8" filter="url(#shadow3)"/>
+    <text x="100" y="100" font-family="Arial, sans-serif" font-size="70" font-weight="800" fill="#fb923c" text-anchor="middle" dominant-baseline="middle" letter-spacing="-6">FF</text>
+</svg>`;
+                    break;
+                    
+                case 'style4':
+                    svgContent = `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#fb923c;stop-opacity:1" />
+            <stop offset="30%" style="stop-color:#f97316;stop-opacity:1" />
+            <stop offset="70%" style="stop-color:#ea580c;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+        </linearGradient>
+        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.25"/>
+        </filter>
+    </defs>
+    <circle cx="100" cy="100" r="90" fill="url(#logoGradient)" filter="url(#shadow)"/>
+    <text x="100" y="100" font-family="Arial, sans-serif" font-size="72" font-weight="900" fill="white" text-anchor="middle" dominant-baseline="middle" letter-spacing="-8">FF</text>
+    <ellipse cx="100" cy="40" rx="60" ry="20" fill="rgba(255,255,255,0.2)"/>
+</svg>`;
+                    break;
+            }
+            
+            // Create download
+            const blob = new Blob([svgContent], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `foodfindr-ff-logo-${style}.svg`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
